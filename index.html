@@ -374,17 +374,18 @@
   .tw-bubble {
     font-family: var(--font-display);
     font-size: 30px;
-    font-weight: 300;
-    font-style: italic;
+    font-weight: 600;
+    font-style: normal;
     color: var(--off-white);
-    line-height: 1.35;
+    line-height: 1.3;
     min-height: 2.8em;
     position: relative;
     display: inline;
+    letter-spacing: 0.01em;
   }
   .tw-bubble strong {
     font-style: normal;
-    font-weight: 600;
+    font-weight: 700;
   }
   .tw-cursor {
     display: inline-block;
@@ -745,6 +746,102 @@
   .anim-d4 { animation-delay: 330ms; }
   .anim-d5 { animation-delay: 420ms; }
 
+  /* ─── SECONDARY BACK BTN ─── */
+  .secondary-back-btn {
+    width: 100%; padding: 13px;
+    background: transparent;
+    border: 1.5px solid rgba(245,220,192,0.22);
+    border-radius: 4px;
+    font-family: var(--font-body); font-size: 12px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(245,220,192,0.60);
+    cursor: pointer;
+    transition: border-color 180ms, color 180ms, transform 80ms;
+    -webkit-tap-highlight-color: transparent;
+    margin-top: 8px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .secondary-back-btn:hover {
+    border-color: rgba(245,220,192,0.42);
+    color: rgba(245,220,192,0.85);
+  }
+  .secondary-back-btn:active { transform: scale(0.98); }
+
+  /* ─── MENU QUICK-ACCESS BAR ─── */
+  .menu-quick-bar {
+    display: flex; align-items: center; justify-content: flex-end;
+    margin-bottom: 4px;
+  }
+  .menu-quick-btn {
+    display: flex; align-items: center; gap: 7px;
+    background: rgba(61,22,4,0.55);
+    border: 1.5px solid rgba(230,126,34,0.35);
+    border-radius: 6px;
+    padding: 8px 14px;
+    cursor: pointer;
+    font-family: var(--font-body); font-size: 11px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--primary-glow);
+    transition: background 180ms, border-color 180ms, transform 80ms;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .menu-quick-btn:hover {
+    background: rgba(61,22,4,0.80);
+    border-color: rgba(230,126,34,0.60);
+  }
+  .menu-quick-btn:active { transform: scale(0.96); }
+
+  /* ─── MENU MODAL ─── */
+  .menu-modal {
+    position: fixed; inset: 0; z-index: 600;
+    display: flex; align-items: flex-end; justify-content: center;
+    background: rgba(30,10,3,0);
+    pointer-events: none;
+    transition: background 250ms var(--ease-in-out);
+  }
+  .menu-modal.open {
+    background: rgba(30,10,3,0.85);
+    pointer-events: auto;
+  }
+  .menu-modal-panel {
+    background: linear-gradient(170deg, #4A1A06 0%, #6E2E0A 100%);
+    border: 1px solid rgba(230,126,34,0.45);
+    border-radius: 16px 16px 0 0;
+    width: 100%; max-width: 520px;
+    transform: translateY(100%);
+    transition: transform 320ms var(--ease-out);
+    box-shadow: 0 -8px 40px rgba(20,7,2,0.70);
+    max-height: 82dvh;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  .menu-modal.open .menu-modal-panel { transform: translateY(0); }
+  .menu-modal-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 20px 14px;
+    border-bottom: 1px solid rgba(230,126,34,0.20);
+    flex-shrink: 0;
+  }
+  .menu-modal-title {
+    font-family: var(--font-body); font-size: 11px; font-weight: 700;
+    letter-spacing: 0.20em; text-transform: uppercase; color: #FFFFFF;
+  }
+  .menu-modal-close {
+    display: flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(253,243,234,0.10);
+    border: 1px solid rgba(253,243,234,0.20);
+    cursor: pointer; color: rgba(253,243,234,0.80);
+    font-size: 16px; line-height: 1;
+    transition: background 150ms;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .menu-modal-close:hover { background: rgba(253,243,234,0.20); }
+  .menu-modal-body {
+    overflow-y: auto; -webkit-overflow-scrolling: touch;
+    flex: 1; padding: 16px 20px 32px;
+  }
+
   @media (max-width: 340px) {
     .delivery-toggle { flex-direction: column; }
     .payment-chips { flex-direction: column; }
@@ -937,6 +1034,12 @@
 
     <!-- ══ STEP 3: PEDIDO PRINCIPAL ══ -->
     <div class="step-panel" id="step3">
+      <div class="menu-quick-bar">
+        <button class="menu-quick-btn" onclick="openMenuModal()" type="button">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2.5" width="12" height="1.5" rx="0.75" fill="currentColor"/><rect x="1" y="6.25" width="12" height="1.5" rx="0.75" fill="currentColor"/><rect x="1" y="10" width="8" height="1.5" rx="0.75" fill="currentColor"/></svg>
+          Ver cardápio
+        </button>
+      </div>
       <div class="tw-container">
         <div class="tw-bubble" id="tw3Text"></div><span class="tw-cursor" id="tw3Cursor"></span>
       </div>
@@ -951,10 +1054,20 @@
           <path d="M6 3L11 8L6 13" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
+      <button class="secondary-back-btn" onclick="stepBack()" type="button">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Voltar
+      </button>
     </div>
 
     <!-- ══ STEP 3b: SABORES ══ -->
     <div class="step-panel" id="step3b">
+      <div class="menu-quick-bar">
+        <button class="menu-quick-btn" onclick="openMenuModal()" type="button">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2.5" width="12" height="1.5" rx="0.75" fill="currentColor"/><rect x="1" y="6.25" width="12" height="1.5" rx="0.75" fill="currentColor"/><rect x="1" y="10" width="8" height="1.5" rx="0.75" fill="currentColor"/></svg>
+          Ver cardápio
+        </button>
+      </div>
       <div class="tw-container">
         <div class="tw-bubble" id="tw3bText"></div><span class="tw-cursor" id="tw3bCursor"></span>
       </div>
@@ -968,13 +1081,51 @@
           <path d="M6 3L11 8L6 13" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
+      <button class="secondary-back-btn" onclick="stepBack()" type="button">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Voltar
+      </button>
     </div>
 
-    <!-- ══ STEP 3c: OBSERVAÇÕES ══ -->
+    <!-- ══ STEP 3c: BEBIDA ══ -->
     <div class="step-panel" id="step3c">
+      <div class="menu-quick-bar">
+        <button class="menu-quick-btn" onclick="openMenuModal()" type="button">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2.5" width="12" height="1.5" rx="0.75" fill="currentColor"/><rect x="1" y="6.25" width="12" height="1.5" rx="0.75" fill="currentColor"/><rect x="1" y="10" width="8" height="1.5" rx="0.75" fill="currentColor"/></svg>
+          Ver cardápio
+        </button>
+      </div>
       <div class="tw-container">
         <div class="tw-bubble" id="tw3cText"></div><span class="tw-cursor" id="tw3cCursor"></span>
-        <div class="tw-sub" id="tw3cSub" style="margin-top:4px">Opcional</div>
+      </div>
+      <div class="form-section">
+        <textarea class="form-textarea" id="drinkFree" style="height:88px;cursor:text"
+          placeholder="Ex: Coca 350ml, suco de laranja 500ml, água sem gás..."></textarea>
+      </div>
+      <button class="continue-btn" onclick="submitDrink()">
+        Continuar
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M6 3L11 8L6 13" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button class="skip-btn" onclick="triggerStep3d()">Pular</button>
+      <button class="secondary-back-btn" onclick="stepBack()" type="button">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Voltar
+      </button>
+    </div>
+
+    <!-- ══ STEP 3d: OBSERVAÇÕES ══ -->
+    <div class="step-panel" id="step3d">
+      <div class="menu-quick-bar">
+        <button class="menu-quick-btn" onclick="openMenuModal()" type="button">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2.5" width="12" height="1.5" rx="0.75" fill="currentColor"/><rect x="1" y="6.25" width="12" height="1.5" rx="0.75" fill="currentColor"/><rect x="1" y="10" width="8" height="1.5" rx="0.75" fill="currentColor"/></svg>
+          Ver cardápio
+        </button>
+      </div>
+      <div class="tw-container">
+        <div class="tw-bubble" id="tw3dText"></div><span class="tw-cursor" id="tw3dCursor"></span>
+        <div class="tw-sub" id="tw3dSub" style="margin-top:4px">Opcional</div>
       </div>
       <div class="form-section">
         <textarea class="form-textarea" id="specialObs" style="height:88px;cursor:text"
@@ -987,42 +1138,10 @@
         </svg>
       </button>
       <button class="skip-btn" onclick="goToStep4()">Pular</button>
-    </div>
-
-    <!-- ══ STEP 4: BEBIDA ══ -->
-    <div class="step-panel" id="step4">
-      <div class="step-kicker">Etapa 2 de 3 — Bebida</div>
-      <div class="step-title" style="font-size:26px;margin-bottom:16px">
-        Quer combinar alguma<br><strong>bebida com seu pedido?</strong>
-      </div>
-
-      <div class="form-section">
-        <div class="service-chips-form" id="drinkChips">
-          <button class="service-chip-form" onclick="toggleChipGroup(this,'drinkChips')" type="button">
-            <span class="chip-label">Refrigerante</span><span class="chip-remove">✕</span>
-          </button>
-          <button class="service-chip-form" onclick="toggleChipGroup(this,'drinkChips')" type="button">
-            <span class="chip-label">Suco Natural</span><span class="chip-remove">✕</span>
-          </button>
-          <button class="service-chip-form" onclick="toggleChipGroup(this,'drinkChips')" type="button">
-            <span class="chip-label">Água</span><span class="chip-remove">✕</span>
-          </button>
-          <button class="service-chip-form" onclick="toggleChipGroup(this,'drinkChips')" type="button">
-            <span class="chip-label">Milk-shake</span><span class="chip-remove">✕</span>
-          </button>
-          <button class="service-chip-form" onclick="toggleChipGroup(this,'drinkChips')" type="button">
-            <span class="chip-label">Cerveja</span><span class="chip-remove">✕</span>
-          </button>
-        </div>
-      </div>
-
-      <button class="continue-btn" onclick="showStep(5)">
-        Continuar
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M6 3L11 8L6 13" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+      <button class="secondary-back-btn" onclick="stepBack()" type="button">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Voltar
       </button>
-      <button class="skip-btn" onclick="showStep(5)">Pular</button>
     </div>
 
     <!-- ══ STEP 5: ENTREGA E PAGAMENTO ══ -->
