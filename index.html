@@ -143,11 +143,48 @@
     margin-bottom: 28px;
   }
 
+  /* ─── CARDÁPIO COM IMAGEM REAL + LIGHTBOX ─── */
   .menu-screen-frame img {
     width: 100%;
+    height: auto;
     display: block;
     border-radius: 12px;
+    cursor: zoom-in;
+    transition: opacity 180ms;
   }
+  .menu-screen-frame img:hover { opacity: 0.92; }
+
+  /* Lightbox */
+  #imgLightbox {
+    display: none;
+    position: fixed; inset: 0; z-index: 500;
+    background: rgba(10,3,1,0.94);
+    align-items: center; justify-content: center;
+    padding: 16px;
+    backdrop-filter: blur(6px);
+  }
+  #imgLightbox.open { display: flex; }
+  #imgLightbox img {
+    max-width: 100%; max-height: 90dvh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 0 60px rgba(230,126,34,0.18);
+    touch-action: pinch-zoom;
+  }
+  .lightbox-close {
+    position: absolute; top: 16px; right: 16px;
+    width: 44px; height: 44px;
+    background: rgba(253,243,234,0.15);
+    border: 1.5px solid rgba(253,243,234,0.35);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: #FFFFFF;
+    font-size: 20px; line-height: 1;
+    transition: background 180ms, transform 80ms;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .lightbox-close:hover { background: rgba(253,243,234,0.28); }
+  .lightbox-close:active { transform: scale(0.92); }
 
   .menu-screen-placeholder {
     width: 100%;
@@ -266,47 +303,12 @@
     max-width: 520px; margin: 0 auto; width: 100%;
   }
 
-  /* ─── COVER ─── */
-  .cover-section {
-    position: relative;
-    height: 205px;
-    margin-left: -20px; margin-right: -20px;
-    flex-shrink: 0;
-    clip-path: url(#coverClip);
-    overflow: hidden;
-  }
-  .cover-section-img {
-    position: absolute; inset: 0;
-    background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?w=1200&q=80');
-    background-size: cover; background-position: center center; opacity: 0.82;
-  }
-  .cover-section-vignette {
-    position: absolute; inset: 0;
-    background: linear-gradient(to bottom, rgba(92,34,8,0.18) 0%, rgba(70,25,6,0.08) 40%, rgba(44,16,4,0.52) 100%);
-    pointer-events: none;
-  }
-
+  /* ─── PROFILE JUNCTION (sem banner, sem bridge) ─── */
   .profile-junction {
     position: relative; height: var(--logo-size);
-    margin-top: calc(-1 * var(--logo-half)); flex-shrink: 0; z-index: 2;
+    margin-top: 14px; flex-shrink: 0; z-index: 2;
   }
-  .bridge-svg {
-    position: absolute; top: var(--arc-top-offset); left: -20px;
-    width: calc(100% + 40px); height: var(--arc-depth); display: block; overflow: visible;
-  }
-  .bridge-base { fill: none; stroke: rgba(230,126,34,0.45); stroke-width: 0.9; vector-effect: non-scaling-stroke; }
-  .bridge-shine-l, .bridge-shine-r {
-    fill: none; stroke: rgba(242,156,74,0.82); stroke-width: 1.5; stroke-linecap: round;
-    stroke-dasharray: 28 300; stroke-dashoffset: 328; vector-effect: non-scaling-stroke;
-  }
-  .bridge-shine-l { animation: bridge-shimmer 5s ease-in-out infinite; }
-  .bridge-shine-r { animation: bridge-shimmer 5s ease-in-out infinite; }
-  @keyframes bridge-shimmer {
-    0%,5%   { stroke-dashoffset: 328; opacity: 0; }
-    11%     { opacity: 1; }
-    64%     { opacity: 0.86; stroke-dashoffset: -28; }
-    74%,100%{ stroke-dashoffset: -28; opacity: 0; }
-  }
+  .bridge-svg { display: none; }
   .profile-logo-circle {
     position: absolute; top: 0; left: 50%; transform: translateX(-50%);
     width: var(--logo-size); height: var(--logo-size); border-radius: 50%;
@@ -321,10 +323,11 @@
     pointer-events: none;
   }
 
-  .profile-identity-text { text-align: center; padding: 18px 0 0; margin-bottom: 6px; flex-shrink: 0; }
+  .profile-identity-text { text-align: center; padding: 12px 0 0; margin-bottom: 6px; flex-shrink: 0; }
   .profile-studio-name {
-    font-family: var(--font-display); font-size: 28px; font-weight: 600;
-    font-style: italic; color: var(--off-white); letter-spacing: 0.04em; line-height: 1; margin-bottom: 9px;
+    font-family: var(--font-strong); font-size: 34px; font-weight: 800;
+    font-style: normal; color: var(--off-white); letter-spacing: 0.06em;
+    line-height: 1; margin-bottom: 10px; text-transform: uppercase;
   }
   .profile-tagline {
     font-family: var(--font-body); font-size: 14px; font-weight: 400;
@@ -333,7 +336,7 @@
   .profile-tagline em { font-style: normal; color: var(--off-white); font-weight: 500; }
 
   /* ─── DIVIDER ─── */
-  .section-divider { display: flex; align-items: center; gap: 14px; margin: 28px 0; }
+  .section-divider { display: flex; align-items: center; gap: 14px; margin: 14px 0; }
   .divider-line {
     flex: 1; height: 1px;
     background: linear-gradient(90deg, rgba(230,126,34,0.6), rgba(92,34,8,0.2));
@@ -375,6 +378,52 @@
 
   /* ─── PROFESSIONALS ─── */
   .professionals { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+
+  /* Botão principal home — glow pulsante vermelho neon */
+  @keyframes neon-glow {
+    0%, 100% {
+      box-shadow:
+        0 0 8px  2px rgba(220,20,20,0.55),
+        0 0 22px 4px rgba(200,10,10,0.38),
+        0 6px 24px    rgba(180,0,0,0.45);
+      transform: scale(1);
+    }
+    50% {
+      box-shadow:
+        0 0 14px 4px rgba(240,30,30,0.80),
+        0 0 40px 8px rgba(210,10,10,0.52),
+        0 8px 32px    rgba(180,0,0,0.60);
+      transform: scale(1.016);
+    }
+  }
+  .home-order-btn {
+    width: 100%;
+    padding: 20px 24px;
+    min-height: 60px;
+    background: #C81010;
+    border: 1.5px solid rgba(255,100,100,0.60);
+    border-radius: 4px;
+    font-family: var(--font-body); font-size: 12px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: #FFFFFF; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    animation: neon-glow 2.4s ease-in-out infinite;
+    -webkit-tap-highlight-color: transparent;
+    position: relative; overflow: hidden;
+    transition: border-color 180ms;
+  }
+  .home-order-btn::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(255,160,160,0.14) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .home-order-btn::after { display: none; }
+  .home-order-btn:active {
+    animation: none;
+    transform: scale(0.976);
+    box-shadow: 0 0 10px 2px rgba(200,10,10,0.50), 0 4px 14px rgba(160,0,0,0.45);
+  }
+  .home-order-btn:hover { border-color: rgba(255,140,140,0.80); }
   .pro-btn {
     position: relative; display: flex; align-items: center; gap: 16px;
     padding: 0 20px 0 0;
@@ -680,9 +729,9 @@
     border-color: rgba(245,220,192,0.55);
   }
   .delivery-opt.selected {
-    background: rgba(230,126,34,0.28);
-    border-color: rgba(230,126,34,0.80);
-    box-shadow: 0 0 14px rgba(230,126,34,0.20);
+    background: #145C2E;
+    border-color: #1E8A44;
+    box-shadow: 0 0 14px rgba(20,92,46,0.45), inset 0 1px 0 rgba(255,255,255,0.08);
   }
   .delivery-opt-icon { font-size: 24px; }
   .delivery-opt-label {
@@ -710,8 +759,9 @@
     border-color: rgba(245,220,192,0.60);
   }
   .payment-chip.selected {
-    background: rgba(230,126,34,0.28);
-    border-color: rgba(230,126,34,0.80);
+    background: #145C2E;
+    border-color: #1E8A44;
+    box-shadow: 0 0 12px rgba(20,92,46,0.40), inset 0 1px 0 rgba(255,255,255,0.08);
   }
 
   /* ─── SUMMARY CARD ─── */
@@ -805,19 +855,8 @@
     opacity: 1;
   }
 
-  /* ─── CHANGE FIELD ─── */
-  .change-fields {
-    display: flex; flex-direction: column; gap: 10px;
-    margin-top: 12px;
-    overflow: hidden;
-    max-height: 0;
-    opacity: 0;
-    transition: max-height 380ms var(--ease-out), opacity 300ms var(--ease-out);
-  }
-  .change-fields.show {
-    max-height: 120px;
-    opacity: 1;
-  }
+  /* ─── CHANGE FIELD (desativado — sem pergunta de troco) ─── */
+  .change-fields { display: none !important; }
 
   /* ─── FORM ERROR ─── */
   .field-error {
@@ -849,22 +888,13 @@
 <div class="hero-bg"></div>
 
 <svg width="0" height="0" aria-hidden="true" style="position:absolute;overflow:hidden;pointer-events:none">
-  <defs>
-    <clipPath id="coverClip" clipPathUnits="objectBoundingBox">
-      <path d="M 0 0 L 1 0 L 1 0.9024 Q 0.5 1.0976 0 0.9024 Z"/>
-    </clipPath>
-  </defs>
+  <defs></defs>
 </svg>
 
 <!-- ═══════════════ HOME SCREEN ═══════════════ -->
 <div id="homeScreen">
 
-  <div class="cover-section anim anim-d1">
-    <div class="cover-section-img"></div>
-    <div class="cover-section-vignette"></div>
-  </div>
-
-  <div class="profile-junction anim anim-d2">
+  <div class="profile-junction anim anim-d1">
     <svg class="bridge-svg" viewBox="0 0 100 20" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path class="bridge-base"    d="M 0 0 Q 50 40 100 0"/>
       <path class="bridge-shine-l" d="M 0 0 Q 50 40 100 0"/>
@@ -879,23 +909,23 @@
     </div>
   </div>
 
-  <div class="profile-identity-text anim anim-d3">
-    <h1 class="profile-studio-name">Nail Studio</h1>
+  <div class="profile-identity-text anim anim-d2">
+    <h1 class="profile-studio-name">Famiglia Zanole</h1>
     <p class="profile-tagline">
-      Cada detalhe pensado para <em>você</em>.<br>
-      Do preparo ao acabamento — <em>sem pressa, sem descuido.</em>
+      Receitas de família, feitas à mão, uma de cada vez.<br>
+      <em>Sabor que o tempo construiu — entregue com cuidado na sua porta.</em>
     </p>
   </div>
 
-  <div class="section-divider anim anim-d4">
+  <div class="section-divider anim anim-d3">
     <div class="divider-line"></div>
     <div class="divider-diamond"></div>
     <div class="divider-line" style="background:linear-gradient(90deg,rgba(92,34,8,0.2),rgba(230,126,34,0.5))"></div>
   </div>
 
-  <div class="professionals anim anim-d5">
+  <div class="professionals anim anim-d4">
 
-    <a class="insta-btn" href="https://instagram.com/atelierdasmaos" target="_blank" rel="noopener" aria-label="Instagram">
+    <a class="insta-btn" href="https://instagram.com/famigliazanole" target="_blank" rel="noopener" aria-label="Instagram">
       <div class="insta-btn-glow"></div>
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
         <rect x="2" y="2" width="20" height="20" rx="5.5" stroke="rgba(255,240,250,0.92)" stroke-width="1.6"/>
@@ -904,43 +934,24 @@
       </svg>
       <div class="insta-label">
         <div class="insta-role">Nos siga no</div>
-        <div class="insta-name">@atelierdasmaos</div>
+        <div class="insta-name">@famigliazanole</div>
       </div>
       <svg class="pro-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
         <path d="M6 3L11 8L6 13" stroke="rgba(255,240,250,0.80)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </a>
 
-    <button class="pro-btn" onclick="openBooking('leticia')" aria-label="Agendar com Letícia">
-      <div class="glow-ring"></div>
-      <div class="pro-avatar-placeholder"><span>L</span></div>
-      <div class="pro-info">
-        <div class="pro-role">Manicure Senior</div>
-        <div class="pro-name">Letícia</div>
-        <div class="pro-action">Fazer pedido agora</div>
-      </div>
-      <svg class="pro-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <path d="M6 3L11 8L6 13" stroke="rgba(245,220,192,0.80)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-
-    <button class="pro-btn" onclick="openBooking('maria')" aria-label="Agendar com Maria">
-      <div class="glow-ring"></div>
-      <div class="pro-avatar-placeholder"><span>M</span></div>
-      <div class="pro-info">
-        <div class="pro-role">Manicure &amp; Nail Art</div>
-        <div class="pro-name">Maria</div>
-        <div class="pro-action">Fazer pedido agora</div>
-      </div>
-      <svg class="pro-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <path d="M6 3L11 8L6 13" stroke="rgba(245,220,192,0.80)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <button class="home-order-btn anim anim-d5" onclick="openBooking('zanole')" aria-label="Fazer meu pedido">
+      Fazer meu pedido
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M6 3L11 8L6 13" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </button>
 
   </div>
 
   <footer class="anim anim-d5">
-    <span class="footer-text">© 2025 Atelier das Mãos</span>
+    <span class="footer-text">© 2025 Famiglia Zanole</span>
     <div class="footer-ornament">
       <div class="footer-dot"></div>
       <div class="footer-dot" style="opacity:0.5"></div>
@@ -997,36 +1008,31 @@
       </div>
     </div>
 
-    <!-- ══ STEP 1b: RESPOSTA APÓS NOME ══ -->
+    <!-- ══ STEP 1b: RESPOSTA + CARDÁPIO (tela única unificada) ══ -->
     <div class="step-panel" id="step1b">
       <div class="tw-container">
         <div class="tw-bubble" id="tw1bText"></div><span class="tw-cursor" id="tw1bCursor"></span>
+        <div class="tw-bubble" id="tw1b2Text" style="display:block;margin-top:18px"></div><span class="tw-cursor" id="tw1b2Cursor"></span>
+      </div>
+      <!-- CTAs aparecem após as duas frases -->
+      <div id="step1bCtas" style="display:none">
+        <button class="view-menu-btn" onclick="openMenuScreen()" style="margin-bottom:12px">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M5 6h6M5 9h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+          Ver cardápio completo
+        </button>
+        <button class="continue-btn" onclick="triggerStep3()">
+          Fazer meu pedido
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M6 3L11 8L6 13" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
       </div>
     </div>
 
-    <!-- ══ STEP 2: CARDÁPIO (consulta rápida dentro do fluxo) ══ -->
-    <div class="step-panel" id="step2">
-      <div class="step-kicker">Cardápio</div>
-      <div class="step-title" style="font-size:26px;margin-bottom:18px">
-        Veja o nosso<br><strong style="font-size:30px">Cardápio de hoje</strong>
-      </div>
-
-      <!-- botão para abrir tela dedicada de cardápio -->
-      <button class="view-menu-btn" onclick="openMenuScreen()">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
-          <path d="M5 6h6M5 9h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-        </svg>
-        Ver cardápio completo
-      </button>
-
-      <button class="continue-btn" onclick="triggerStep3()">
-        Fazer meu pedido
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M6 3L11 8L6 13" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-    </div>
+    <!-- ══ STEP 2: mantido no mapa de navegação mas nunca exibido diretamente ══ -->
 
     <!-- ══ STEP 3: PEDIDO PRINCIPAL ══ -->
     <div class="step-panel" id="step3">
@@ -1218,17 +1224,7 @@
     </div>
 
     <div class="menu-screen-frame">
-      <!-- Substituir pela tag <img> com a foto real do cardápio quando disponível -->
-      <!-- <img src="URL_DO_CARDAPIO.jpg" alt="Cardápio"> -->
-      <div class="menu-screen-placeholder">
-        <div class="corner corner-tl"></div>
-        <div class="corner corner-tr"></div>
-        <div class="corner corner-bl"></div>
-        <div class="corner corner-br"></div>
-        <div class="menu-placeholder-icon">🍽️</div>
-        <div class="menu-placeholder-text">A foto do cardápio<br>será adicionada aqui</div>
-        <div class="menu-placeholder-hint">Substituir pelo src da imagem</div>
-      </div>
+      <img src="cardapio.jpeg" alt="Cardápio Famiglia Zanole" onclick="openLightbox(this.src)" title="Clique para ampliar">
     </div>
 
     <button class="menu-back-btn" onclick="closeMenuScreen()">
@@ -1241,11 +1237,17 @@
 
 </div>
 
+<!-- ═══════════════ LIGHTBOX CARDÁPIO ═══════════════ -->
+<div id="imgLightbox" onclick="closeLightbox()" role="dialog" aria-label="Cardápio ampliado">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Fechar">✕</button>
+  <img id="lightboxImg" src="" alt="Cardápio ampliado" onclick="event.stopPropagation()">
+</div>
+
 <script>
 /* ───── CONFIG ───── */
 const WHATSAPP  = '5583991816152';
-const proNames  = { leticia: 'Letícia', maria: 'Maria' };
-let currentPro  = 'leticia';
+const proNames  = { zanole: 'Famiglia Zanole' };
+let currentPro  = 'zanole';
 let currentStep = 1;
 let deliveryMode = '';
 let paymentMode  = '';
@@ -1314,8 +1316,7 @@ function showStep(n) {
 function stepBack() {
   const map = {
     '1b': 1,
-    2:    1,
-    3:    2,
+    3:    '1b',
     '3b': 3,
     '3c': '3b',
     '3d': '3c',
@@ -1368,11 +1369,9 @@ function openBooking(pro) {
   document.getElementById('drinkFree').value    = '';
   if (document.getElementById('addressFull')) document.getElementById('addressFull').value = '';
   if (document.getElementById('addressRef'))  document.getElementById('addressRef').value  = '';
-  if (document.getElementById('changeAmount'))document.getElementById('changeAmount').value = '';
   document.querySelectorAll('.delivery-opt').forEach(o => o.classList.remove('selected'));
   document.querySelectorAll('.payment-chip').forEach(c => c.classList.remove('selected'));
   document.getElementById('addressFields').classList.remove('show');
-  document.getElementById('changeFields').classList.remove('show');
   document.getElementById('deliveryErr').textContent = '';
   document.getElementById('paymentErr').textContent  = '';
 
@@ -1448,16 +1447,36 @@ function submitName() {
 
   showStep('1b');
 
+  // Reset sub-elementos
+  document.getElementById('tw1bText').innerHTML   = '';
+  document.getElementById('tw1bCursor').classList.remove('visible');
+  document.getElementById('tw1b2Text').innerHTML  = '';
+  document.getElementById('tw1b2Cursor').classList.remove('visible');
+  document.getElementById('step1bCtas').style.display = 'none';
+
   const firstName = name.split(' ')[0];
+
+  // Frase 1
   setTimeout(() => {
     typewrite('tw1bText', 'tw1bCursor',
       `Perfeito, ${firstName}! Vou montar seu pedido com todo cuidado.`,
       38,
       () => {
+        document.getElementById('tw1bCursor').classList.remove('visible');
+        // Pausa antes da frase 2
         setTimeout(() => {
-          document.getElementById('tw1bCursor').classList.remove('visible');
-          showStep(2);
-        }, 2800);
+          typewrite('tw1b2Text', 'tw1b2Cursor',
+            'Veja o nosso cardápio de hoje.',
+            40,
+            () => {
+              document.getElementById('tw1b2Cursor').classList.remove('visible');
+              // Exibir CTAs
+              setTimeout(() => {
+                document.getElementById('step1bCtas').style.display = 'block';
+              }, 400);
+            }
+          );
+        }, 900);
       }
     );
   }, 200);
@@ -1529,13 +1548,6 @@ function selectPayment(mode) {
   const map = { pix: 'payPix', cartao: 'payCartao', dinheiro: 'payDin' };
   document.getElementById(map[mode]).classList.add('selected');
   document.getElementById('paymentErr').textContent = '';
-
-  const changeFields = document.getElementById('changeFields');
-  if (mode === 'dinheiro') {
-    changeFields.classList.add('show');
-  } else {
-    changeFields.classList.remove('show');
-  }
 }
 
 /* ───── GO TO SUMMARY ───── */
@@ -1571,7 +1583,6 @@ function buildSummary() {
   const drinks    = document.getElementById('drinkFree').value.trim();
   const addr      = deliveryMode === 'entrega' ? document.getElementById('addressFull').value.trim() : '';
   const ref       = deliveryMode === 'entrega' ? (document.getElementById('addressRef').value.trim() || '') : '';
-  const change    = paymentMode === 'dinheiro' ? (document.getElementById('changeAmount').value.trim() || '') : '';
   const payLabels = { pix: 'PIX', cartao: 'Cartão', dinheiro: 'Dinheiro' };
 
   let rows = [
@@ -1585,7 +1596,7 @@ function buildSummary() {
   if (addr) {
     rows.push({ k: 'Endereço', v: addr + (ref ? ' — ' + ref : '') });
   }
-  rows.push({ k: 'Pagamento', v: payLabels[paymentMode] + (change ? ` — troco para R$ ${change}` : '') });
+  rows.push({ k: 'Pagamento', v: payLabels[paymentMode] });
 
   const card = document.getElementById('summaryCard');
   card.innerHTML = rows.map(r =>
@@ -1602,7 +1613,6 @@ function sendWhatsApp() {
   const drinks    = document.getElementById('drinkFree').value.trim();
   const addr      = deliveryMode === 'entrega' ? document.getElementById('addressFull').value.trim() : '';
   const ref       = deliveryMode === 'entrega' ? (document.getElementById('addressRef').value.trim() || '') : '';
-  const change    = paymentMode === 'dinheiro' ? (document.getElementById('changeAmount').value.trim() || '') : '';
   const proName   = proNames[currentPro];
   const payLabels = { pix: 'PIX', cartao: 'Cartão', dinheiro: 'Dinheiro' };
 
@@ -1617,15 +1627,28 @@ function sendWhatsApp() {
     if (ref) msg += `\n*Referência:* ${ref}`;
   }
   msg += `\n\n*💳 Pagamento:* ${payLabels[paymentMode]}`;
-  if (change) msg += `\n*Troco para:* R$ ${change}`;
 
   window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
   closeBooking();
 }
 
+/* ───── LIGHTBOX ───── */
+function openLightbox(src) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('imgLightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('imgLightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
 /* ───── KEYBOARD ───── */
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
+    if (document.getElementById('imgLightbox').classList.contains('open')) {
+      closeLightbox(); return;
+    }
     const menu = document.getElementById('menuScreen');
     if (menu.classList.contains('visible')) {
       closeMenuScreen(); return;
