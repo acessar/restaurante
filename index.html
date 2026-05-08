@@ -1060,32 +1060,32 @@
       </button>
     </div>
 
-    <!-- ══ STEP 3b: SABORES ══ -->
-    <!-- AJUSTE 1: adicionado botão "Consultar cardápio" nesta etapa -->
+    <!-- ══ STEP 3b: ACOMPANHAMENTOS ══ -->
     <div class="step-panel" id="step3b">
       <div class="tw-container">
         <div class="tw-bubble" id="tw3bText"></div><span class="tw-cursor" id="tw3bCursor"></span>
       </div>
       <div class="form-section">
         <textarea class="form-textarea" id="flavorDetails" style="height:100px;cursor:text"
-          placeholder="Ex: pizza meio calabresa meio frango, hambúrguer ao ponto, açaí com granola e banana..."></textarea>
+          placeholder="Ex.: batata frita, coxinhas, nuggets, onion rings ou outro acompanhamento..."></textarea>
       </div>
-      <button class="view-menu-btn" onclick="openMenuScreen()">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
-          <path d="M5 6h6M5 9h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-        </svg>
-        Consultar cardápio
-      </button>
       <button class="continue-btn" onclick="submitFlavors()">
         Continuar
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M6 3L11 8L6 13" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
+      <button class="view-menu-btn" onclick="openMenuScreen()" style="margin-top:8px">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M5 6h6M5 9h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        Consultar cardápio
+      </button>
+      <button class="skip-btn" onclick="submitFlavors()">Pular esta etapa</button>
     </div>
 
-    <!-- ══ STEP 3c: BEBIDA — AJUSTE 2: campo livre com typewriter, sem chips ══ -->
+    <!-- ══ STEP 3c: BEBIDA ══ -->
     <div class="step-panel" id="step3c">
       <div class="tw-container">
         <div class="tw-bubble" id="tw3cText"></div><span class="tw-cursor" id="tw3cCursor"></span>
@@ -1094,23 +1094,23 @@
         <textarea class="form-textarea" id="drinkFree" style="height:88px;cursor:text"
           placeholder="Ex: Coca 350ml, Suco 500ml, Água, Refrigerante 2L..."></textarea>
       </div>
-      <button class="view-menu-btn" onclick="openMenuScreen()">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
-          <path d="M5 6h6M5 9h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-        </svg>
-        Consultar cardápio
-      </button>
       <button class="continue-btn" onclick="showStep('3d')">
         Continuar
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M6 3L11 8L6 13" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
+      <button class="view-menu-btn" onclick="openMenuScreen()" style="margin-top:8px">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M5 6h6M5 9h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        Consultar cardápio
+      </button>
       <button class="skip-btn" onclick="showStep('3d')">Pular</button>
     </div>
 
-    <!-- ══ STEP 3d: OBSERVAÇÕES FINAIS — AJUSTE 3: adicionado "Consultar cardápio" ══ -->
+    <!-- ══ STEP 3d: OBSERVAÇÕES FINAIS ══ -->
     <div class="step-panel" id="step3d">
       <div class="tw-container">
         <div class="tw-bubble" id="tw3dText"></div><span class="tw-cursor" id="tw3dCursor"></span>
@@ -1120,18 +1120,18 @@
         <textarea class="form-textarea" id="specialObs" style="height:100px;cursor:text"
           placeholder="Ex: sem cebola, ponto da carne bem passado, entregar no portão, deixar com o porteiro..."></textarea>
       </div>
-      <button class="view-menu-btn" onclick="openMenuScreen()">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
-          <path d="M5 6h6M5 9h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-        </svg>
-        Consultar cardápio
-      </button>
       <button class="continue-btn" id="btn3dContinuar" onclick="goToStep4()">
         Continuar
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M6 3L11 8L6 13" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
+      </button>
+      <button class="view-menu-btn" onclick="openMenuScreen()" style="margin-top:8px">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M5 6h6M5 9h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        Consultar cardápio
       </button>
       <button class="skip-btn" id="btn3dPular" onclick="goToStep4()">Pular</button>
     </div>
@@ -1197,6 +1197,9 @@
           <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" fill="#FFFFFF"/>
         </svg>
         Finalizar pedido no WhatsApp
+      </button>
+      <button class="skip-btn" onclick="editOrder()" style="margin-top:12px">
+        ✏️ Editar pedido
       </button>
     </div>
 
@@ -1285,7 +1288,7 @@ function showStep(n) {
     document.getElementById('tw3cCursor').classList.remove('visible');
     setTimeout(() => {
       typewrite('tw3cText', 'tw3cCursor',
-        'E para acompanhar, o que você quer beber?',
+        'Qual o sabor da bebida que mais combina com o que você vai comer?',
         36,
         () => { setTimeout(() => { document.getElementById('drinkFree').focus(); }, 200); }
       );
@@ -1487,7 +1490,7 @@ function triggerStep3() {
   showStep(3);
   setTimeout(() => {
     typewrite('tw3Text', 'tw3Cursor',
-      'Me conta o que você quer pedir hoje. Pode incluir o item e a quantidade que deseja.',
+      'Me conta o que você quer pedir hoje. Pode incluir o item, sabor, tamanho e a quantidade que deseja.',
       34,
       () => { setTimeout(() => { document.getElementById('mainOrder').focus(); }, 200); }
     );
@@ -1509,7 +1512,7 @@ function submitMainOrder() {
   showStep('3b');
   setTimeout(() => {
     typewrite('tw3bText', 'tw3bCursor',
-      'Perfeito. Agora me diga os sabores ou combinações de cada item para prepararmos exatamente como você deseja.',
+      'O que pode acompanhar seu pedido para deixar sua experiência ainda melhor?',
       32,
       () => { setTimeout(() => { document.getElementById('flavorDetails').focus(); }, 200); }
     );
@@ -1630,6 +1633,19 @@ function sendWhatsApp() {
 
   window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
   closeBooking();
+}
+
+/* ───── EDIT ORDER (volta ao pedido sem apagar dados) ───── */
+function editOrder() {
+  showStep(3);
+  /* Reativa typewriter do step3 sem limpar os campos */
+  setTimeout(() => {
+    typewrite('tw3Text', 'tw3Cursor',
+      'Me conta o que você quer pedir hoje. Pode incluir o item, sabor, tamanho e a quantidade que deseja.',
+      34,
+      () => {}
+    );
+  }, 180);
 }
 
 /* ───── LIGHTBOX ───── */
