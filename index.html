@@ -566,7 +566,6 @@
   .tw-container {
     padding: 8px 0 28px;
   }
-  /* AJUSTE 4: tipografia forte nas perguntas conversacionais da etapa 2 */
   .tw-bubble {
     font-family: var(--font-strong);
     font-size: 32px;
@@ -655,7 +654,6 @@
   }
 
   /* ─── CARDAPIO STEP ─── */
-  /* botão "Ver cardápio" dentro do fluxo de pedido */
   .view-menu-btn {
     width: 100%; padding: 13px 20px;
     background: rgba(61,22,4,0.55);
@@ -770,11 +768,11 @@
     border: 1.5px solid rgba(230,126,34,0.30);
     border-radius: 10px;
     padding: 18px;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
   .summary-row {
     display: flex; gap: 10px;
-    padding: 8px 0;
+    padding: 9px 0;
     border-bottom: 1px solid rgba(230,126,34,0.12);
   }
   .summary-row:last-child { border-bottom: none; }
@@ -786,6 +784,20 @@
   .summary-val {
     font-family: var(--font-body); font-size: 14px; font-weight: 500;
     color: #FFFFFF; line-height: 1.5;
+  }
+
+  /* ─── SUMMARY CLOSING MESSAGE ─── */
+  .summary-closing {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 400;
+    color: rgba(245,220,192,0.80);
+    line-height: 1.6;
+    text-align: center;
+    padding: 14px 4px 18px;
+    border-top: 1px solid rgba(230,126,34,0.18);
+    margin-top: 2px;
   }
 
   /* ─── SKIP BTN ─── */
@@ -1192,6 +1204,8 @@
 
       <div class="summary-card" id="summaryCard"></div>
 
+      <div class="summary-closing" id="summaryClosing"></div>
+
       <button class="submit-btn" onclick="sendWhatsApp()">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" fill="#FFFFFF"/>
@@ -1282,7 +1296,6 @@ function showStep(n) {
   updateDots();
   document.getElementById('bookingScreen').scrollTop = 0;
 
-  /* AJUSTE 2: typewriter da etapa bebida — pergunta conversacional */
   if (n === '3c') {
     document.getElementById('tw3cText').innerHTML = '';
     document.getElementById('tw3cCursor').classList.remove('visible');
@@ -1295,7 +1308,6 @@ function showStep(n) {
     }, 180);
   }
 
-  /* AJUSTE 3 / typewriter etapa obs finais */
   if (n === '3d') {
     document.getElementById('tw3dText').innerHTML = '';
     document.getElementById('tw3dCursor').classList.remove('visible');
@@ -1450,7 +1462,6 @@ function submitName() {
 
   showStep('1b');
 
-  // Reset sub-elementos
   document.getElementById('tw1bText').innerHTML   = '';
   document.getElementById('tw1bCursor').classList.remove('visible');
   document.getElementById('tw1b2Text').innerHTML  = '';
@@ -1459,21 +1470,18 @@ function submitName() {
 
   const firstName = name.split(' ')[0];
 
-  // Frase 1
   setTimeout(() => {
     typewrite('tw1bText', 'tw1bCursor',
       `Perfeito, ${firstName}! Vou montar seu pedido com todo cuidado.`,
       38,
       () => {
         document.getElementById('tw1bCursor').classList.remove('visible');
-        // Pausa antes da frase 2
         setTimeout(() => {
           typewrite('tw1b2Text', 'tw1b2Cursor',
             'Veja o nosso cardápio de hoje.',
             40,
             () => {
               document.getElementById('tw1b2Cursor').classList.remove('visible');
-              // Exibir CTAs
               setTimeout(() => {
                 document.getElementById('step1bCtas').style.display = 'block';
               }, 400);
@@ -1579,56 +1587,78 @@ function goToSummary() {
 
 /* ───── BUILD SUMMARY ───── */
 function buildSummary() {
-  const name      = document.getElementById('clientName').value.trim();
-  const mainOrder = document.getElementById('mainOrder').value.trim();
-  const flavor    = document.getElementById('flavorDetails').value.trim();
-  const obs       = document.getElementById('specialObs').value.trim();
-  const drinks    = document.getElementById('drinkFree').value.trim();
-  const addr      = deliveryMode === 'entrega' ? document.getElementById('addressFull').value.trim() : '';
-  const ref       = deliveryMode === 'entrega' ? (document.getElementById('addressRef').value.trim() || '') : '';
-  const payLabels = { pix: 'PIX', cartao: 'Cartão', dinheiro: 'Dinheiro' };
+  const name         = document.getElementById('clientName').value.trim();
+  const mainOrder    = document.getElementById('mainOrder').value.trim();
+  const acompanham   = document.getElementById('flavorDetails').value.trim();
+  const bebida       = document.getElementById('drinkFree').value.trim();
+  const obs          = document.getElementById('specialObs').value.trim();
+  const addr         = deliveryMode === 'entrega' ? document.getElementById('addressFull').value.trim() : '';
+  const ref          = deliveryMode === 'entrega' ? (document.getElementById('addressRef').value.trim() || '') : '';
+  const payLabels    = { pix: 'PIX', cartao: 'Cartão', dinheiro: 'Dinheiro' };
+  const firstName    = name.split(' ')[0];
 
-  let rows = [
-    { k: 'Nome',    v: name      || '—' },
-    { k: 'Pedido',  v: mainOrder || '—' },
-  ];
-  if (flavor)  rows.push({ k: 'Sabores',  v: flavor });
-  if (drinks)  rows.push({ k: 'Bebida',   v: drinks });
-  if (obs)     rows.push({ k: 'Detalhes', v: obs });
-  rows.push({ k: 'Entrega', v: deliveryMode === 'entrega' ? 'Delivery' : 'Retirada no local' });
-  if (addr) {
-    rows.push({ k: 'Endereço', v: addr + (ref ? ' — ' + ref : '') });
+  /* Linhas do resumo — campos opcionais aparecem apenas quando preenchidos */
+  const rows = [];
+
+  rows.push({ k: 'Cliente',  v: name || '—' });
+  rows.push({ k: 'Pedido',   v: mainOrder || '—' });
+
+  if (acompanham) rows.push({ k: 'Acompanha',  v: acompanham });
+  if (bebida)     rows.push({ k: 'Bebida',      v: bebida });
+  if (obs)        rows.push({ k: 'Observações', v: obs });
+
+  /* Recebimento */
+  if (deliveryMode === 'entrega') {
+    rows.push({ k: 'Recebimento', v: 'Entrega' });
+    if (addr) {
+      const enderecoCompleto = addr + (ref ? ' — ' + ref : '');
+      rows.push({ k: 'Endereço', v: enderecoCompleto });
+    }
+  } else {
+    rows.push({ k: 'Recebimento', v: 'Retirada no local' });
   }
+
   rows.push({ k: 'Pagamento', v: payLabels[paymentMode] });
 
+  /* Renderiza o card */
   const card = document.getElementById('summaryCard');
   card.innerHTML = rows.map(r =>
     `<div class="summary-row"><div class="summary-key">${r.k}</div><div class="summary-val">${r.v}</div></div>`
   ).join('');
+
+  /* Mensagem de encerramento humanizada */
+  const closing = document.getElementById('summaryClosing');
+  closing.textContent = `Perfeito, ${firstName}. Organizei seu pedido com todas as informações para prepararmos tudo da melhor forma. Agora é só confirmar no WhatsApp!`;
 }
 
 /* ───── SEND WHATSAPP ───── */
 function sendWhatsApp() {
-  const name      = document.getElementById('clientName').value.trim();
-  const mainOrder = document.getElementById('mainOrder').value.trim();
-  const flavor    = document.getElementById('flavorDetails').value.trim();
-  const obs       = document.getElementById('specialObs').value.trim();
-  const drinks    = document.getElementById('drinkFree').value.trim();
-  const addr      = deliveryMode === 'entrega' ? document.getElementById('addressFull').value.trim() : '';
-  const ref       = deliveryMode === 'entrega' ? (document.getElementById('addressRef').value.trim() || '') : '';
-  const proName   = proNames[currentPro];
-  const payLabels = { pix: 'PIX', cartao: 'Cartão', dinheiro: 'Dinheiro' };
+  const name       = document.getElementById('clientName').value.trim();
+  const mainOrder  = document.getElementById('mainOrder').value.trim();
+  const acompanham = document.getElementById('flavorDetails').value.trim();
+  const bebida     = document.getElementById('drinkFree').value.trim();
+  const obs        = document.getElementById('specialObs').value.trim();
+  const addr       = deliveryMode === 'entrega' ? document.getElementById('addressFull').value.trim() : '';
+  const ref        = deliveryMode === 'entrega' ? (document.getElementById('addressRef').value.trim() || '') : '';
+  const proName    = proNames[currentPro];
+  const payLabels  = { pix: 'PIX', cartao: 'Cartão', dinheiro: 'Dinheiro' };
 
   let msg = `Olá, ${proName}! 🌟\n\nMeu nome é *${name}* e gostaria de fazer um pedido.`;
-  msg += `\n\n*🍔 Pedido:* ${mainOrder}`;
-  if (flavor)  msg += `\n*Sabores / combinações:* ${flavor}`;
-  if (drinks)  msg += `\n\n*🥤 Bebida:* ${drinks}`;
-  if (obs)     msg += `\n\n*📝 Detalhes:* ${obs}`;
-  msg += `\n\n*📦 Entrega:* ${deliveryMode === 'entrega' ? 'Delivery' : 'Retirada no local'}`;
-  if (addr) {
-    msg += `\n*Endereço:* ${addr}`;
-    if (ref) msg += `\n*Referência:* ${ref}`;
+  msg += `\n\n*🛒 Pedido:* ${mainOrder}`;
+  if (acompanham) msg += `\n*Acompanhamentos:* ${acompanham}`;
+  if (bebida)     msg += `\n\n*🥤 Bebida:* ${bebida}`;
+  if (obs)        msg += `\n\n*📝 Observações:* ${obs}`;
+
+  if (deliveryMode === 'entrega') {
+    msg += `\n\n*📦 Recebimento:* Entrega`;
+    if (addr) {
+      msg += `\n*Endereço:* ${addr}`;
+      if (ref) msg += `\n*Referência:* ${ref}`;
+    }
+  } else {
+    msg += `\n\n*📦 Recebimento:* Retirada no local`;
   }
+
   msg += `\n\n*💳 Pagamento:* ${payLabels[paymentMode]}`;
 
   window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
@@ -1638,7 +1668,6 @@ function sendWhatsApp() {
 /* ───── EDIT ORDER (volta ao pedido sem apagar dados) ───── */
 function editOrder() {
   showStep(3);
-  /* Reativa typewriter do step3 sem limpar os campos */
   setTimeout(() => {
     typewrite('tw3Text', 'tw3Cursor',
       'Me conta o que você quer pedir hoje. Pode incluir o item, sabor, tamanho e a quantidade que deseja.',
