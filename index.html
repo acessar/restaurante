@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Atelier das Mãos — Nail Studio</title>
+<title>Famiglia Zanole</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
@@ -15,8 +15,8 @@
     --primary:      #E67E22;
     --primary-deep: #C86516;
     --primary-glow: #F29C4A;
-    --bg:           #8A3E10;
-    --bg-mid:       #A85018;
+    --bg:           #8B1A1A;
+    --bg-mid:       #A52020;
     --off-white:    #FDF3EA;
     --cream:        #F5DCC0;
     --parchment:    #EBB882;
@@ -53,9 +53,9 @@
   .hero-bg {
     position: fixed; inset: 0; z-index: 0;
     background:
-      radial-gradient(ellipse 80% 60% at 60% 20%, rgba(255, 210, 160, 0.32) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 40% at 10% 80%, rgba(140, 62, 16, 0.38) 0%, transparent 55%),
-      linear-gradient(175deg, #5C2208 0%, #8A3E10 35%, #A85018 65%, #5C2208 100%);
+      radial-gradient(ellipse 80% 60% at 60% 20%, rgba(200, 40, 40, 0.30) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 10% 80%, rgba(120, 15, 15, 0.42) 0%, transparent 55%),
+      linear-gradient(175deg, #4A0A0A 0%, #6E1212 35%, #8B1A1A 65%, #4A0A0A 100%);
   }
 
   /* ─── HOME SCREEN ─── */
@@ -75,7 +75,7 @@
   #bookingScreen {
     position: fixed; inset: 0; z-index: 200;
     display: flex; flex-direction: column;
-    background: linear-gradient(170deg, #5C2208 0%, #8A3E10 40%, #5C2208 100%);
+    background: linear-gradient(170deg, #4A0A0A 0%, #6E1212 40%, #4A0A0A 100%);
     transform: translateY(100%);
     transition: transform 400ms var(--ease-out);
     overflow-y: auto; -webkit-overflow-scrolling: touch;
@@ -84,11 +84,11 @@
     transform: translateY(0);
   }
 
-  /* ─── MENU SCREEN (tela dedicada de cardápio) ─── */
+  /* ─── MENU SCREEN ─── */
   #menuScreen {
     position: fixed; inset: 0; z-index: 300;
     display: flex; flex-direction: column;
-    background: linear-gradient(170deg, #3D1604 0%, #5C2208 35%, #8A3E10 65%, #3D1604 100%);
+    background: linear-gradient(170deg, #2E0505 0%, #4A0A0A 35%, #6E1212 65%, #2E0505 100%);
     transform: translateX(100%);
     transition: transform 380ms var(--ease-out);
     overflow-y: auto; -webkit-overflow-scrolling: touch;
@@ -99,7 +99,7 @@
 
   .menu-screen-topbar {
     position: sticky; top: 0; z-index: 10;
-    background: linear-gradient(180deg, #3D1604 0%, rgba(61,22,4,0.97) 80%, rgba(61,22,4,0) 100%);
+    background: linear-gradient(180deg, #2E0505 0%, rgba(46,5,5,0.97) 80%, rgba(46,5,5,0) 100%);
     padding: 16px 20px 20px;
     display: flex; align-items: center; gap: 14px;
     backdrop-filter: blur(8px);
@@ -137,13 +137,12 @@
     border: 1.5px solid rgba(230,126,34,0.45);
     box-shadow:
       0 12px 48px rgba(10,3,1,0.70),
-      0 0 0 1px rgba(61,22,4,0.90),
+      0 0 0 1px rgba(46,5,5,0.90),
       inset 0 1px 0 rgba(253,243,234,0.12);
-    background: rgba(45,15,3,0.80);
+    background: rgba(30,4,4,0.80);
     margin-bottom: 28px;
   }
 
-  /* ─── CARDÁPIO COM IMAGEM REAL + LIGHTBOX ─── */
   .menu-screen-frame img {
     width: 100%;
     height: auto;
@@ -186,64 +185,6 @@
   .lightbox-close:hover { background: rgba(253,243,234,0.28); }
   .lightbox-close:active { transform: scale(0.92); }
 
-  .menu-screen-placeholder {
-    width: 100%;
-    min-height: 340px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    background: linear-gradient(155deg, rgba(61,22,4,0.90) 0%, rgba(92,34,8,0.70) 50%, rgba(61,22,4,0.90) 100%);
-    padding: 40px 24px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .menu-screen-placeholder::before {
-    content: '';
-    position: absolute; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-  }
-
-  .menu-placeholder-icon {
-    font-size: 52px;
-    opacity: 0.50;
-  }
-
-  .menu-placeholder-text {
-    font-family: var(--font-display);
-    font-size: 20px;
-    font-style: italic;
-    font-weight: 300;
-    color: rgba(245,220,192,0.50);
-    text-align: center;
-    line-height: 1.5;
-  }
-
-  .menu-placeholder-hint {
-    font-family: var(--font-body);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(230,126,34,0.45);
-    margin-top: 4px;
-  }
-
-  /* ornament corners */
-  .menu-screen-placeholder .corner {
-    position: absolute;
-    width: 20px; height: 20px;
-    border-color: rgba(230,126,34,0.30);
-    border-style: solid;
-  }
-  .corner-tl { top: 12px; left: 12px; border-width: 1.5px 0 0 1.5px; }
-  .corner-tr { top: 12px; right: 12px; border-width: 1.5px 1.5px 0 0; }
-  .corner-bl { bottom: 12px; left: 12px; border-width: 0 0 1.5px 1.5px; }
-  .corner-br { bottom: 12px; right: 12px; border-width: 0 1.5px 1.5px 0; }
-
   .menu-back-btn {
     width: 100%; padding: 16px;
     background: linear-gradient(105deg, #C86516 0%, #E67E22 30%, #F29C4A 52%, #E67E22 72%, #C86516 100%);
@@ -268,7 +209,7 @@
 
   .booking-topbar {
     position: sticky; top: 0; z-index: 10;
-    background: linear-gradient(180deg, #4A1A06 0%, rgba(74,26,6,0.96) 80%, rgba(74,26,6,0) 100%);
+    background: linear-gradient(180deg, #380808 0%, rgba(56,8,8,0.96) 80%, rgba(56,8,8,0) 100%);
     padding: 16px 20px 20px;
     display: flex; align-items: center; gap: 14px;
     backdrop-filter: blur(8px);
@@ -303,18 +244,55 @@
     max-width: 520px; margin: 0 auto; width: 100%;
   }
 
-  /* ─── PROFILE JUNCTION (sem banner, sem bridge) ─── */
+  /* ─── COVER SECTION (from v1) ─── */
+  .cover-section {
+    position: relative;
+    height: 205px;
+    margin-left: -20px; margin-right: -20px;
+    flex-shrink: 0;
+    clip-path: url(#coverClip);
+    overflow: hidden;
+  }
+  .cover-section-img {
+    position: absolute; inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&q=80');
+    background-size: cover; background-position: center center; opacity: 0.82;
+  }
+  .cover-section-vignette {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(74,10,10,0.18) 0%, rgba(60,8,8,0.08) 40%, rgba(30,4,4,0.55) 100%);
+    pointer-events: none;
+  }
+
+  /* ─── PROFILE JUNCTION (with bridge from v1) ─── */
   .profile-junction {
     position: relative; height: var(--logo-size);
-    margin-top: 14px; flex-shrink: 0; z-index: 2;
+    margin-top: calc(-1 * var(--logo-half)); flex-shrink: 0; z-index: 2;
   }
-  .bridge-svg { display: none; }
+  .bridge-svg {
+    position: absolute; top: var(--arc-top-offset); left: -20px;
+    width: calc(100% + 40px); height: var(--arc-depth); display: block; overflow: visible;
+  }
+  .bridge-base { fill: none; stroke: rgba(230,126,34,0.45); stroke-width: 0.9; vector-effect: non-scaling-stroke; }
+  .bridge-shine-l, .bridge-shine-r {
+    fill: none; stroke: rgba(242,156,74,0.82); stroke-width: 1.5; stroke-linecap: round;
+    stroke-dasharray: 28 300; stroke-dashoffset: 328; vector-effect: non-scaling-stroke;
+  }
+  .bridge-shine-l { animation: bridge-shimmer 5s ease-in-out infinite; }
+  .bridge-shine-r { animation: bridge-shimmer 5s ease-in-out infinite; }
+  @keyframes bridge-shimmer {
+    0%,5%   { stroke-dashoffset: 328; opacity: 0; }
+    11%     { opacity: 1; }
+    64%     { opacity: 0.86; stroke-dashoffset: -28; }
+    74%,100%{ stroke-dashoffset: -28; opacity: 0; }
+  }
+
   .profile-logo-circle {
     position: absolute; top: 0; left: 50%; transform: translateX(-50%);
     width: var(--logo-size); height: var(--logo-size); border-radius: 50%;
-    background: radial-gradient(circle at 38% 34%, #8A3E10 0%, #5C2208 52%, #3D1604 100%);
+    background: radial-gradient(circle at 38% 34%, #6E1212 0%, #4A0A0A 52%, #2E0505 100%);
     border: 2.5px solid rgba(230,126,34,0.65);
-    box-shadow: 0 0 0 1.5px rgba(61,22,4,0.92), 0 8px 36px rgba(30,11,3,0.72), 0 0 32px rgba(230,126,34,0.16), inset 0 1px 0 rgba(253,243,234,0.12), inset 0 -1px 0 rgba(15,6,2,0.30);
+    box-shadow: 0 0 0 1.5px rgba(46,5,5,0.92), 0 8px 36px rgba(20,3,3,0.72), 0 0 32px rgba(180,20,20,0.18), inset 0 1px 0 rgba(253,243,234,0.12), inset 0 -1px 0 rgba(15,6,2,0.30);
     display: flex; align-items: center; justify-content: center; z-index: 3;
   }
   .profile-logo-circle::after {
@@ -323,7 +301,7 @@
     pointer-events: none;
   }
 
-  .profile-identity-text { text-align: center; padding: 12px 0 0; margin-bottom: 6px; flex-shrink: 0; }
+  .profile-identity-text { text-align: center; padding: 18px 0 0; margin-bottom: 6px; flex-shrink: 0; }
   .profile-studio-name {
     font-family: var(--font-strong); font-size: 34px; font-weight: 800;
     font-style: normal; color: var(--off-white); letter-spacing: 0.06em;
@@ -379,51 +357,39 @@
   /* ─── PROFESSIONALS ─── */
   .professionals { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
 
-  /* Botão principal home — glow pulsante vermelho neon */
-  @keyframes neon-glow {
-    0%, 100% {
-      box-shadow:
-        0 0 8px  2px rgba(220,20,20,0.55),
-        0 0 22px 4px rgba(200,10,10,0.38),
-        0 6px 24px    rgba(180,0,0,0.45);
-      transform: scale(1);
-    }
-    50% {
-      box-shadow:
-        0 0 14px 4px rgba(240,30,30,0.80),
-        0 0 40px 8px rgba(210,10,10,0.52),
-        0 8px 32px    rgba(180,0,0,0.60);
-      transform: scale(1.016);
-    }
-  }
+  /* ─── HOME ORDER BTN — laranja sólido premium ─── */
   .home-order-btn {
     width: 100%;
     padding: 20px 24px;
     min-height: 60px;
-    background: #C81010;
-    border: 1.5px solid rgba(255,100,100,0.60);
+    background: #E67E22;
+    border: 1.5px solid rgba(255,200,140,0.50);
     border-radius: 4px;
     font-family: var(--font-body); font-size: 12px; font-weight: 700; letter-spacing: 0.18em;
     text-transform: uppercase; color: #FFFFFF; cursor: pointer;
     display: flex; align-items: center; justify-content: center; gap: 10px;
-    animation: neon-glow 2.4s ease-in-out infinite;
+    box-shadow: 0 4px 24px rgba(230,126,34,0.55), 0 1px 0 rgba(255,200,140,0.20) inset;
     -webkit-tap-highlight-color: transparent;
     position: relative; overflow: hidden;
-    transition: border-color 180ms;
+    transition: background 180ms, box-shadow 180ms, border-color 180ms, transform 80ms;
   }
   .home-order-btn::before {
     content: '';
     position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(255,160,160,0.14) 0%, transparent 60%);
+    background: linear-gradient(180deg, rgba(255,200,140,0.18) 0%, transparent 55%);
     pointer-events: none;
   }
-  .home-order-btn::after { display: none; }
-  .home-order-btn:active {
-    animation: none;
-    transform: scale(0.976);
-    box-shadow: 0 0 10px 2px rgba(200,10,10,0.50), 0 4px 14px rgba(160,0,0,0.45);
+  .home-order-btn:hover {
+    background: #F08C32;
+    box-shadow: 0 6px 30px rgba(230,126,34,0.70), 0 1px 0 rgba(255,200,140,0.25) inset;
+    border-color: rgba(255,210,160,0.65);
   }
-  .home-order-btn:hover { border-color: rgba(255,140,140,0.80); }
+  .home-order-btn:active {
+    transform: scale(0.976);
+    background: #C86516;
+    box-shadow: 0 2px 12px rgba(200,101,22,0.50);
+  }
+
   .pro-btn {
     position: relative; display: flex; align-items: center; gap: 16px;
     padding: 0 20px 0 0;
@@ -606,7 +572,6 @@
     50%       { opacity: 0; }
   }
 
-  /* Subtitle after typewriter done */
   .tw-sub {
     font-family: var(--font-body);
     font-size: 13px;
@@ -637,16 +602,16 @@
   .name-send-btn {
     display: flex; align-items: center; justify-content: center;
     width: 48px; height: 48px; flex-shrink: 0;
-    background: linear-gradient(135deg, #E67E22, #C86516);
+    background: #E67E22;
     border: 1.5px solid rgba(253,243,234,0.30);
     border-radius: 8px;
     cursor: pointer;
-    transition: transform 80ms, box-shadow 120ms;
+    transition: transform 80ms, box-shadow 120ms, background 180ms;
     -webkit-tap-highlight-color: transparent;
     box-shadow: 0 2px 12px rgba(230,126,34,0.40);
   }
   .name-send-btn:active { transform: scale(0.92); }
-  .name-send-btn:hover  { box-shadow: 0 4px 18px rgba(230,126,34,0.55); }
+  .name-send-btn:hover  { background: #F08C32; box-shadow: 0 4px 18px rgba(230,126,34,0.55); }
 
   .name-error {
     font-family: var(--font-body); font-size: 12px; font-weight: 600;
@@ -656,7 +621,7 @@
   /* ─── CARDAPIO STEP ─── */
   .view-menu-btn {
     width: 100%; padding: 13px 20px;
-    background: rgba(61,22,4,0.55);
+    background: rgba(46,5,5,0.55);
     border: 1.5px solid rgba(230,126,34,0.40);
     border-radius: 8px;
     font-family: var(--font-body); font-size: 13px; font-weight: 600;
@@ -669,12 +634,12 @@
     margin-bottom: 12px;
   }
   .view-menu-btn:hover {
-    background: rgba(61,22,4,0.75);
+    background: rgba(46,5,5,0.80);
     border-color: rgba(230,126,34,0.65);
   }
   .view-menu-btn:active { transform: scale(0.98); }
 
-  /* ─── SERVICE CHIPS (FORM) ─── */
+  /* ─── SERVICE CHIPS (FORM) — estados selecionados em VERMELHO SÓLIDO ─── */
   .service-chips-form { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 4px; }
   .service-chip-form {
     position: relative;
@@ -694,10 +659,10 @@
     color: #FFFFFF;
   }
   .service-chip-form.selected {
-    background: #1A7A3C;
-    border-color: #22A050;
+    background: #C0161A;
+    border-color: #E01E23;
     color: #FFFFFF;
-    box-shadow: 0 2px 10px rgba(26,122,60,0.35);
+    box-shadow: 0 2px 10px rgba(192,22,26,0.40);
   }
   .chip-remove {
     display: none; align-items: center; justify-content: center;
@@ -707,7 +672,7 @@
   }
   .service-chip-form.selected .chip-remove { display: flex; }
 
-  /* ─── DELIVERY TOGGLE ─── */
+  /* ─── DELIVERY TOGGLE — selecionado em VERMELHO SÓLIDO ─── */
   .delivery-toggle {
     display: flex; gap: 8px;
   }
@@ -727,9 +692,9 @@
     border-color: rgba(245,220,192,0.55);
   }
   .delivery-opt.selected {
-    background: #145C2E;
-    border-color: #1E8A44;
-    box-shadow: 0 0 14px rgba(20,92,46,0.45), inset 0 1px 0 rgba(255,255,255,0.08);
+    background: #C0161A;
+    border-color: #E01E23;
+    box-shadow: 0 0 14px rgba(192,22,26,0.40), inset 0 1px 0 rgba(255,255,255,0.08);
   }
   .delivery-opt-icon { font-size: 24px; }
   .delivery-opt-label {
@@ -738,7 +703,7 @@
     color: #FFFFFF;
   }
 
-  /* ─── PAYMENT CHIPS ─── */
+  /* ─── PAYMENT CHIPS — selecionado em VERMELHO SÓLIDO ─── */
   .payment-chips { display: flex; flex-wrap: wrap; gap: 8px; }
   .payment-chip {
     padding: 11px 20px;
@@ -757,14 +722,14 @@
     border-color: rgba(245,220,192,0.60);
   }
   .payment-chip.selected {
-    background: #145C2E;
-    border-color: #1E8A44;
-    box-shadow: 0 0 12px rgba(20,92,46,0.40), inset 0 1px 0 rgba(255,255,255,0.08);
+    background: #C0161A;
+    border-color: #E01E23;
+    box-shadow: 0 0 12px rgba(192,22,26,0.45), inset 0 1px 0 rgba(255,255,255,0.08);
   }
 
   /* ─── SUMMARY CARD ─── */
   .summary-card {
-    background: rgba(61,22,4,0.55);
+    background: rgba(46,5,5,0.55);
     border: 1.5px solid rgba(230,126,34,0.30);
     border-radius: 10px;
     padding: 18px;
@@ -867,7 +832,7 @@
     opacity: 1;
   }
 
-  /* ─── CHANGE FIELD (desativado — sem pergunta de troco) ─── */
+  /* ─── CHANGE FIELD (desativado) ─── */
   .change-fields { display: none !important; }
 
   /* ─── FORM ERROR ─── */
@@ -899,14 +864,26 @@
 
 <div class="hero-bg"></div>
 
+<!-- clipPath para o corte curvo do banner -->
 <svg width="0" height="0" aria-hidden="true" style="position:absolute;overflow:hidden;pointer-events:none">
-  <defs></defs>
+  <defs>
+    <clipPath id="coverClip" clipPathUnits="objectBoundingBox">
+      <path d="M 0 0 L 1 0 L 1 0.9024 Q 0.5 1.0976 0 0.9024 Z"/>
+    </clipPath>
+  </defs>
 </svg>
 
 <!-- ═══════════════ HOME SCREEN ═══════════════ -->
 <div id="homeScreen">
 
-  <div class="profile-junction anim anim-d1">
+  <!-- BANNER SUPERIOR (arquitetura v1) -->
+  <div class="cover-section anim anim-d1">
+    <div class="cover-section-img"></div>
+    <div class="cover-section-vignette"></div>
+  </div>
+
+  <!-- LOGO COM BRIDGE (arquitetura v1) -->
+  <div class="profile-junction anim anim-d2">
     <svg class="bridge-svg" viewBox="0 0 100 20" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path class="bridge-base"    d="M 0 0 Q 50 40 100 0"/>
       <path class="bridge-shine-l" d="M 0 0 Q 50 40 100 0"/>
@@ -921,7 +898,8 @@
     </div>
   </div>
 
-  <div class="profile-identity-text anim anim-d2">
+  <!-- NOME + DESCRIÇÃO (conteúdo da v2, hierarquia da v1) -->
+  <div class="profile-identity-text anim anim-d3">
     <h1 class="profile-studio-name">Famiglia Zanole</h1>
     <p class="profile-tagline">
       Receitas de família, feitas à mão, uma de cada vez.<br>
@@ -929,13 +907,15 @@
     </p>
   </div>
 
-  <div class="section-divider anim anim-d3">
+  <!-- DIVISÓRIA COM GLOW (arquitetura v1) -->
+  <div class="section-divider anim anim-d4">
     <div class="divider-line"></div>
     <div class="divider-diamond"></div>
     <div class="divider-line" style="background:linear-gradient(90deg,rgba(92,34,8,0.2),rgba(230,126,34,0.5))"></div>
   </div>
 
-  <div class="professionals anim anim-d4">
+  <!-- BOTÕES (conteúdo da v2) -->
+  <div class="professionals anim anim-d5">
 
     <a class="insta-btn" href="https://instagram.com/famigliazanole" target="_blank" rel="noopener" aria-label="Instagram">
       <div class="insta-btn-glow"></div>
@@ -953,6 +933,7 @@
       </svg>
     </a>
 
+    <!-- BOTÃO PRINCIPAL: laranja sólido premium -->
     <button class="home-order-btn anim anim-d5" onclick="openBooking('zanole')" aria-label="Fazer meu pedido">
       Fazer meu pedido
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -1020,13 +1001,12 @@
       </div>
     </div>
 
-    <!-- ══ STEP 1b: RESPOSTA + CARDÁPIO (tela única unificada) ══ -->
+    <!-- ══ STEP 1b: RESPOSTA + CARDÁPIO ══ -->
     <div class="step-panel" id="step1b">
       <div class="tw-container">
         <div class="tw-bubble" id="tw1bText"></div><span class="tw-cursor" id="tw1bCursor"></span>
         <div class="tw-bubble" id="tw1b2Text" style="display:block;margin-top:18px"></div><span class="tw-cursor" id="tw1b2Cursor"></span>
       </div>
-      <!-- CTAs aparecem após as duas frases -->
       <div id="step1bCtas" style="display:none">
         <button class="view-menu-btn" onclick="openMenuScreen()" style="margin-bottom:12px">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -1044,8 +1024,6 @@
       </div>
     </div>
 
-    <!-- ══ STEP 2: mantido no mapa de navegação mas nunca exibido diretamente ══ -->
-
     <!-- ══ STEP 3: PEDIDO PRINCIPAL ══ -->
     <div class="step-panel" id="step3">
       <div class="tw-container">
@@ -1056,7 +1034,6 @@
           placeholder="Ex: 2 pizzas grandes, 3 hambúrgueres, 10 coxinhas..."></textarea>
         <div class="form-err-msg" id="mainOrderErr" role="alert"></div>
       </div>
-      <!-- botão para consultar cardápio sem perder o que já digitou -->
       <button class="view-menu-btn" onclick="openMenuScreen()" style="margin-top:4px">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
           <rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
@@ -1151,7 +1128,7 @@
     <!-- ══ STEP 5: ENTREGA E PAGAMENTO ══ -->
     <div class="step-panel" id="step5">
       <div class="step-kicker">Etapa 2 de 2 — Entrega &amp; Pagamento</div>
-      <div class="step-title" style="font-size:26px;margin-bottom:16px">
+      <div class="step-title" style="margin-bottom:16px">
         Como prefere<br><strong>receber seu pedido?</strong>
       </div>
 
@@ -1174,7 +1151,7 @@
       </div>
 
       <div class="form-section">
-        <label class="form-label">Como deseja pagar?</label>
+        <div class="step-title" style="margin-bottom:16px">Como deseja<br><strong>pagar?</strong></div>
         <div class="payment-chips">
           <div class="payment-chip" id="payPix"    onclick="selectPayment('pix')">💠 PIX</div>
           <div class="payment-chip" id="payCartao" onclick="selectPayment('cartao')">💳 Cartão</div>
@@ -1203,7 +1180,6 @@
       </div>
 
       <div class="summary-card" id="summaryCard"></div>
-
       <div class="summary-closing" id="summaryClosing"></div>
 
       <button class="submit-btn" onclick="sendWhatsApp()">
@@ -1220,7 +1196,7 @@
   </div><!-- /booking-body -->
 </div>
 
-<!-- ═══════════════ MENU SCREEN (tela dedicada de cardápio) ═══════════════ -->
+<!-- ═══════════════ MENU SCREEN ═══════════════ -->
 <div id="menuScreen" aria-modal="true" role="dialog" aria-label="Cardápio">
 
   <div class="menu-screen-topbar">
@@ -1235,9 +1211,9 @@
 
   <div class="menu-screen-body">
     <div class="menu-screen-header">
-      <div class="menu-screen-kicker">Atelier das Mãos</div>
+      <div class="menu-screen-kicker">Famiglia Zanole</div>
       <div class="menu-screen-title">Cardápio do dia</div>
-      <div class="menu-screen-sub">Toque em qualquer item para selecionar</div>
+      <div class="menu-screen-sub">Toque para ampliar</div>
     </div>
 
     <div class="menu-screen-frame">
@@ -1505,7 +1481,7 @@ function triggerStep3() {
   }, 180);
 }
 
-/* ───── SUBMIT MAIN ORDER → STEP 3b (sabores) ───── */
+/* ───── SUBMIT MAIN ORDER ───── */
 function submitMainOrder() {
   const val = document.getElementById('mainOrder').value.trim();
   const err = document.getElementById('mainOrderErr');
@@ -1527,12 +1503,12 @@ function submitMainOrder() {
   }, 180);
 }
 
-/* ───── SUBMIT FLAVORS → STEP 3c (bebida) ───── */
+/* ───── SUBMIT FLAVORS ───── */
 function submitFlavors() {
   showStep('3c');
 }
 
-/* ───── STEP 3d → step 5 (entrega) ───── */
+/* ───── STEP 3d → step 5 ───── */
 function goToStep4() {
   showStep(5);
 }
@@ -1597,17 +1573,13 @@ function buildSummary() {
   const payLabels    = { pix: 'PIX', cartao: 'Cartão', dinheiro: 'Dinheiro' };
   const firstName    = name.split(' ')[0];
 
-  /* Linhas do resumo — campos opcionais aparecem apenas quando preenchidos */
   const rows = [];
-
   rows.push({ k: 'Cliente',  v: name || '—' });
   rows.push({ k: 'Pedido',   v: mainOrder || '—' });
-
   if (acompanham) rows.push({ k: 'Acompanha',  v: acompanham });
   if (bebida)     rows.push({ k: 'Bebida',      v: bebida });
   if (obs)        rows.push({ k: 'Observações', v: obs });
 
-  /* Recebimento */
   if (deliveryMode === 'entrega') {
     rows.push({ k: 'Recebimento', v: 'Entrega' });
     if (addr) {
@@ -1620,13 +1592,11 @@ function buildSummary() {
 
   rows.push({ k: 'Pagamento', v: payLabels[paymentMode] });
 
-  /* Renderiza o card */
   const card = document.getElementById('summaryCard');
   card.innerHTML = rows.map(r =>
     `<div class="summary-row"><div class="summary-key">${r.k}</div><div class="summary-val">${r.v}</div></div>`
   ).join('');
 
-  /* Mensagem de encerramento humanizada */
   const closing = document.getElementById('summaryClosing');
   closing.textContent = `Perfeito, ${firstName}. Organizei seu pedido com todas as informações para prepararmos tudo da melhor forma. Agora é só confirmar no WhatsApp!`;
 }
@@ -1665,7 +1635,7 @@ function sendWhatsApp() {
   closeBooking();
 }
 
-/* ───── EDIT ORDER (volta ao pedido sem apagar dados) ───── */
+/* ───── EDIT ORDER ───── */
 function editOrder() {
   showStep(3);
   setTimeout(() => {
