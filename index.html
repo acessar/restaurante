@@ -195,6 +195,7 @@ body::before{
 .conv-progbar{width:90px;height:2px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
 .conv-progfill{height:100%;background:var(--primary-glow);border-radius:2px;transition:width .5s var(--ease-io)}
 
+/* ── SACOLA BOTÃO NO HEADER ── */
 .cart-btn{
   position:relative;
   width:40px;height:40px;border-radius:10px;
@@ -334,6 +335,7 @@ body::before{
 .continue-btn:hover{background-position:0% 0}
 .continue-btn:active{transform:scale(.97)}
 
+/* ── CARDS ── */
 .carousel-section{margin-bottom:14px}
 .carousel-label{
   font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
@@ -373,6 +375,18 @@ body::before{
   box-shadow:0 0 0 2px rgba(34,197,94,.28), 0 4px 20px rgba(34,197,94,.15);
 }
 
+/* Quantidade badge no card */
+.card-qty-badge{
+  position:absolute;top:8px;right:8px;
+  min-width:24px;height:24px;border-radius:12px;
+  background:var(--green-sel);border:2px solid var(--green-light);
+  display:none;align-items:center;justify-content:center;z-index:3;
+  font-size:11px;font-weight:800;color:#fff;
+  box-shadow:0 2px 8px rgba(34,197,94,.4);
+  padding:0 4px;
+}
+.product-card.sel .card-qty-badge{display:flex}
+
 .card-check{
   position:absolute;top:8px;right:8px;
   width:22px;height:22px;border-radius:50%;
@@ -380,7 +394,7 @@ body::before{
   display:none;align-items:center;justify-content:center;z-index:3;
   box-shadow:0 2px 8px rgba(34,197,94,.4);
 }
-.product-card.sel .card-check{display:flex}
+/* card-check nunca exibe mais (substituído por qty badge) */
 
 .card-img-wrap{
   position:relative;
@@ -598,35 +612,34 @@ body::before{
 .cfg-obs-input::placeholder{color:rgba(255,255,255,.25)}
 .cfg-obs-input:focus{border-color:rgba(230,126,34,.55);background:rgba(255,255,255,.09)}
 
-/* Contador de quantidade no modal */
+/* ── Seletor de quantidade no modal ── */
 .cfg-qty-row{
-  display:flex;align-items:center;gap:14px;margin-bottom:4px;
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:8px;
 }
 .cfg-qty-label{
   font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
   color:rgba(230,126,34,.75);flex:1;
 }
-.cfg-qty-controls{
+.cfg-qty-ctrl{
   display:flex;align-items:center;gap:0;
   background:rgba(255,255,255,.06);
-  border:1.5px solid rgba(255,255,255,.12);
+  border:1.5px solid rgba(255,255,255,.14);
   border-radius:10px;overflow:hidden;
 }
 .cfg-qty-btn{
   width:38px;height:38px;
   background:none;border:none;
-  color:#fff;font-size:20px;font-weight:300;
+  color:#fff;font-size:20px;font-weight:700;
   cursor:pointer;display:flex;align-items:center;justify-content:center;
-  transition:background .12s;
-  -webkit-tap-highlight-color:transparent;
-  line-height:1;
+  transition:background .15s;-webkit-tap-highlight-color:transparent;
 }
-.cfg-qty-btn:hover{background:rgba(255,255,255,.08)}
-.cfg-qty-btn:active{background:rgba(230,126,34,.15)}
-.cfg-qty-val{
+.cfg-qty-btn:hover{background:rgba(255,255,255,.1)}
+.cfg-qty-btn:active{background:rgba(255,255,255,.18)}
+.cfg-qty-num{
   min-width:36px;text-align:center;
-  font-family:var(--font-strong);font-size:20px;font-weight:700;
-  color:#fff;line-height:1;
+  font-family:var(--font-strong);font-size:18px;font-weight:800;color:#fff;
+  line-height:1;padding:0 4px;
 }
 
 .cfg-modal-footer{
@@ -634,6 +647,11 @@ body::before{
   padding:14px 20px calc(16px + env(safe-area-inset-bottom,0px));
   background:rgba(20,5,5,.98);
   border-top:1px solid rgba(230,126,34,.12);
+}
+
+/* Dois botões lado a lado no footer do modal */
+.cfg-footer-btns{
+  display:flex;flex-direction:column;gap:8px;
 }
 .cfg-add-btn{
   width:100%;padding:15px;
@@ -648,6 +666,29 @@ body::before{
 }
 .cfg-add-btn:hover{background-position:0% 0}
 .cfg-add-btn:active{transform:scale(.98)}
+.cfg-add-btn-secondary{
+  width:100%;padding:13px;
+  background:rgba(230,126,34,.12);
+  border:1.5px solid rgba(230,126,34,.35);
+  border-radius:10px;
+  font-family:var(--font-body);font-size:13px;font-weight:700;
+  color:rgba(255,200,140,.85);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:background .15s,transform .1s;
+  -webkit-tap-highlight-color:transparent;
+}
+.cfg-add-btn-secondary:hover{background:rgba(230,126,34,.22)}
+.cfg-add-btn-secondary:active{transform:scale(.98)}
+.cfg-remove-btn{
+  width:100%;padding:11px;
+  background:rgba(220,50,50,.08);
+  border:1px solid rgba(220,50,50,.2);border-radius:10px;
+  font-family:var(--font-body);font-size:13px;font-weight:700;
+  color:rgba(255,100,100,.8);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  transition:background .15s;-webkit-tap-highlight-color:transparent;
+}
+.cfg-remove-btn:hover{background:rgba(220,50,50,.18)}
 
 /* ════════════════════════════════
    SACOLA (CART DRAWER)
@@ -763,6 +804,130 @@ body::before{
   transition:background .15s;-webkit-tap-highlight-color:transparent;
 }
 .cart-item-remove:hover{background:rgba(220,50,50,.18)}
+
+/* Controle de qty na sacola */
+.cart-item-qty{
+  display:flex;align-items:center;gap:0;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:8px;overflow:hidden;
+  margin-bottom:4px;
+}
+.cart-qty-btn{
+  width:28px;height:28px;
+  background:none;border:none;
+  color:#fff;font-size:16px;font-weight:700;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:background .15s;-webkit-tap-highlight-color:transparent;
+  flex-shrink:0;
+}
+.cart-qty-btn:hover{background:rgba(255,255,255,.1)}
+.cart-qty-num{
+  min-width:28px;text-align:center;
+  font-family:var(--font-strong);font-size:15px;font-weight:800;color:#fff;
+  line-height:1;
+}
+
+/* ── Duplicar na sacola ── */
+.cart-item-dup{
+  font-size:11px;font-weight:600;color:rgba(180,140,255,.75);
+  background:none;border:none;cursor:pointer;
+  padding:4px 8px;border-radius:6px;
+  background:rgba(140,100,255,.08);border:1px solid rgba(140,100,255,.18);
+  transition:background .15s;-webkit-tap-highlight-color:transparent;
+}
+.cart-item-dup:hover{background:rgba(140,100,255,.18)}
+
+/* ── Bebidas quick-add (P3) ── */
+.beb-quick-section{margin-bottom:14px;padding-left:42px}
+.beb-quick-label{
+  font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--primary-glow);margin-bottom:10px;
+}
+.beb-quick-list{display:flex;flex-direction:column;gap:8px}
+.beb-quick-item{
+  display:flex;align-items:center;gap:10px;
+  background:#1C0808;border:1.5px solid rgba(255,255,255,.10);border-radius:12px;
+  padding:10px 14px;transition:border-color .18s;
+}
+.beb-quick-item-img{
+  width:42px;height:42px;border-radius:8px;object-fit:cover;flex-shrink:0;
+  background:#2A0A0A;display:flex;align-items:center;justify-content:center;font-size:18px;overflow:hidden;
+}
+.beb-quick-item-img img{width:100%;height:100%;object-fit:cover;display:block}
+.beb-quick-item-name{font-size:13px;font-weight:700;color:#fff;flex:1}
+.beb-quick-variants{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.beb-variant-btn{
+  display:flex;align-items:center;gap:5px;
+  padding:5px 11px;border-radius:20px;
+  background:rgba(230,126,34,.12);
+  border:1.5px solid rgba(230,126,34,.28);
+  font-family:var(--font-body);font-size:12px;font-weight:700;color:rgba(255,200,130,.9);
+  cursor:pointer;transition:background .15s,border-color .15s,transform .1s;
+  -webkit-tap-highlight-color:transparent;
+}
+.beb-variant-btn:active{transform:scale(.93)}
+.beb-variant-btn:hover{background:rgba(230,126,34,.22);border-color:rgba(230,126,34,.55)}
+.beb-variant-btn.has-qty{
+  background:rgba(26,92,42,.3);border-color:var(--green-light);color:#fff;
+}
+.beb-variant-qty{
+  background:var(--green-sel);color:#fff;
+  font-size:10px;font-weight:800;
+  min-width:16px;height:16px;border-radius:8px;
+  display:inline-flex;align-items:center;justify-content:center;padding:0 3px;
+}
+/* Para itens sem variante (bebida simples) */
+.beb-novariant-btn{
+  display:flex;align-items:center;gap:6px;
+  padding:6px 12px;border-radius:20px;
+  background:rgba(230,126,34,.12);border:1.5px solid rgba(230,126,34,.28);
+  font-family:var(--font-body);font-size:12px;font-weight:700;color:rgba(255,200,130,.9);
+  cursor:pointer;transition:background .15s,border-color .15s,transform .1s;
+  -webkit-tap-highlight-color:transparent;
+}
+.beb-novariant-btn:active{transform:scale(.93)}
+.beb-novariant-btn.has-qty{background:rgba(26,92,42,.3);border-color:var(--green-light);color:#fff;}
+
+/* "Ver mais" card no carrossel */
+.card-seemore{
+  scroll-snap-align:start;
+  flex:0 0 120px;
+  background:rgba(230,126,34,.08);
+  border:1.5px dashed rgba(230,126,34,.35);
+  border-radius:14px;
+  cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  padding:16px 10px;
+  min-height:200px;
+  transition:background .18s,border-color .18s,transform .12s;
+  -webkit-tap-highlight-color:transparent;
+  flex-shrink:0;
+}
+.card-seemore:hover{background:rgba(230,126,34,.14);border-color:rgba(230,126,34,.6)}
+.card-seemore:active{transform:scale(.95)}
+.card-seemore-icon{font-size:24px;opacity:.7}
+.card-seemore-label{font-size:11px;font-weight:700;color:rgba(230,126,34,.8);text-align:center;letter-spacing:.04em}
+
+/* Expansão de categoria */
+.cat-expand{
+  padding:12px 16px 12px 42px;
+  animation:msgIn .3s ease both;
+}
+.cat-expand-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:10px;
+}
+.cat-expand-card{
+  background:#1C0808;border:1.5px solid rgba(255,255,255,.10);border-radius:12px;
+  padding:11px;cursor:pointer;
+  display:flex;flex-direction:column;gap:4px;
+  transition:border-color .18s,transform .12s;
+  -webkit-tap-highlight-color:transparent;
+}
+.cat-expand-card:active{transform:scale(.97)}
+.cat-expand-card.sel{border-color:var(--green-light);background:rgba(26,92,42,.15)}
+.cat-expand-card-name{font-size:12px;font-weight:700;color:#fff;line-height:1.3}
+.cat-expand-card-price{font-family:var(--font-strong);font-size:13px;color:var(--primary-glow);font-weight:700}
 
 .cart-footer{
   flex-shrink:0;
@@ -897,23 +1062,23 @@ body::before{
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:rgba(230,126,34,.16);border-radius:2px}
 
-/* Card histórico clicável — destaque visual sutil */
-.history-card-item{
+/* Card de item no histórico — permite clicar para editar */
+.history-item-card{
   display:inline-flex;align-items:center;gap:6px;
-  background:rgba(230,126,34,.10);
-  border:1px solid rgba(230,126,34,.22);
+  padding:4px 10px 4px 6px;
+  background:rgba(230,126,34,.12);
+  border:1px solid rgba(230,126,34,.28);
   border-radius:20px;
-  padding:4px 11px 4px 7px;
-  font-size:12px;font-weight:600;color:rgba(255,255,255,.8);
   cursor:pointer;
+  font-size:12px;font-weight:600;color:rgba(255,200,130,.9);
   transition:background .15s,border-color .15s;
   -webkit-tap-highlight-color:transparent;
-  text-decoration:none;
-  margin:2px 2px;
+  margin:2px 3px;
+  vertical-align:middle;
 }
-.history-card-item:hover{background:rgba(230,126,34,.20);border-color:rgba(230,126,34,.4)}
-.history-card-item:active{opacity:.75}
-.history-card-dot{width:6px;height:6px;border-radius:50%;background:var(--green-light);flex-shrink:0}
+.history-item-card:hover{background:rgba(230,126,34,.22);border-color:rgba(230,126,34,.5)}
+.history-item-card:active{opacity:.75}
+.history-item-card-icon{font-size:14px;line-height:1}
 
 @media(max-width:360px){
   .product-card{flex:0 0 158px}
@@ -1197,16 +1362,6 @@ const MENU = {
   },
 };
 
-// Mapa plano de todos os itens para lookup rápido por id
-const ITEM_MAP = {};
-(function(){
-  Object.entries(MENU).forEach(([cat, catData])=>{
-    catData.sections.forEach(sec=>{
-      sec.items.forEach(item=>{ ITEM_MAP[item.id] = { item, cat }; });
-    });
-  });
-})();
-
 const WHATSAPP = '5583991816152';
 
 /* ════════════════════════════════
@@ -1214,20 +1369,26 @@ const WHATSAPP = '5583991816152';
 ════════════════════════════════ */
 let st = {
   nome:'',
-  cart: [],   // cada entrada: { uid, cat, itemId, item, variant, obs, label, priceNum, priceStr, qty }
+  cart: [],   // cada entry: { uid, cat, itemId, item, variant, obs, qty, priceNum, priceStr, label }
   delivery:'', payment:'', address:'', addrRef:'',
 };
 
 let _uidCounter = 0;
 function newUid(){ return 'item_'+(++_uidCounter); }
 
-/* ── Chave de agrupamento: mesma configuração = mesmo grupo ── */
-function itemKey(itemId, cat, variant, obs){
-  return [itemId, cat, variant||'', (obs||'').trim()].join('||');
+/*
+  IDENTIDADE DO ITEM (P1)
+  produto + categoria + variante + observações = identidade única.
+  Itens com obs diferentes NUNCA se mesclam automaticamente.
+  A mesclagem só ocorre quando o usuário escolhe "Adicionar mais unidades"
+  para o EXATO mesmo item (mesma chave).
+*/
+function cartKey(itemId, cat, variant, obs){
+  return [itemId, cat, variant||'', (obs||'').trim()].join('|||');
 }
 
 function cartTotal(){
-  let sum = 0;
+  let sum=0;
   st.cart.forEach(i=>{ if(i.priceNum) sum += i.priceNum * (i.qty||1); });
   return sum;
 }
@@ -1272,15 +1433,18 @@ function prog(pct){ document.getElementById('progFill').style.width=pct+'%'; }
    SACOLA UI
 ════════════════════════════════ */
 function updateCartUI(){
-  // Conta total de unidades (somando qty)
-  const totalQty = st.cart.reduce((s,i)=>s+(i.qty||1),0);
+  // Conta total de unidades (somando qty de cada entry)
+  const totalUnits = st.cart.reduce((s,i)=>s+(i.qty||1),0);
   const badge = document.getElementById('cartBadge');
   const countLabel = document.getElementById('cartCountLabel');
   if(badge){
-    badge.textContent = totalQty;
-    badge.classList.toggle('show', totalQty>0);
+    badge.textContent = totalUnits;
+    badge.classList.toggle('show', totalUnits>0);
   }
-  if(countLabel) countLabel.textContent = totalQty+' '+(totalQty===1?'item':'itens');
+  if(countLabel){
+    const lines = st.cart.length;
+    countLabel.textContent = totalUnits+' '+(totalUnits===1?'item':'itens');
+  }
 }
 
 function openCart(){
@@ -1307,22 +1471,32 @@ function renderCartDrawer(){
 
   footer.style.display='';
   st.cart.forEach(ci=>{
-    const qty = ci.qty||1;
     const div=document.createElement('div'); div.className='cart-item';
     const fallbackEmoji = {principal:'🍔',acompanhamentos:'🍟',sobremesas:'🍰',bebidas:'🥤'}[ci.cat]||'🍽️';
-    const itemTotal = ci.priceNum ? 'R$ '+(ci.priceNum*qty).toFixed(2).replace('.',',') : ci.priceStr;
+    const qty = ci.qty||1;
+    const linePrice = ci.priceNum ? ci.priceNum * qty : null;
+    const priceDisplay = linePrice
+      ? 'R$ '+linePrice.toFixed(2).replace('.',',')+(qty>1 ? ' ('+qty+'x '+ci.priceStr+')' : '')
+      : ci.priceStr;
+
     div.innerHTML=`
       <div class="cart-item-img">
         ${ci.item.img?`<img src="${esc(ci.item.img)}" alt="${esc(ci.item.name)}" loading="lazy" onerror="this.parentElement.textContent='${fallbackEmoji}'">`:`${fallbackEmoji}`}
       </div>
       <div class="cart-item-info">
-        <div class="cart-item-name">${qty>1?`<strong>${qty}x</strong> `:''}${esc(ci.item.name)}</div>
+        <div class="cart-item-name">${esc(ci.item.name)}</div>
         ${ci.variant?`<div class="cart-item-variant">${esc(ci.variant)}</div>`:''}
         ${ci.obs?`<div class="cart-item-obs">📝 ${esc(ci.obs)}</div>`:''}
-        <div class="cart-item-price">${esc(itemTotal)}</div>
+        <div class="cart-item-qty">
+          <button class="cart-qty-btn" onclick="changeCartQty('${ci.uid}',-1)">−</button>
+          <div class="cart-qty-num">${qty}</div>
+          <button class="cart-qty-btn" onclick="changeCartQty('${ci.uid}',1)">+</button>
+        </div>
+        <div class="cart-item-price">${esc(priceDisplay)}</div>
       </div>
       <div class="cart-item-actions">
         <button class="cart-item-edit" onclick="editCartItem('${ci.uid}')">✏️ Editar</button>
+        <button class="cart-item-dup" onclick="dupCartItem('${ci.uid}')">⊕ Duplicar</button>
         <button class="cart-item-remove" onclick="removeCartItem('${ci.uid}')">✕ Remover</button>
       </div>`;
     scroll.appendChild(div);
@@ -1335,12 +1509,44 @@ function renderCartDrawer(){
   updateCartUI();
 }
 
+function changeCartQty(uid, delta){
+  const idx = st.cart.findIndex(i=>i.uid===uid);
+  if(idx<0) return;
+  const newQty = (st.cart[idx].qty||1) + delta;
+  if(newQty <= 0){
+    st.cart.splice(idx,1);
+    showToast('Item removido da sacola');
+  } else {
+    st.cart[idx].qty = newQty;
+    // Atualiza label
+    st.cart[idx] = buildCartLabel(st.cart[idx]);
+  }
+  refreshCardStates();
+  updateCartUI();
+  renderCartDrawer();
+}
+
 function removeCartItem(uid){
   st.cart = st.cart.filter(i=>i.uid!==uid);
   refreshCardStates();
   updateCartUI();
   renderCartDrawer();
   showToast('Item removido da sacola');
+}
+
+/* P7: Duplicar — copia config e abre edição da nova cópia */
+function dupCartItem(uid){
+  const ci = st.cart.find(i=>i.uid===uid);
+  if(!ci) return;
+  // Cria cópia com novo uid
+  const copy = { ...ci, uid:newUid() };
+  // Insere logo após o original
+  const idx = st.cart.findIndex(i=>i.uid===uid);
+  st.cart.splice(idx+1, 0, copy);
+  refreshCardStates();
+  updateCartUI();
+  closeCart();
+  setTimeout(()=> openCfgModal(copy.item, copy.cat, copy.uid), 200);
 }
 
 function editCartItem(uid){
@@ -1350,28 +1556,57 @@ function editCartItem(uid){
   setTimeout(()=> openCfgModal(ci.item, ci.cat, ci.uid), 200);
 }
 
+/* Atualiza label do item com quantidade */
+function buildCartLabel(ci){
+  const qty = ci.qty||1;
+  const base = ci.item.name + (ci.variant?' ('+ci.variant+')':'');
+  ci.label = (qty>1 ? qty+'x ' : '') + base;
+  return ci;
+}
+
 function refreshCardStates(){
+  // Carrossel normal
   document.querySelectorAll('.product-card').forEach(card=>{
     const id = card.id.replace('card-','');
-    const inCart = st.cart.some(i=>i.itemId===id);
-    card.classList.toggle('sel', inCart);
+    const entries = st.cart.filter(i=>i.itemId===id);
+    const totalQty = entries.reduce((s,i)=>s+(i.qty||1),0);
+    card.classList.toggle('sel', totalQty>0);
+    const badge = card.querySelector('.card-qty-badge');
+    if(badge){ badge.textContent = totalQty>0 ? totalQty+'x' : ''; }
+  });
+  // Bebidas quick-add buttons
+  document.querySelectorAll('[id^="beb-btn-"]').forEach(btn=>{
+    const itemId = btn.dataset.itemId;
+    const variant = btn.dataset.variant||'';
+    if(!itemId) return;
+    // Encontra o item no MENU bebidas
+    let item=null;
+    MENU.bebidas.sections.forEach(s=>s.items.forEach(i=>{ if(i.id===itemId) item=i; }));
+    if(!item) return;
+    const variantData = item.variants ? item.variants.find(v=>v.v===variant) : null;
+    const price = variantData ? variantData.price : item.price;
+    renderBebBtn(btn, itemId, variant, price);
   });
 }
 
 /* ════════════════════════════════
    MODAL DE CONFIGURAÇÃO DO PRODUTO
-   ITEM 1: controle de quantidade
-   ITEM 2: edição pelo histórico
 ════════════════════════════════ */
 let _cfgItem=null, _cfgCat=null, _cfgEditUid=null;
 let _cfgSelectedVariant=null, _cfgObs='', _cfgQty=1;
 
+/*
+  LÓGICA DE ABERTURA (P1/P2):
+  - editUid fornecido: edição explícita (histórico ou sacola) — carrega config salva.
+  - sem editUid: sempre abre NOVO (sem pre-preencher), independente de o item já estar na sacola.
+    Os botões no footer controlam o que acontece: "Adicionar" ou "Adicionar mais unidades".
+*/
 function openCfgModal(item, cat, editUid=null){
   _cfgItem=item; _cfgCat=cat; _cfgEditUid=editUid;
   _cfgSelectedVariant=null; _cfgObs=''; _cfgQty=1;
 
   if(editUid){
-    // Edição explícita: carrega estado do item existente
+    // Edição explícita — carrega exatamente o que está salvo
     const ci = st.cart.find(i=>i.uid===editUid);
     if(ci){
       _cfgSelectedVariant = ci.variant||null;
@@ -1379,7 +1614,7 @@ function openCfgModal(item, cat, editUid=null){
       _cfgQty = ci.qty||1;
     }
   }
-  // Para novo item: sempre abre limpo (qty=1), permitindo nova entrada na sacola
+  // sem editUid: modal abre limpo para nova configuração
 
   renderCfgModal();
   document.getElementById('cfgModalOverlay').classList.add('open');
@@ -1390,9 +1625,6 @@ function renderCfgModal(){
   const content = document.getElementById('cfgModalContent');
   const isEdit = !!_cfgEditUid;
 
-  let imgHtml = item.img
-    ? `<img class="cfg-modal-img" src="${esc(item.img)}" alt="${esc(item.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
-    : '';
   const fallbackEmoji = {principal:'🍔',acompanhamentos:'🍟',sobremesas:'🍰',bebidas:'🥤'}[_cfgCat]||'🍽️';
 
   let variantsHTML = '';
@@ -1422,124 +1654,72 @@ function renderCfgModal(){
     ? (item.variants.find(v=>v.v===_cfgSelectedVariant)||{}).price || item.price
     : item.price;
 
-  // ITEM 1: controle de quantidade
-  const qtyHTML = `
-    <div class="cfg-qty-row" style="margin-top:14px">
-      <div class="cfg-qty-label">Quantidade</div>
-      <div class="cfg-qty-controls">
-        <button class="cfg-qty-btn" onclick="changeQty(-1)" aria-label="Diminuir">−</button>
-        <div class="cfg-qty-val" id="cfgQtyVal">${_cfgQty}</div>
-        <button class="cfg-qty-btn" onclick="changeQty(1)" aria-label="Aumentar">+</button>
+  // --- Lógica dos botões do footer ---
+  // MODO EDIÇÃO (editUid explícito)
+  if(isEdit){
+    content.innerHTML=`
+      <div class="cfg-modal-img-wrap">
+        ${item.img ? `<img class="cfg-modal-img" src="${esc(item.img)}" alt="${esc(item.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : ''}
+        <div class="cfg-modal-img-placeholder" ${item.img?'style="display:none"':''}>${fallbackEmoji}</div>
       </div>
-    </div>`;
-
-  // Botão principal
-  let btnLabel = isEdit ? '✓ Salvar alterações' : '+ Adicionar ao pedido';
-
-  // ITEM 1: botão secundário "Adicionar mais uma unidade" — só quando não é edição
-  let secondaryBtnHTML = '';
-  if(!isEdit){
-    secondaryBtnHTML = `
-      <button onclick="cfgAddOneMore()" style="
-        width:100%;margin-top:8px;padding:13px;
-        background:rgba(230,126,34,.10);
-        border:1.5px solid rgba(230,126,34,.30);
-        border-radius:10px;
-        font-family:var(--font-body);font-size:13px;font-weight:700;
-        color:rgba(255,255,255,.8);cursor:pointer;
-        display:flex;align-items:center;justify-content:center;gap:8px;
-        transition:background .15s;
-        -webkit-tap-highlight-color:transparent;
-      ">
-        ＋ Adicionar mais uma unidade
-      </button>`;
+      <div class="cfg-modal-body" id="cfgModalBody">
+        <div class="cfg-modal-name">${esc(item.name)}</div>
+        <div class="cfg-modal-price-row"><div class="cfg-modal-price" id="cfgModalPrice">${esc(displayPrice)}</div></div>
+        <div class="cfg-modal-desc">${esc(item.details||item.desc)}</div>
+        ${variantsHTML}${ingredHTML}
+        <div class="cfg-section-title">Observações</div>
+        <textarea class="cfg-obs-input" id="cfgObsInput" rows="2" placeholder="Sem cebola, ponto da carne, alergias...">${esc(_cfgObs)}</textarea>
+        <div style="height:16px"></div>
+      </div>
+      <div class="cfg-modal-footer">
+        <div class="cfg-footer-btns">
+          <button class="cfg-add-btn" id="cfgAddBtn" onclick="cfgConfirm('save')">✓ Salvar alterações</button>
+          <button class="cfg-remove-btn" onclick="cfgRemove()">✕ Remover da sacola</button>
+        </div>
+      </div>`;
+    return;
   }
 
-  let removeBtnHTML = isEdit
-    ? `<button onclick="cfgRemove()" style="width:100%;margin-top:8px;padding:11px;background:rgba(220,50,50,.08);border:1px solid rgba(220,50,50,.2);border-radius:10px;font-family:var(--font-body);font-size:13px;font-weight:700;color:rgba(255,100,100,.8);cursor:pointer;">✕ Remover da sacola</button>`
-    : '';
+  // MODO NOVO — verifica se existe item com EXATA mesma config para mostrar "Adicionar mais"
+  // (computed dinamicamente; começa sem variante selecionada, então ainda sem "Adicionar mais")
+  let showAddMore = false;
+  if(_cfgSelectedVariant || !item.variants){
+    const key = cartKey(item.id, _cfgCat, _cfgSelectedVariant||'', ''); // obs vazia no início
+    showAddMore = st.cart.some(i=>cartKey(i.itemId,i.cat,i.variant,i.obs)===key);
+  }
+
+  // "Nova unidade" aparece quando já existe pelo menos 1 do mesmo produto na sacola
+  const anyInCart = st.cart.some(i=>i.itemId===item.id && i.cat===_cfgCat);
 
   content.innerHTML=`
     <div class="cfg-modal-img-wrap">
-      ${imgHtml}
+      ${item.img ? `<img class="cfg-modal-img" src="${esc(item.img)}" alt="${esc(item.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : ''}
       <div class="cfg-modal-img-placeholder" ${item.img?'style="display:none"':''}>${fallbackEmoji}</div>
     </div>
     <div class="cfg-modal-body" id="cfgModalBody">
       <div class="cfg-modal-name">${esc(item.name)}</div>
-      <div class="cfg-modal-price-row">
-        <div class="cfg-modal-price" id="cfgModalPrice">${esc(displayPrice)}</div>
-      </div>
+      <div class="cfg-modal-price-row"><div class="cfg-modal-price" id="cfgModalPrice">${esc(displayPrice)}</div></div>
       <div class="cfg-modal-desc">${esc(item.details||item.desc)}</div>
-      ${variantsHTML}
-      ${ingredHTML}
-      ${qtyHTML}
-      <div class="cfg-section-title" style="margin-top:14px">Observações</div>
+      ${variantsHTML}${ingredHTML}
+      <div class="cfg-section-title">Observações</div>
       <textarea class="cfg-obs-input" id="cfgObsInput" rows="2" placeholder="Sem cebola, ponto da carne, alergias...">${esc(_cfgObs)}</textarea>
       <div style="height:16px"></div>
     </div>
     <div class="cfg-modal-footer">
-      <button class="cfg-add-btn" id="cfgAddBtn" onclick="cfgConfirm()">${btnLabel}</button>
-      ${secondaryBtnHTML}
-      ${removeBtnHTML}
+      <div class="cfg-footer-btns" id="cfgFooterBtns">
+        <button class="cfg-add-btn" id="cfgAddBtn" onclick="cfgConfirm('add')">+ Adicionar à sacola</button>
+        <button class="cfg-add-btn-secondary" id="cfgAddMoreBtn" onclick="cfgConfirm('addmore')" style="${showAddMore?'':'display:none'}">+ Adicionar mais uma unidade</button>
+        <button class="cfg-add-btn-secondary" id="cfgNewUnitBtn" onclick="cfgConfirm('newunit')" style="${anyInCart?'':'display:none'}">+ Nova unidade (config diferente)</button>
+      </div>
     </div>`;
-}
-
-/* ITEM 1: alterar quantidade no modal */
-function changeQty(delta){
-  _cfgQty = Math.max(1, (_cfgQty||1) + delta);
-  const el = document.getElementById('cfgQtyVal');
-  if(el) el.textContent = _cfgQty;
-}
-
-/* ITEM 1: "Adicionar mais uma unidade" ao grupo existente */
-function cfgAddOneMore(){
-  const item = _cfgItem;
-  const cat = _cfgCat;
-
-  if(item.variants && item.variants.length && !_cfgSelectedVariant){
-    showToast('Escolha um tamanho primeiro ☝️');
-    return;
-  }
-
-  const obsInput = document.getElementById('cfgObsInput');
-  const obs = obsInput ? obsInput.value.trim() : '';
-
-  let priceNum = item.priceNum||0;
-  let priceStr = item.price;
-  let variantLabel = _cfgSelectedVariant||'';
-  if(variantLabel && item.variants){
-    const vObj = item.variants.find(v=>v.v===variantLabel);
-    if(vObj){ priceNum=vObj.priceNum||0; priceStr=vObj.price; }
-  }
-
-  const key = itemKey(item.id, cat, variantLabel, obs);
-
-  // Procura grupo existente com mesma configuração
-  const existing = st.cart.find(i=> itemKey(i.itemId, i.cat, i.variant||'', i.obs||'') === key);
-
-  if(existing){
-    // Incrementa quantidade no grupo existente
-    existing.qty = (existing.qty||1) + 1;
-    showToast(`+1 ${item.name} (${existing.qty}x no total) 🛒`);
-  } else {
-    // Primeira vez: cria com qty=1
-    const label = item.name + (variantLabel?' ('+variantLabel+')':'');
-    st.cart.push({
-      uid: newUid(), cat, itemId:item.id, item,
-      variant:variantLabel, obs, label, priceNum, priceStr, qty:1
-    });
-    showToast(`${item.name} adicionado 🛒`);
-  }
-
-  refreshCardStates();
-  updateCartUI();
-  closeCfgModalBtn();
 }
 
 function cfgRemove(){
   const uid = _cfgEditUid;
   if(uid){
     st.cart = st.cart.filter(i=>i.uid!==uid);
+  } else if(_cfgItem && !_cfgItem.variants){
+    st.cart = st.cart.filter(i=>!(i.itemId===_cfgItem.id&&i.cat===_cfgCat));
   }
   refreshCardStates();
   updateCartUI();
@@ -1558,10 +1738,28 @@ function selectVariant(v, price){
   });
   const priceEl = document.getElementById('cfgModalPrice');
   if(priceEl) priceEl.textContent = price;
+
+  // Atualiza visibilidade dos botões com base na obs atual + variante recém-selecionada
+  const obsInput = document.getElementById('cfgObsInput');
+  const obs = obsInput ? obsInput.value.trim() : '';
+  const key = cartKey(_cfgItem.id, _cfgCat, v, obs);
+  const exactMatch = st.cart.some(i=>cartKey(i.itemId,i.cat,i.variant,i.obs)===key);
+  const anyInCart = st.cart.some(i=>i.itemId===_cfgItem.id && i.cat===_cfgCat);
+
+  const addMoreBtn = document.getElementById('cfgAddMoreBtn');
+  const newUnitBtn = document.getElementById('cfgNewUnitBtn');
+  if(addMoreBtn) addMoreBtn.style.display = exactMatch ? '' : 'none';
+  if(newUnitBtn) newUnitBtn.style.display = anyInCart ? '' : 'none';
 }
 
-/* cfgConfirm: "Adicionar ao pedido" (respeita _cfgQty) ou "Salvar alterações" */
-function cfgConfirm(){
+/*
+  MODOS (P1/P2):
+  'save'    — edição de item existente (editUid obrigatório)
+  'add'     — adiciona à sacola: se IDÊNTICO existe, incrementa qty; senão cria novo
+  'addmore' — incrementa +1 no item EXATO (mesma chave: produto+cat+variante+obs)
+  'newunit' — SEMPRE cria nova entrada independente, sem verificar duplicatas
+*/
+function cfgConfirm(mode='add'){
   const item = _cfgItem;
   const cat = _cfgCat;
   const obsInput = document.getElementById('cfgObsInput');
@@ -1574,36 +1772,75 @@ function cfgConfirm(){
 
   let priceNum = item.priceNum||0;
   let priceStr = item.price;
-  let variantLabel = _cfgSelectedVariant||'';
-  if(variantLabel && item.variants){
-    const vObj = item.variants.find(v=>v.v===variantLabel);
+  let variantLabel = '';
+  if(_cfgSelectedVariant && item.variants){
+    const vObj = item.variants.find(v=>v.v===_cfgSelectedVariant);
     if(vObj){ priceNum=vObj.priceNum||0; priceStr=vObj.price; }
+    variantLabel = _cfgSelectedVariant;
   }
 
-  const label = item.name + (variantLabel?' ('+variantLabel+')':'');
-  const qty = _cfgQty || 1;
-
-  if(_cfgEditUid){
-    // Edição: atualiza item existente
+  // --- SAVE: atualiza item existente ---
+  if(mode === 'save'){
     const idx = st.cart.findIndex(i=>i.uid===_cfgEditUid);
     if(idx>=0){
-      st.cart[idx] = {...st.cart[idx], variant:variantLabel, obs, label, priceNum, priceStr, qty};
+      st.cart[idx].variant = variantLabel;
+      st.cart[idx].obs = obs;
+      st.cart[idx].priceNum = priceNum;
+      st.cart[idx].priceStr = priceStr;
+      buildCartLabel(st.cart[idx]);
     }
     showToast('Item atualizado ✓');
-  } else {
-    // Novo item: verifica se já existe grupo com mesma config
-    const key = itemKey(item.id, cat, variantLabel, obs);
-    const existing = st.cart.find(i=> itemKey(i.itemId, i.cat, i.variant||'', i.obs||'') === key);
+    refreshCardStates();
+    updateCartUI();
+    closeCfgModalBtn();
+    return;
+  }
+
+  // --- ADDMORE: incrementa exatamente o item com mesma chave ---
+  if(mode === 'addmore'){
+    const key = cartKey(item.id, cat, variantLabel, obs);
+    const existing = st.cart.find(i=>cartKey(i.itemId,i.cat,i.variant,i.obs)===key);
     if(existing){
-      existing.qty = (existing.qty||1) + qty;
-      showToast(`${existing.qty}x ${item.name} na sacola 🛒`);
+      existing.qty = (existing.qty||1)+1;
+      buildCartLabel(existing);
+      showToast('Mais uma unidade adicionada 🛒');
     } else {
-      st.cart.push({
-        uid: newUid(), cat, itemId:item.id, item,
-        variant:variantLabel, obs, label, priceNum, priceStr, qty
-      });
-      showToast(qty>1?`${qty}x ${item.name} adicionado 🛒`:'Adicionado à sacola 🛒');
+      // Fallback: cria novo (não deveria chegar aqui normalmente)
+      const entry = { uid:newUid(), cat, itemId:item.id, item, variant:variantLabel, obs, qty:1, priceNum, priceStr, label:'' };
+      buildCartLabel(entry);
+      st.cart.push(entry);
+      showToast('Adicionado à sacola 🛒');
     }
+    refreshCardStates();
+    updateCartUI();
+    closeCfgModalBtn();
+    return;
+  }
+
+  // --- NEWUNIT: SEMPRE cria entrada nova, independente de duplicatas ---
+  if(mode === 'newunit'){
+    const entry = { uid:newUid(), cat, itemId:item.id, item, variant:variantLabel, obs, qty:1, priceNum, priceStr, label:'' };
+    buildCartLabel(entry);
+    st.cart.push(entry);
+    showToast('Nova unidade adicionada 🛒');
+    refreshCardStates();
+    updateCartUI();
+    closeCfgModalBtn();
+    return;
+  }
+
+  // --- ADD: verifica se existe EXATAMENTE igual (mesma chave completa com obs) ---
+  const key = cartKey(item.id, cat, variantLabel, obs);
+  const existing = st.cart.find(i=>cartKey(i.itemId,i.cat,i.variant,i.obs)===key);
+  if(existing){
+    existing.qty = (existing.qty||1)+1;
+    buildCartLabel(existing);
+    showToast('Quantidade atualizada 🛒');
+  } else {
+    const entry = { uid:newUid(), cat, itemId:item.id, item, variant:variantLabel, obs, qty:1, priceNum, priceStr, label:'' };
+    buildCartLabel(entry);
+    st.cart.push(entry);
+    showToast('Adicionado à sacola 🛒');
   }
 
   refreshCardStates();
@@ -1642,36 +1879,24 @@ function addUser(text){
   stage().appendChild(el); scrollBottom();
 }
 
-/* ITEM 2: addUserWithCartCards — exibe o texto + cards clicáveis dos itens da sacola no histórico */
-function addUserWithCartCards(text, cartSnapshot){
-  const el=document.createElement('div');
-  el.style.display='flex'; el.style.flexDirection='column'; el.style.alignItems='flex-end';
-  el.style.marginBottom='12px'; el.style.animation='msgIn .3s ease both';
+/* Adiciona mensagem de usuário com cards clicáveis dos itens da sacola */
+function addUserWithCartCards(catItems){
+  const el=document.createElement('div'); el.className='user-msg';
+  let html='<div class="user-bubble">';
 
-  // Bubble de texto principal
-  const bubble=document.createElement('div'); bubble.className='user-bubble';
-  bubble.style.marginBottom='6px';
-
-  // Monta chips clicáveis de cada item
-  const chips = cartSnapshot.map(ci=>{
+  // Agrupa por itemId+variante para mostrar cards corretos
+  // Cada entry na sacola já está agrupada, então apenas renderizamos
+  catItems.forEach(ci=>{
     const qty = ci.qty||1;
-    const chipText = (qty>1?qty+'x ':'')+ci.item.name+(ci.variant?' ('+ci.variant+')':'');
-    return `<span class="history-card-item" onclick="openCfgModal_byUid('${ci.uid}')">
-      <span class="history-card-dot"></span>${esc(chipText)}
-    </span>`;
-  }).join('');
+    const label = (qty>1?qty+'x ':'')+ci.item.name+(ci.variant?' ('+ci.variant+')':'');
+    html+=`<span class="history-item-card" onclick="editCartItem('${ci.uid}')" title="Toque para editar">`;
+    html+=`<span class="history-item-card-icon">✏️</span> ${esc(label)}`;
+    html+=`</span>`;
+  });
 
-  bubble.innerHTML = `${esc(text)}<br><div style="margin-top:7px;display:flex;flex-wrap:wrap;gap:4px;">${chips}</div>`;
-  el.appendChild(bubble);
-  stage().appendChild(el);
-  scrollBottom();
-}
-
-/* ITEM 2: abre modal de edição a partir do uid (usado pelos chips do histórico) */
-function openCfgModal_byUid(uid){
-  const ci = st.cart.find(i=>i.uid===uid);
-  if(!ci){ showToast('Item não encontrado na sacola'); return; }
-  openCfgModal(ci.item, ci.cat, uid);
+  html+='</div>';
+  el.innerHTML=html;
+  stage().appendChild(el); scrollBottom();
 }
 
 function addInline(buildFn){
@@ -1770,11 +1995,8 @@ function stepPrincipal(){
       btn.onclick=()=>{
         const catItems=st.cart.filter(i=>i.cat==='principal');
         if(!catItems.length){showToast('Selecione ao menos um item 🍔');return;}
-        // ITEM 2: exibe chips clicáveis no histórico
-        const labelText = catItems.map(i=>(i.qty>1?i.qty+'x ':'')+i.label).join(', ');
-        const snap = catItems.map(i=>({...i})); // snapshot
         clearAnswer(); lock('il-principal');
-        addUserWithCartCards(labelText, snap);
+        addUserWithCartCards(catItems);
         setTimeout(()=>{
           send([
             {html:'Excelente escolha 😋', delay:0},
@@ -1800,13 +2022,9 @@ function stepAcompanhamentos(){
       btn.innerHTML='Continuar <svg viewBox="0 0 14 14" fill="none" width="13" height="13"><path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
       btn.onclick=()=>{
         const catItems=st.cart.filter(i=>i.cat==='acompanhamentos');
-        const labelText = catItems.length ? catItems.map(i=>(i.qty>1?i.qty+'x ':'')+i.label).join(', ') : 'Sem acompanhamentos';
         clearAnswer(); lock('il-acomp');
-        if(catItems.length){
-          addUserWithCartCards(labelText, catItems.map(i=>({...i})));
-        } else {
-          addUser(labelText);
-        }
+        if(catItems.length) addUserWithCartCards(catItems);
+        else addUser('Sem acompanhamentos');
         setTimeout(()=>{
           send([
             {html:'Anotado! 👍', delay:0},
@@ -1832,13 +2050,9 @@ function stepSobremesas(){
       btn.innerHTML='Continuar <svg viewBox="0 0 14 14" fill="none" width="13" height="13"><path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
       btn.onclick=()=>{
         const catItems=st.cart.filter(i=>i.cat==='sobremesas');
-        const labelText = catItems.length ? catItems.map(i=>(i.qty>1?i.qty+'x ':'')+i.label).join(', ') : 'Sem sobremesa';
         clearAnswer(); lock('il-sob');
-        if(catItems.length){
-          addUserWithCartCards(labelText, catItems.map(i=>({...i})));
-        } else {
-          addUser(labelText);
-        }
+        if(catItems.length) addUserWithCartCards(catItems);
+        else addUser('Sem sobremesa');
         setTimeout(()=>{
           send([
             {html:'Ótimo! Falta só a <strong>bebida</strong> para completar 🥤', delay:0},
@@ -1862,13 +2076,9 @@ function stepBebidas(){
       btn.innerHTML='Continuar <svg viewBox="0 0 14 14" fill="none" width="13" height="13"><path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
       btn.onclick=()=>{
         const catItems=st.cart.filter(i=>i.cat==='bebidas');
-        const labelText = catItems.length ? catItems.map(i=>(i.qty>1?i.qty+'x ':'')+i.label).join(', ') : 'Sem bebida';
         clearAnswer(); lock('il-beb');
-        if(catItems.length){
-          addUserWithCartCards(labelText, catItems.map(i=>({...i})));
-        } else {
-          addUser(labelText);
-        }
+        if(catItems.length) addUserWithCartCards(catItems);
+        else addUser('Sem bebida');
         setTimeout(()=>{
           send([
             {html:'Pedido montado! Agora me conta como prefere <em>receber</em> 🛵', delay:0},
@@ -1976,14 +2186,7 @@ function stepResumo(){
       ];
       cats.forEach(({cat,label})=>{
         const items=st.cart.filter(i=>i.cat===cat);
-        if(items.length){
-          const lines = items.map(i=>{
-            const qty = i.qty||1;
-            const prefix = qty>1 ? qty+'x ' : '';
-            return prefix+i.label+(i.obs?'\n  📝 '+i.obs:'');
-          });
-          rows.push({k:label, v:lines.join('\n')});
-        }
+        if(items.length) rows.push({k:label,v:items.map(i=>i.label+(i.obs?'\n  📝 '+i.obs:'')).join('\n')});
       });
 
       rows.push({k:'Recebimento',v:st.delivery==='entrega'?'Entrega':'Retirada no local'});
@@ -2003,12 +2206,7 @@ function stepResumo(){
 
       const ed=document.createElement('button'); ed.className='action-btn ghost'; ed.style.marginTop='8px';
       ed.textContent='✏️ Editar pedido';
-      ed.onclick=()=>{
-        el.style.display='none';
-        st.cart=[]; st.delivery=''; st.payment='';
-        refreshCardStates(); updateCartUI();
-        setTimeout(()=>{ send([{html:'Sem problema! Vamos recomeçar 😊 Escolha o principal:', delay:0}], ()=>stepPrincipal()); },300);
-      };
+      ed.onclick=()=>{ openCart(); };
       el.appendChild(ed);
       prog(100);
     });
@@ -2016,9 +2214,17 @@ function stepResumo(){
 }
 
 /* ════════════════════════════════
-   CARROSSEL
+   CARROSSEL + BEBIDAS QUICK-ADD (P3/P9)
 ════════════════════════════════ */
+const CAROUSEL_MAX = 4; // Máximo de cards visíveis antes de "Ver mais"
+
 function buildCarousel(container, cat, sections){
+  // P3: bebidas usam UI de adição rápida
+  if(cat === 'bebidas'){
+    buildBebidaQuickAdd(container, sections);
+    return;
+  }
+
   sections.forEach(section=>{
     const sec=document.createElement('div'); sec.className='carousel-section';
 
@@ -2028,46 +2234,163 @@ function buildCarousel(container, cat, sections){
 
     const car=document.createElement('div'); car.className='carousel';
 
-    section.items.forEach(item=>{
-      const card=document.createElement('div');
-      card.className='product-card'; card.id='card-'+item.id;
+    // P9: limita a CAROUSEL_MAX itens, o resto vai em "Ver mais"
+    const visibleItems = section.items.slice(0, CAROUSEL_MAX);
+    const hiddenItems = section.items.slice(CAROUSEL_MAX);
 
-      const fallbackEmoji = {principal:'🍔',acompanhamentos:'🍟',sobremesas:'🍰',bebidas:'🥤'}[cat]||'🍽️';
-      const inCart = st.cart.some(i=>i.itemId===item.id&&i.cat===cat);
-      if(inCart) card.classList.add('sel');
-
-      const imgHtml = item.img
-        ? `<img class="card-img" src="${esc(item.img)}" alt="${esc(item.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
-        : '';
-      const placeholderStyle = item.img ? 'style="display:none"' : '';
-
-      card.innerHTML=`
-        <div class="card-check">
-          <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="card-img-wrap">
-          ${imgHtml}
-          <div class="card-img-placeholder" ${placeholderStyle}>${fallbackEmoji}</div>
-          ${section.badge?`<div class="card-badge">${esc(section.badge)}</div>`:''}
-        </div>
-        <div class="card-body">
-          <div class="card-name">${esc(item.name)}</div>
-          <div class="card-desc">${esc(item.desc)}</div>
-          <div class="card-footer">
-            <div>
-              ${item.variants?'<div class="card-price-label">A partir de</div>':''}
-              <div class="card-price">${esc(item.price)}</div>
-            </div>
-          </div>
-        </div>`;
-
-      card.addEventListener('click', ()=> openCfgModal(item, cat));
-      car.appendChild(card);
+    visibleItems.forEach(item=>{
+      car.appendChild(buildProductCard(item, cat, section));
     });
+
+    // Card "Ver mais" se houver itens ocultos
+    if(hiddenItems.length > 0){
+      const moreCard = document.createElement('div');
+      moreCard.className='card-seemore';
+      moreCard.innerHTML=`<div class="card-seemore-icon">⊞</div><div class="card-seemore-label">Ver mais<br>${hiddenItems.length} item${hiddenItems.length>1?'s':''}</div>`;
+      moreCard.onclick=()=> expandCategory(container, cat, section, hiddenItems, moreCard, car);
+      car.appendChild(moreCard);
+    }
 
     sec.appendChild(car);
     container.appendChild(sec);
   });
+}
+
+function buildProductCard(item, cat, section){
+  const card=document.createElement('div');
+  card.className='product-card'; card.id='card-'+item.id;
+  const fallbackEmoji = {principal:'🍔',acompanhamentos:'🍟',sobremesas:'🍰',bebidas:'🥤'}[cat]||'🍽️';
+  const entries = st.cart.filter(i=>i.itemId===item.id && i.cat===cat);
+  const totalQty = entries.reduce((s,i)=>s+(i.qty||1),0);
+  if(totalQty>0) card.classList.add('sel');
+  const imgHtml = item.img ? `<img class="card-img" src="${esc(item.img)}" alt="${esc(item.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : '';
+  const placeholderStyle = item.img ? 'style="display:none"' : '';
+  card.innerHTML=`
+    <div class="card-qty-badge">${totalQty>0?totalQty+'x':''}</div>
+    <div class="card-img-wrap">
+      ${imgHtml}
+      <div class="card-img-placeholder" ${placeholderStyle}>${fallbackEmoji}</div>
+      ${section.badge?`<div class="card-badge">${esc(section.badge)}</div>`:''}
+    </div>
+    <div class="card-body">
+      <div class="card-name">${esc(item.name)}</div>
+      <div class="card-desc">${esc(item.desc)}</div>
+      <div class="card-footer">
+        <div>
+          ${item.variants?'<div class="card-price-label">A partir de</div>':''}
+          <div class="card-price">${esc(item.price)}</div>
+        </div>
+      </div>
+    </div>`;
+  card.addEventListener('click', ()=> openCfgModal(item, cat));
+  return card;
+}
+
+/* P9: Expande categoria mostrando itens escondidos */
+function expandCategory(container, cat, section, hiddenItems, moreCard, carousel){
+  // Remove o card "Ver mais"
+  moreCard.remove();
+  // Adiciona os itens restantes
+  hiddenItems.forEach(item=>{
+    carousel.appendChild(buildProductCard(item, cat, section));
+  });
+}
+
+/* P3: Bebidas — quick-add sem modal */
+function buildBebidaQuickAdd(container, sections){
+  sections.forEach(section=>{
+    const wrap = document.createElement('div'); wrap.className='beb-quick-section';
+    const lbl = document.createElement('div'); lbl.className='beb-quick-label'; lbl.textContent=section.title;
+    wrap.appendChild(lbl);
+
+    const list = document.createElement('div'); list.className='beb-quick-list';
+
+    section.items.forEach(item=>{
+      const row = document.createElement('div'); row.className='beb-quick-item';
+
+      const imgWrap = document.createElement('div'); imgWrap.className='beb-quick-item-img';
+      if(item.img){
+        const img = document.createElement('img');
+        img.src=item.img; img.alt=item.name; img.loading='lazy';
+        img.onerror=()=>{ imgWrap.textContent = '🥤'; };
+        imgWrap.appendChild(img);
+      } else { imgWrap.textContent='🥤'; }
+
+      const info = document.createElement('div'); info.style.flex='1';
+      const name = document.createElement('div'); name.className='beb-quick-item-name'; name.textContent=item.name;
+      info.appendChild(name);
+
+      const varRow = document.createElement('div'); varRow.className='beb-quick-variants';
+      varRow.id='beb-variants-'+item.id;
+
+      if(item.variants && item.variants.length){
+        item.variants.forEach(({v,price,priceNum})=>{
+          const btn = document.createElement('button');
+          btn.className='beb-variant-btn';
+          btn.dataset.itemId = item.id;
+          btn.dataset.variant = v;
+          btn.id='beb-btn-'+item.id+'-'+v.replace(/\s/g,'_');
+          btn.onclick=()=> bebQuickAdd(item, v, price, priceNum||0);
+          renderBebBtn(btn, item.id, v, price);
+          varRow.appendChild(btn);
+        });
+      } else {
+        // Bebida sem variante (ex: Água Saborizada)
+        const btn = document.createElement('button');
+        btn.className='beb-novariant-btn';
+        btn.dataset.itemId = item.id;
+        btn.id='beb-btn-'+item.id+'-single';
+        btn.onclick=()=> bebQuickAdd(item, '', item.price, item.priceNum||0);
+        renderBebBtn(btn, item.id, '', item.price);
+        varRow.appendChild(btn);
+      }
+
+      info.appendChild(varRow);
+      row.appendChild(imgWrap);
+      row.appendChild(info);
+      list.appendChild(row);
+    });
+
+    wrap.appendChild(list);
+    container.appendChild(wrap);
+  });
+}
+
+function renderBebBtn(btn, itemId, variant, price){
+  // Conta quantas unidades dessa exata combinação na sacola
+  const qty = st.cart
+    .filter(i=>i.itemId===itemId && i.cat==='bebidas' && (i.variant||'')===variant)
+    .reduce((s,i)=>s+(i.qty||1),0);
+  const label = variant ? variant : price;
+  if(qty>0){
+    btn.className = btn.className.replace('beb-novariant-btn','beb-novariant-btn has-qty').replace('beb-variant-btn','beb-variant-btn has-qty');
+    if(!btn.className.includes('has-qty')) btn.className += ' has-qty';
+    btn.innerHTML = `${esc(label)} <span class="beb-variant-qty">${qty}</span>`;
+  } else {
+    btn.className = btn.className.replace(' has-qty','');
+    btn.innerHTML = `+ ${esc(label)}`;
+  }
+}
+
+function bebQuickAdd(item, variant, priceStr, priceNum){
+  const cat = 'bebidas';
+  const key = cartKey(item.id, cat, variant, '');
+  const existing = st.cart.find(i=>cartKey(i.itemId,i.cat,i.variant,i.obs)===key);
+  if(existing){
+    existing.qty = (existing.qty||1)+1;
+    buildCartLabel(existing);
+  } else {
+    const entry = { uid:newUid(), cat, itemId:item.id, item, variant, obs:'', qty:1, priceNum, priceStr, label:'' };
+    buildCartLabel(entry);
+    st.cart.push(entry);
+  }
+  refreshCardStates();
+  updateCartUI();
+  // Atualiza o botão visual sem re-renderizar tudo
+  const btnId = 'beb-btn-'+item.id+'-'+(variant||'single').replace(/\s/g,'_');
+  const btn = document.getElementById(btnId);
+  if(btn) renderBebBtn(btn, item.id, variant, priceStr);
+  showToast('Adicionado 🥤');
 }
 
 function lock(id){
@@ -2094,7 +2417,7 @@ function sendWA(){
       msg+=`\n*${icon} ${label}:*\n`;
       items.forEach(i=>{
         const qty = i.qty||1;
-        msg+='• '+(qty>1?qty+'x ':'')+i.label;
+        msg+='• '+(qty>1?qty+'x ':'')+i.item.name+(i.variant?' ('+i.variant+')':'');
         if(i.obs) msg+=' (obs: '+i.obs+')';
         msg+='\n';
       });
