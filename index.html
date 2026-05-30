@@ -195,7 +195,6 @@ body::before{
 .conv-progbar{width:90px;height:2px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
 .conv-progfill{height:100%;background:var(--primary-glow);border-radius:2px;transition:width .5s var(--ease-io)}
 
-/* ── SACOLA BOTÃO NO HEADER ── */
 .cart-btn{
   position:relative;
   width:40px;height:40px;border-radius:10px;
@@ -335,7 +334,6 @@ body::before{
 .continue-btn:hover{background-position:0% 0}
 .continue-btn:active{transform:scale(.97)}
 
-/* CARROSSEL */
 .carousel-section{margin-bottom:14px}
 .carousel-label{
   font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
@@ -343,21 +341,20 @@ body::before{
   padding-left:42px;
 }
 .carousel{
-  display:flex;gap:12px;
+  display:flex;gap:14px;
   overflow-x:auto;overflow-y:visible;
   scroll-snap-type:x mandatory;
   -webkit-overflow-scrolling:touch;
-  padding:4px 16px 14px 42px;
+  padding:4px 16px 16px 42px;
   scrollbar-width:none;
   box-sizing:border-box;
   width:100%;
 }
 .carousel::-webkit-scrollbar{display:none}
 
-/* PRODUCT CARD */
 .product-card{
   scroll-snap-align:start;
-  flex:0 0 152px;
+  flex:0 0 178px;
   background:#1C0808;
   border:1.5px solid rgba(255,255,255,.10);
   border-radius:14px;
@@ -388,7 +385,7 @@ body::before{
 .card-img-wrap{
   position:relative;
   width:100%;
-  height:100px;
+  height:128px;
   overflow:hidden;
   flex-shrink:0;
 }
@@ -403,7 +400,7 @@ body::before{
   width:100%;height:100%;
   display:flex;align-items:center;justify-content:center;
   background:linear-gradient(135deg,#2A0A0A 0%,#3D1010 50%,#1E0606 100%);
-  font-size:38px;
+  font-size:44px;
   position:relative;
 }
 .card-img-placeholder::after{
@@ -426,21 +423,20 @@ body::before{
   backdrop-filter:blur(4px);
 }
 
-/* CARD BODY */
 .card-body{
-  padding:9px 10px 11px;
-  display:flex;flex-direction:column;gap:3px;
+  padding:10px 11px 12px;
+  display:flex;flex-direction:column;gap:4px;
   flex:1;
   background:#1C0808;
 }
 .card-name{
   font-family:var(--font-body);
-  font-size:12.5px;font-weight:700;
+  font-size:13.5px;font-weight:700;
   color:#fff;line-height:1.3;
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
 }
 .card-desc{
-  font-size:10.5px;color:rgba(255,255,255,.42);
+  font-size:11px;color:rgba(255,255,255,.42);
   line-height:1.35;
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
 }
@@ -450,7 +446,7 @@ body::before{
 }
 .card-price{
   font-family:var(--font-strong);
-  font-size:15px;font-weight:700;
+  font-size:16px;font-weight:700;
   color:var(--primary-glow);
   letter-spacing:.02em;
   line-height:1;
@@ -462,7 +458,6 @@ body::before{
 
 /* ════════════════════════════════
    MODAL DE CONFIGURAÇÃO DO PRODUTO
-   (substitui variants-row e sel-bar inline)
 ════════════════════════════════ */
 .cfg-modal-overlay{
   position:fixed;inset:0;z-index:600;
@@ -507,14 +502,14 @@ body::before{
 .cfg-modal-close:hover{background:rgba(255,255,255,.2)}
 
 .cfg-modal-img-wrap{
-  position:relative;width:100%;height:190px;flex-shrink:0;overflow:hidden;
+  position:relative;width:100%;height:260px;flex-shrink:0;overflow:hidden;
 }
 .cfg-modal-img{width:100%;height:100%;object-fit:cover;display:block}
 .cfg-modal-img-placeholder{
   width:100%;height:100%;
   display:flex;align-items:center;justify-content:center;
   background:linear-gradient(135deg,#2A0A0A,#3D1010);
-  font-size:70px;
+  font-size:80px;
 }
 .cfg-modal-img-wrap::after{
   content:'';position:absolute;bottom:0;left:0;right:0;height:90px;
@@ -551,7 +546,6 @@ body::before{
   color:rgba(230,126,34,.75);margin-bottom:8px;margin-top:14px;
 }
 
-/* Chips de tamanho/variante dentro do modal */
 .cfg-variant-list{display:flex;flex-direction:column;gap:8px;margin-bottom:4px;}
 .cfg-variant-item{
   display:flex;align-items:center;justify-content:space-between;
@@ -580,7 +574,6 @@ body::before{
   background:var(--green-sel);border-color:var(--green-light);
 }
 
-/* Ingredientes no modal */
 .cfg-ingredients{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px}
 .cfg-ingredient{
   padding:4px 11px;border-radius:100px;
@@ -589,7 +582,6 @@ body::before{
   font-size:11px;font-weight:500;color:rgba(255,255,255,.6);
 }
 
-/* Observações */
 .cfg-obs-input{
   width:100%;
   background:rgba(255,255,255,.07);
@@ -606,7 +598,37 @@ body::before{
 .cfg-obs-input::placeholder{color:rgba(255,255,255,.25)}
 .cfg-obs-input:focus{border-color:rgba(230,126,34,.55);background:rgba(255,255,255,.09)}
 
-/* Área fixa de ação no modal */
+/* Contador de quantidade no modal */
+.cfg-qty-row{
+  display:flex;align-items:center;gap:14px;margin-bottom:4px;
+}
+.cfg-qty-label{
+  font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(230,126,34,.75);flex:1;
+}
+.cfg-qty-controls{
+  display:flex;align-items:center;gap:0;
+  background:rgba(255,255,255,.06);
+  border:1.5px solid rgba(255,255,255,.12);
+  border-radius:10px;overflow:hidden;
+}
+.cfg-qty-btn{
+  width:38px;height:38px;
+  background:none;border:none;
+  color:#fff;font-size:20px;font-weight:300;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:background .12s;
+  -webkit-tap-highlight-color:transparent;
+  line-height:1;
+}
+.cfg-qty-btn:hover{background:rgba(255,255,255,.08)}
+.cfg-qty-btn:active{background:rgba(230,126,34,.15)}
+.cfg-qty-val{
+  min-width:36px;text-align:center;
+  font-family:var(--font-strong);font-size:20px;font-weight:700;
+  color:#fff;line-height:1;
+}
+
 .cfg-modal-footer{
   flex-shrink:0;
   padding:14px 20px calc(16px + env(safe-area-inset-bottom,0px));
@@ -626,10 +648,6 @@ body::before{
 }
 .cfg-add-btn:hover{background-position:0% 0}
 .cfg-add-btn:active{transform:scale(.98)}
-.cfg-add-btn.remove-mode{
-  background:linear-gradient(105deg,#5c1a1a,#8B1A1A);
-  box-shadow:0 4px 16px rgba(139,26,26,.3);
-}
 
 /* ════════════════════════════════
    SACOLA (CART DRAWER)
@@ -640,18 +658,18 @@ body::before{
   backdrop-filter:blur(6px);
   opacity:0;pointer-events:none;
   transition:opacity .25s ease;
+  display:flex;align-items:flex-end;justify-content:center;
 }
 .cart-overlay.open{opacity:1;pointer-events:all}
 
 .cart-drawer{
-  position:absolute;
-  bottom:0;left:0;right:0;
-  max-width:520px;margin:0 auto;
+  width:100%;
+  max-width:520px;
   background:#160505;
   border-radius:22px 22px 0 0;
   border:1.5px solid rgba(230,126,34,.22);
   border-bottom:none;
-  max-height:88dvh;
+  height:clamp(50dvh, 70dvh, 88dvh);
   display:flex;flex-direction:column;
   transform:translateY(100%);
   transition:transform .34s cubic-bezier(.2,.7,.2,1);
@@ -690,8 +708,11 @@ body::before{
 .cart-close:hover{background:rgba(255,255,255,.15)}
 
 .cart-scroll{
-  flex:1 1 0;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  flex:1 1 0;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
   padding:8px 0;
+  min-height:0;
 }
 
 .cart-empty{
@@ -709,7 +730,7 @@ body::before{
   animation:msgIn .28s ease both;
 }
 .cart-item-img{
-  width:52px;height:52px;border-radius:10px;
+  width:56px;height:56px;border-radius:10px;
   object-fit:cover;flex-shrink:0;
   border:1px solid rgba(255,255,255,.08);
   background:#2A0A0A;
@@ -876,10 +897,29 @@ body::before{
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:rgba(230,126,34,.16);border-radius:2px}
 
+/* Card histórico clicável — destaque visual sutil */
+.history-card-item{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(230,126,34,.10);
+  border:1px solid rgba(230,126,34,.22);
+  border-radius:20px;
+  padding:4px 11px 4px 7px;
+  font-size:12px;font-weight:600;color:rgba(255,255,255,.8);
+  cursor:pointer;
+  transition:background .15s,border-color .15s;
+  -webkit-tap-highlight-color:transparent;
+  text-decoration:none;
+  margin:2px 2px;
+}
+.history-card-item:hover{background:rgba(230,126,34,.20);border-color:rgba(230,126,34,.4)}
+.history-card-item:active{opacity:.75}
+.history-card-dot{width:6px;height:6px;border-radius:50%;background:var(--green-light);flex-shrink:0}
+
 @media(max-width:360px){
-  .product-card{flex:0 0 136px}
+  .product-card{flex:0 0 158px}
   .delivery-toggle{flex-direction:column}
-  .card-img-wrap{height:88px}
+  .card-img-wrap{height:110px}
+  .cfg-modal-img-wrap{height:200px}
 }
 </style>
 </head>
@@ -971,7 +1011,6 @@ body::before{
       </div>
       <div style="display:flex;align-items:center;gap:10px">
         <div class="conv-progbar"><div class="conv-progfill" id="progFill" style="width:0%"></div></div>
-        <!-- Botão Sacola -->
         <button class="cart-btn" id="cartBtn" onclick="openCart()" aria-label="Abrir sacola">
           <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
             <path d="M3 4h14l-1.5 8.5a2 2 0 01-2 1.5H6.5a2 2 0 01-2-1.5L3 4z" stroke="rgba(230,126,34,.85)" stroke-width="1.5" stroke-linejoin="round"/>
@@ -1064,6 +1103,10 @@ const MENU = {
           details:'O lanche completo! Tudo que há de melhor em um só. Carne, frango, bacon, ovo, queijo, presunto, alface, tomate, milho e molho especial.',
           ingredients:['Pão especial','Carne 120g','Frango grelhado','Bacon','Ovo','Queijo','Presunto','Alface','Tomate','Milho','Molho especial'],
           img:'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=75' },
+        { id:'frango-crispy', name:'Frango Crispy', price:'R$ 24,00', priceNum:24, desc:'Frango empanado crocante artesanal',
+          details:'Frango empanado na hora com crosta crocante e tempero especial da família. Servido com maionese de alho e alface fresca.',
+          ingredients:['Pão australiano','Filé de frango empanado','Maionese de alho','Alface','Tomate','Picles'],
+          img:'https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?w=400&q=75' },
         { id:'burger-veg', name:'Burger Vegetariano', price:'R$ 23,00', priceNum:23, desc:'Hambúrguer vegetal artesanal',
           details:'Opção leve e saborosa! Hambúrguer vegetal feito com grão-de-bico e ervas, com queijo e vegetais frescos.',
           ingredients:['Pão integral','Hambúrguer vegetal','Queijo mozzarella','Rúcula','Tomate seco','Maionese de ervas','Cebola caramelizada'],
@@ -1154,6 +1197,16 @@ const MENU = {
   },
 };
 
+// Mapa plano de todos os itens para lookup rápido por id
+const ITEM_MAP = {};
+(function(){
+  Object.entries(MENU).forEach(([cat, catData])=>{
+    catData.sections.forEach(sec=>{
+      sec.items.forEach(item=>{ ITEM_MAP[item.id] = { item, cat }; });
+    });
+  });
+})();
+
 const WHATSAPP = '5583991816152';
 
 /* ════════════════════════════════
@@ -1161,29 +1214,21 @@ const WHATSAPP = '5583991816152';
 ════════════════════════════════ */
 let st = {
   nome:'',
-  // sel é agora a SACOLA: array de objetos { uid, cat, itemId, item, variant, obs, label, price }
-  cart: [],
+  cart: [],   // cada entrada: { uid, cat, itemId, item, variant, obs, label, priceNum, priceStr, qty }
   delivery:'', payment:'', address:'', addrRef:'',
 };
 
-// uid incremental para itens da sacola
 let _uidCounter = 0;
 function newUid(){ return 'item_'+(++_uidCounter); }
 
-// Para compatibilidade com o fluxo existente:
-// st.sel[cat] é usado para marcar cards — vamos mantê-lo como lookup
-function getSelBycat(cat){
-  const m = {};
-  st.cart.filter(i=>i.cat===cat).forEach(i=>{
-    m[i.itemId] = true;
-  });
-  return m;
+/* ── Chave de agrupamento: mesma configuração = mesmo grupo ── */
+function itemKey(itemId, cat, variant, obs){
+  return [itemId, cat, variant||'', (obs||'').trim()].join('||');
 }
-function cartCountByCat(cat){ return st.cart.filter(i=>i.cat===cat).length; }
-function cartLabels(cat){ return st.cart.filter(i=>i.cat===cat).map(i=>i.label).join('\n'); }
+
 function cartTotal(){
-  let sum=0;
-  st.cart.forEach(i=>{ if(i.priceNum) sum+=i.priceNum; });
+  let sum = 0;
+  st.cart.forEach(i=>{ if(i.priceNum) sum += i.priceNum * (i.qty||1); });
   return sum;
 }
 
@@ -1227,14 +1272,15 @@ function prog(pct){ document.getElementById('progFill').style.width=pct+'%'; }
    SACOLA UI
 ════════════════════════════════ */
 function updateCartUI(){
-  const count = st.cart.length;
+  // Conta total de unidades (somando qty)
+  const totalQty = st.cart.reduce((s,i)=>s+(i.qty||1),0);
   const badge = document.getElementById('cartBadge');
   const countLabel = document.getElementById('cartCountLabel');
   if(badge){
-    badge.textContent = count;
-    badge.classList.toggle('show', count>0);
+    badge.textContent = totalQty;
+    badge.classList.toggle('show', totalQty>0);
   }
-  if(countLabel) countLabel.textContent = count+' '+(count===1?'item':'itens');
+  if(countLabel) countLabel.textContent = totalQty+' '+(totalQty===1?'item':'itens');
 }
 
 function openCart(){
@@ -1261,17 +1307,19 @@ function renderCartDrawer(){
 
   footer.style.display='';
   st.cart.forEach(ci=>{
+    const qty = ci.qty||1;
     const div=document.createElement('div'); div.className='cart-item';
     const fallbackEmoji = {principal:'🍔',acompanhamentos:'🍟',sobremesas:'🍰',bebidas:'🥤'}[ci.cat]||'🍽️';
+    const itemTotal = ci.priceNum ? 'R$ '+(ci.priceNum*qty).toFixed(2).replace('.',',') : ci.priceStr;
     div.innerHTML=`
       <div class="cart-item-img">
         ${ci.item.img?`<img src="${esc(ci.item.img)}" alt="${esc(ci.item.name)}" loading="lazy" onerror="this.parentElement.textContent='${fallbackEmoji}'">`:`${fallbackEmoji}`}
       </div>
       <div class="cart-item-info">
-        <div class="cart-item-name">${esc(ci.item.name)}</div>
+        <div class="cart-item-name">${qty>1?`<strong>${qty}x</strong> `:''}${esc(ci.item.name)}</div>
         ${ci.variant?`<div class="cart-item-variant">${esc(ci.variant)}</div>`:''}
         ${ci.obs?`<div class="cart-item-obs">📝 ${esc(ci.obs)}</div>`:''}
-        <div class="cart-item-price">${esc(ci.priceStr)}</div>
+        <div class="cart-item-price">${esc(itemTotal)}</div>
       </div>
       <div class="cart-item-actions">
         <button class="cart-item-edit" onclick="editCartItem('${ci.uid}')">✏️ Editar</button>
@@ -1280,7 +1328,6 @@ function renderCartDrawer(){
     scroll.appendChild(div);
   });
 
-  // Total
   const total = cartTotal();
   const totalEl = document.getElementById('cartTotalValue');
   if(total>0) totalEl.textContent='R$ '+total.toFixed(2).replace('.',',');
@@ -1304,7 +1351,6 @@ function editCartItem(uid){
 }
 
 function refreshCardStates(){
-  // Atualiza visual de todos os cards conforme sacola atual
   document.querySelectorAll('.product-card').forEach(card=>{
     const id = card.id.replace('card-','');
     const inCart = st.cart.some(i=>i.itemId===id);
@@ -1314,19 +1360,26 @@ function refreshCardStates(){
 
 /* ════════════════════════════════
    MODAL DE CONFIGURAÇÃO DO PRODUTO
+   ITEM 1: controle de quantidade
+   ITEM 2: edição pelo histórico
 ════════════════════════════════ */
 let _cfgItem=null, _cfgCat=null, _cfgEditUid=null;
-let _cfgSelectedVariant=null, _cfgObs='';
+let _cfgSelectedVariant=null, _cfgObs='', _cfgQty=1;
 
 function openCfgModal(item, cat, editUid=null){
   _cfgItem=item; _cfgCat=cat; _cfgEditUid=editUid;
-  _cfgSelectedVariant=null; _cfgObs='';
+  _cfgSelectedVariant=null; _cfgObs=''; _cfgQty=1;
 
-  // Se for edição, pré-preenche
   if(editUid){
+    // Edição explícita: carrega estado do item existente
     const ci = st.cart.find(i=>i.uid===editUid);
-    if(ci){ _cfgSelectedVariant=ci.variant||null; _cfgObs=ci.obs||''; }
+    if(ci){
+      _cfgSelectedVariant = ci.variant||null;
+      _cfgObs = ci.obs||'';
+      _cfgQty = ci.qty||1;
+    }
   }
+  // Para novo item: sempre abre limpo (qty=1), permitindo nova entrada na sacola
 
   renderCfgModal();
   document.getElementById('cfgModalOverlay').classList.add('open');
@@ -1335,16 +1388,13 @@ function openCfgModal(item, cat, editUid=null){
 function renderCfgModal(){
   const item = _cfgItem;
   const content = document.getElementById('cfgModalContent');
-  const alreadyInCart = _cfgEditUid
-    ? true
-    : st.cart.some(i=>i.itemId===item.id && i.cat===_cfgCat);
+  const isEdit = !!_cfgEditUid;
 
   let imgHtml = item.img
     ? `<img class="cfg-modal-img" src="${esc(item.img)}" alt="${esc(item.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
     : '';
   const fallbackEmoji = {principal:'🍔',acompanhamentos:'🍟',sobremesas:'🍰',bebidas:'🥤'}[_cfgCat]||'🍽️';
 
-  // Monta variantes se houver
   let variantsHTML = '';
   if(item.variants && item.variants.length){
     variantsHTML = `<div class="cfg-section-title">Escolha o tamanho</div>
@@ -1360,7 +1410,6 @@ function renderCfgModal(){
     </div>`;
   }
 
-  // Ingredientes
   let ingredHTML = '';
   if(item.ingredients && item.ingredients.length){
     ingredHTML = `<div class="cfg-section-title">Ingredientes</div>
@@ -1369,19 +1418,46 @@ function renderCfgModal(){
     </div>`;
   }
 
-  // Preço a exibir no header
   const displayPrice = (_cfgSelectedVariant && item.variants)
     ? (item.variants.find(v=>v.v===_cfgSelectedVariant)||{}).price || item.price
     : item.price;
 
-  // Botão de ação
-  const isEdit = !!_cfgEditUid;
-  const btnLabel = isEdit
-    ? '✓ Salvar alterações'
-    : (alreadyInCart && !item.variants)
-      ? '— Remover da sacola'
-      : '+ Adicionar à sacola';
-  const btnClass = (!isEdit && alreadyInCart && !item.variants) ? 'cfg-add-btn remove-mode' : 'cfg-add-btn';
+  // ITEM 1: controle de quantidade
+  const qtyHTML = `
+    <div class="cfg-qty-row" style="margin-top:14px">
+      <div class="cfg-qty-label">Quantidade</div>
+      <div class="cfg-qty-controls">
+        <button class="cfg-qty-btn" onclick="changeQty(-1)" aria-label="Diminuir">−</button>
+        <div class="cfg-qty-val" id="cfgQtyVal">${_cfgQty}</div>
+        <button class="cfg-qty-btn" onclick="changeQty(1)" aria-label="Aumentar">+</button>
+      </div>
+    </div>`;
+
+  // Botão principal
+  let btnLabel = isEdit ? '✓ Salvar alterações' : '+ Adicionar ao pedido';
+
+  // ITEM 1: botão secundário "Adicionar mais uma unidade" — só quando não é edição
+  let secondaryBtnHTML = '';
+  if(!isEdit){
+    secondaryBtnHTML = `
+      <button onclick="cfgAddOneMore()" style="
+        width:100%;margin-top:8px;padding:13px;
+        background:rgba(230,126,34,.10);
+        border:1.5px solid rgba(230,126,34,.30);
+        border-radius:10px;
+        font-family:var(--font-body);font-size:13px;font-weight:700;
+        color:rgba(255,255,255,.8);cursor:pointer;
+        display:flex;align-items:center;justify-content:center;gap:8px;
+        transition:background .15s;
+        -webkit-tap-highlight-color:transparent;
+      ">
+        ＋ Adicionar mais uma unidade
+      </button>`;
+  }
+
+  let removeBtnHTML = isEdit
+    ? `<button onclick="cfgRemove()" style="width:100%;margin-top:8px;padding:11px;background:rgba(220,50,50,.08);border:1px solid rgba(220,50,50,.2);border-radius:10px;font-family:var(--font-body);font-size:13px;font-weight:700;color:rgba(255,100,100,.8);cursor:pointer;">✕ Remover da sacola</button>`
+    : '';
 
   content.innerHTML=`
     <div class="cfg-modal-img-wrap">
@@ -1396,18 +1472,83 @@ function renderCfgModal(){
       <div class="cfg-modal-desc">${esc(item.details||item.desc)}</div>
       ${variantsHTML}
       ${ingredHTML}
-      <div class="cfg-section-title">Observações</div>
+      ${qtyHTML}
+      <div class="cfg-section-title" style="margin-top:14px">Observações</div>
       <textarea class="cfg-obs-input" id="cfgObsInput" rows="2" placeholder="Sem cebola, ponto da carne, alergias...">${esc(_cfgObs)}</textarea>
       <div style="height:16px"></div>
     </div>
     <div class="cfg-modal-footer">
-      <button class="${btnClass}" id="cfgAddBtn" onclick="cfgConfirm()">${btnLabel}</button>
+      <button class="cfg-add-btn" id="cfgAddBtn" onclick="cfgConfirm()">${btnLabel}</button>
+      ${secondaryBtnHTML}
+      ${removeBtnHTML}
     </div>`;
+}
+
+/* ITEM 1: alterar quantidade no modal */
+function changeQty(delta){
+  _cfgQty = Math.max(1, (_cfgQty||1) + delta);
+  const el = document.getElementById('cfgQtyVal');
+  if(el) el.textContent = _cfgQty;
+}
+
+/* ITEM 1: "Adicionar mais uma unidade" ao grupo existente */
+function cfgAddOneMore(){
+  const item = _cfgItem;
+  const cat = _cfgCat;
+
+  if(item.variants && item.variants.length && !_cfgSelectedVariant){
+    showToast('Escolha um tamanho primeiro ☝️');
+    return;
+  }
+
+  const obsInput = document.getElementById('cfgObsInput');
+  const obs = obsInput ? obsInput.value.trim() : '';
+
+  let priceNum = item.priceNum||0;
+  let priceStr = item.price;
+  let variantLabel = _cfgSelectedVariant||'';
+  if(variantLabel && item.variants){
+    const vObj = item.variants.find(v=>v.v===variantLabel);
+    if(vObj){ priceNum=vObj.priceNum||0; priceStr=vObj.price; }
+  }
+
+  const key = itemKey(item.id, cat, variantLabel, obs);
+
+  // Procura grupo existente com mesma configuração
+  const existing = st.cart.find(i=> itemKey(i.itemId, i.cat, i.variant||'', i.obs||'') === key);
+
+  if(existing){
+    // Incrementa quantidade no grupo existente
+    existing.qty = (existing.qty||1) + 1;
+    showToast(`+1 ${item.name} (${existing.qty}x no total) 🛒`);
+  } else {
+    // Primeira vez: cria com qty=1
+    const label = item.name + (variantLabel?' ('+variantLabel+')':'');
+    st.cart.push({
+      uid: newUid(), cat, itemId:item.id, item,
+      variant:variantLabel, obs, label, priceNum, priceStr, qty:1
+    });
+    showToast(`${item.name} adicionado 🛒`);
+  }
+
+  refreshCardStates();
+  updateCartUI();
+  closeCfgModalBtn();
+}
+
+function cfgRemove(){
+  const uid = _cfgEditUid;
+  if(uid){
+    st.cart = st.cart.filter(i=>i.uid!==uid);
+  }
+  refreshCardStates();
+  updateCartUI();
+  closeCfgModalBtn();
+  showToast('Removido da sacola');
 }
 
 function selectVariant(v, price){
   _cfgSelectedVariant = v;
-  // Atualiza itens visuais sem re-render completo
   document.querySelectorAll('.cfg-variant-item').forEach(el=>{
     const isThis = el.dataset.v===v;
     el.classList.toggle('sel',isThis);
@@ -1415,63 +1556,54 @@ function selectVariant(v, price){
       ? `<svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`
       : '';
   });
-  // Atualiza preço exibido
   const priceEl = document.getElementById('cfgModalPrice');
   if(priceEl) priceEl.textContent = price;
-  // Atualiza botão
-  const btn = document.getElementById('cfgAddBtn');
-  if(btn){ btn.className='cfg-add-btn'; btn.textContent='+ Adicionar à sacola'; }
 }
 
+/* cfgConfirm: "Adicionar ao pedido" (respeita _cfgQty) ou "Salvar alterações" */
 function cfgConfirm(){
   const item = _cfgItem;
   const cat = _cfgCat;
   const obsInput = document.getElementById('cfgObsInput');
   const obs = obsInput ? obsInput.value.trim() : '';
 
-  // Validação: se tem variante, precisa escolher
   if(item.variants && item.variants.length && !_cfgSelectedVariant){
     showToast('Escolha um tamanho ☝️');
     return;
   }
 
-  // Encontra priceNum
   let priceNum = item.priceNum||0;
   let priceStr = item.price;
-  let variantLabel = '';
-  if(_cfgSelectedVariant && item.variants){
-    const vObj = item.variants.find(v=>v.v===_cfgSelectedVariant);
+  let variantLabel = _cfgSelectedVariant||'';
+  if(variantLabel && item.variants){
+    const vObj = item.variants.find(v=>v.v===variantLabel);
     if(vObj){ priceNum=vObj.priceNum||0; priceStr=vObj.price; }
-    variantLabel = _cfgSelectedVariant;
   }
 
   const label = item.name + (variantLabel?' ('+variantLabel+')':'');
+  const qty = _cfgQty || 1;
 
   if(_cfgEditUid){
-    // Edição
+    // Edição: atualiza item existente
     const idx = st.cart.findIndex(i=>i.uid===_cfgEditUid);
     if(idx>=0){
-      st.cart[idx] = {...st.cart[idx], variant:variantLabel, obs, label, priceNum, priceStr};
+      st.cart[idx] = {...st.cart[idx], variant:variantLabel, obs, label, priceNum, priceStr, qty};
     }
     showToast('Item atualizado ✓');
   } else {
-    // Verifica se é toggle (remover) — só para itens sem variante já na sacola
-    const existing = !item.variants && st.cart.find(i=>i.itemId===item.id&&i.cat===cat);
+    // Novo item: verifica se já existe grupo com mesma config
+    const key = itemKey(item.id, cat, variantLabel, obs);
+    const existing = st.cart.find(i=> itemKey(i.itemId, i.cat, i.variant||'', i.obs||'') === key);
     if(existing){
-      st.cart = st.cart.filter(i=>!(i.itemId===item.id&&i.cat===cat));
-      refreshCardStates();
-      updateCartUI();
-      closeCfgModalBtn();
-      showToast('Removido da sacola');
-      return;
+      existing.qty = (existing.qty||1) + qty;
+      showToast(`${existing.qty}x ${item.name} na sacola 🛒`);
+    } else {
+      st.cart.push({
+        uid: newUid(), cat, itemId:item.id, item,
+        variant:variantLabel, obs, label, priceNum, priceStr, qty
+      });
+      showToast(qty>1?`${qty}x ${item.name} adicionado 🛒`:'Adicionado à sacola 🛒');
     }
-    // Adicionar
-    st.cart.push({
-      uid: newUid(),
-      cat, itemId:item.id, item,
-      variant: variantLabel, obs, label, priceNum, priceStr
-    });
-    showToast('Adicionado à sacola 🛒');
   }
 
   refreshCardStates();
@@ -1508,6 +1640,38 @@ function addUser(text){
   const el=document.createElement('div'); el.className='user-msg';
   el.innerHTML=`<div class="user-bubble">${esc(text)}</div>`;
   stage().appendChild(el); scrollBottom();
+}
+
+/* ITEM 2: addUserWithCartCards — exibe o texto + cards clicáveis dos itens da sacola no histórico */
+function addUserWithCartCards(text, cartSnapshot){
+  const el=document.createElement('div');
+  el.style.display='flex'; el.style.flexDirection='column'; el.style.alignItems='flex-end';
+  el.style.marginBottom='12px'; el.style.animation='msgIn .3s ease both';
+
+  // Bubble de texto principal
+  const bubble=document.createElement('div'); bubble.className='user-bubble';
+  bubble.style.marginBottom='6px';
+
+  // Monta chips clicáveis de cada item
+  const chips = cartSnapshot.map(ci=>{
+    const qty = ci.qty||1;
+    const chipText = (qty>1?qty+'x ':'')+ci.item.name+(ci.variant?' ('+ci.variant+')':'');
+    return `<span class="history-card-item" onclick="openCfgModal_byUid('${ci.uid}')">
+      <span class="history-card-dot"></span>${esc(chipText)}
+    </span>`;
+  }).join('');
+
+  bubble.innerHTML = `${esc(text)}<br><div style="margin-top:7px;display:flex;flex-wrap:wrap;gap:4px;">${chips}</div>`;
+  el.appendChild(bubble);
+  stage().appendChild(el);
+  scrollBottom();
+}
+
+/* ITEM 2: abre modal de edição a partir do uid (usado pelos chips do histórico) */
+function openCfgModal_byUid(uid){
+  const ci = st.cart.find(i=>i.uid===uid);
+  if(!ci){ showToast('Item não encontrado na sacola'); return; }
+  openCfgModal(ci.item, ci.cat, uid);
 }
 
 function addInline(buildFn){
@@ -1555,7 +1719,7 @@ function scrollBottom(){
 }
 
 /* ════════════════════════════════
-   FLUXO — preservado integralmente
+   FLUXO
 ════════════════════════════════ */
 function startFlow(){
   prog(5);
@@ -1606,8 +1770,11 @@ function stepPrincipal(){
       btn.onclick=()=>{
         const catItems=st.cart.filter(i=>i.cat==='principal');
         if(!catItems.length){showToast('Selecione ao menos um item 🍔');return;}
-        const labels=catItems.map(i=>i.label).join(', ');
-        addUser(labels); clearAnswer(); lock('il-principal');
+        // ITEM 2: exibe chips clicáveis no histórico
+        const labelText = catItems.map(i=>(i.qty>1?i.qty+'x ':'')+i.label).join(', ');
+        const snap = catItems.map(i=>({...i})); // snapshot
+        clearAnswer(); lock('il-principal');
+        addUserWithCartCards(labelText, snap);
         setTimeout(()=>{
           send([
             {html:'Excelente escolha 😋', delay:0},
@@ -1633,8 +1800,13 @@ function stepAcompanhamentos(){
       btn.innerHTML='Continuar <svg viewBox="0 0 14 14" fill="none" width="13" height="13"><path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
       btn.onclick=()=>{
         const catItems=st.cart.filter(i=>i.cat==='acompanhamentos');
-        const labels=catItems.length?catItems.map(i=>i.label).join(', '):'Sem acompanhamentos';
-        addUser(labels); clearAnswer(); lock('il-acomp');
+        const labelText = catItems.length ? catItems.map(i=>(i.qty>1?i.qty+'x ':'')+i.label).join(', ') : 'Sem acompanhamentos';
+        clearAnswer(); lock('il-acomp');
+        if(catItems.length){
+          addUserWithCartCards(labelText, catItems.map(i=>({...i})));
+        } else {
+          addUser(labelText);
+        }
         setTimeout(()=>{
           send([
             {html:'Anotado! 👍', delay:0},
@@ -1660,8 +1832,13 @@ function stepSobremesas(){
       btn.innerHTML='Continuar <svg viewBox="0 0 14 14" fill="none" width="13" height="13"><path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
       btn.onclick=()=>{
         const catItems=st.cart.filter(i=>i.cat==='sobremesas');
-        const labels=catItems.length?catItems.map(i=>i.label).join(', '):'Sem sobremesa';
-        addUser(labels); clearAnswer(); lock('il-sob');
+        const labelText = catItems.length ? catItems.map(i=>(i.qty>1?i.qty+'x ':'')+i.label).join(', ') : 'Sem sobremesa';
+        clearAnswer(); lock('il-sob');
+        if(catItems.length){
+          addUserWithCartCards(labelText, catItems.map(i=>({...i})));
+        } else {
+          addUser(labelText);
+        }
         setTimeout(()=>{
           send([
             {html:'Ótimo! Falta só a <strong>bebida</strong> para completar 🥤', delay:0},
@@ -1685,8 +1862,13 @@ function stepBebidas(){
       btn.innerHTML='Continuar <svg viewBox="0 0 14 14" fill="none" width="13" height="13"><path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
       btn.onclick=()=>{
         const catItems=st.cart.filter(i=>i.cat==='bebidas');
-        const labels=catItems.length?catItems.map(i=>i.label).join(', '):'Sem bebida';
-        addUser(labels); clearAnswer(); lock('il-beb');
+        const labelText = catItems.length ? catItems.map(i=>(i.qty>1?i.qty+'x ':'')+i.label).join(', ') : 'Sem bebida';
+        clearAnswer(); lock('il-beb');
+        if(catItems.length){
+          addUserWithCartCards(labelText, catItems.map(i=>({...i})));
+        } else {
+          addUser(labelText);
+        }
         setTimeout(()=>{
           send([
             {html:'Pedido montado! Agora me conta como prefere <em>receber</em> 🛵', delay:0},
@@ -1794,7 +1976,14 @@ function stepResumo(){
       ];
       cats.forEach(({cat,label})=>{
         const items=st.cart.filter(i=>i.cat===cat);
-        if(items.length) rows.push({k:label,v:items.map(i=>i.label+(i.obs?'\n  📝 '+i.obs:'')).join('\n')});
+        if(items.length){
+          const lines = items.map(i=>{
+            const qty = i.qty||1;
+            const prefix = qty>1 ? qty+'x ' : '';
+            return prefix+i.label+(i.obs?'\n  📝 '+i.obs:'');
+          });
+          rows.push({k:label, v:lines.join('\n')});
+        }
       });
 
       rows.push({k:'Recebimento',v:st.delivery==='entrega'?'Entrega':'Retirada no local'});
@@ -1827,8 +2016,7 @@ function stepResumo(){
 }
 
 /* ════════════════════════════════
-   CARROSSEL — buildCarousel
-   (sem variants-row nem sel-bar inline)
+   CARROSSEL
 ════════════════════════════════ */
 function buildCarousel(container, cat, sections){
   sections.forEach(section=>{
@@ -1873,9 +2061,7 @@ function buildCarousel(container, cat, sections){
           </div>
         </div>`;
 
-      // Toque no card = abrir modal de configuração
       card.addEventListener('click', ()=> openCfgModal(item, cat));
-
       car.appendChild(card);
     });
 
@@ -1907,7 +2093,8 @@ function sendWA(){
     if(items.length){
       msg+=`\n*${icon} ${label}:*\n`;
       items.forEach(i=>{
-        msg+='• '+i.label;
+        const qty = i.qty||1;
+        msg+='• '+(qty>1?qty+'x ':'')+i.label;
         if(i.obs) msg+=' (obs: '+i.obs+')';
         msg+='\n';
       });
