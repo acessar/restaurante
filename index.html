@@ -54,9 +54,7 @@ body::before{
     linear-gradient(175deg,#4A0A0A 0%,#6E1212 35%,#8B1A1A 65%,#4A0A0A 100%);
 }
 
-/* ════════════════════════════════
-   HOME
-════════════════════════════════ */
+/* HOME */
 #homeScreen{
   position:relative;z-index:1;
   min-height:100dvh;
@@ -162,9 +160,7 @@ body::before{
 .d4{animation-delay:330ms}.d5{animation-delay:420ms}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
-/* ════════════════════════════════
-   CONV SCREEN
-════════════════════════════════ */
+/* CONV SCREEN */
 #convScreen{
   position:fixed;inset:0;z-index:200;
   display:flex;flex-direction:column;
@@ -198,6 +194,30 @@ body::before{
 .conv-brand-status{font-size:10px;font-weight:500;color:rgba(242,156,74,.7);letter-spacing:.04em}
 .conv-progbar{width:90px;height:2px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
 .conv-progfill{height:100%;background:var(--primary-glow);border-radius:2px;transition:width .5s var(--ease-io)}
+
+/* ── SACOLA BOTÃO NO HEADER ── */
+.cart-btn{
+  position:relative;
+  width:40px;height:40px;border-radius:10px;
+  background:rgba(230,126,34,.12);
+  border:1.5px solid rgba(230,126,34,.28);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;flex-shrink:0;
+  transition:background .15s,border-color .15s,transform .1s;
+  -webkit-tap-highlight-color:transparent;
+}
+.cart-btn:hover{background:rgba(230,126,34,.22);border-color:rgba(230,126,34,.5)}
+.cart-btn:active{transform:scale(.93)}
+.cart-badge{
+  position:absolute;top:-5px;right:-5px;
+  min-width:18px;height:18px;border-radius:9px;
+  background:#E67E22;border:2px solid rgba(15,4,4,.98);
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:700;color:#fff;
+  line-height:1;padding:0 3px;
+  transform:scale(0);transition:transform .2s cubic-bezier(.2,.7,.2,1);
+}
+.cart-badge.show{transform:scale(1)}
 
 .conv-scroll{
   flex:1 1 0;
@@ -315,9 +335,7 @@ body::before{
 .continue-btn:hover{background-position:0% 0}
 .continue-btn:active{transform:scale(.97)}
 
-/* ════════════════════════════════
-   CARROSSEL — estrutura
-════════════════════════════════ */
+/* CARROSSEL */
 .carousel-section{margin-bottom:14px}
 .carousel-label{
   font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
@@ -336,10 +354,7 @@ body::before{
 }
 .carousel::-webkit-scrollbar{display:none}
 
-/* ════════════════════════════════
-   PRODUCT CARD — REDESIGN COMPLETO
-   Inspirado em iFood/Rappi — profissional
-════════════════════════════════ */
+/* PRODUCT CARD */
 .product-card{
   scroll-snap-align:start;
   flex:0 0 152px;
@@ -361,7 +376,6 @@ body::before{
   box-shadow:0 0 0 2px rgba(34,197,94,.28), 0 4px 20px rgba(34,197,94,.15);
 }
 
-/* Check badge */
 .card-check{
   position:absolute;top:8px;right:8px;
   width:22px;height:22px;border-radius:50%;
@@ -371,7 +385,6 @@ body::before{
 }
 .product-card.sel .card-check{display:flex}
 
-/* Imagem do produto */
 .card-img-wrap{
   position:relative;
   width:100%;
@@ -397,7 +410,6 @@ body::before{
   content:'';position:absolute;inset:0;
   background:linear-gradient(135deg,rgba(230,126,34,.08) 0%,transparent 60%);
 }
-/* Overlay escuro na base da imagem — melhora leitura */
 .card-img-wrap::after{
   content:'';position:absolute;bottom:0;left:0;right:0;
   height:36px;
@@ -405,7 +417,6 @@ body::before{
   pointer-events:none;z-index:1;
 }
 
-/* Badge de categoria/tag */
 .card-badge{
   position:absolute;top:7px;left:7px;
   background:rgba(230,126,34,.92);
@@ -415,22 +426,7 @@ body::before{
   backdrop-filter:blur(4px);
 }
 
-/* Botão de detalhes — ícone info */
-.card-detail-btn{
-  position:absolute;bottom:7px;right:7px;
-  width:22px;height:22px;border-radius:50%;
-  background:rgba(0,0,0,.55);
-  border:1px solid rgba(255,255,255,.2);
-  display:flex;align-items:center;justify-content:center;
-  z-index:3;cursor:pointer;
-  backdrop-filter:blur(4px);
-  transition:background .15s,transform .1s;
-  -webkit-tap-highlight-color:transparent;
-}
-.card-detail-btn:hover{background:rgba(230,126,34,.7)}
-.card-detail-btn:active{transform:scale(.9)}
-
-/* Corpo do card */
+/* CARD BODY */
 .card-body{
   padding:9px 10px 11px;
   display:flex;flex-direction:column;gap:3px;
@@ -464,138 +460,162 @@ body::before{
   letter-spacing:.06em;margin-bottom:1px;
 }
 
-/* chips de variante */
-.variants-row{
-  display:flex;flex-wrap:wrap;gap:6px;
-  padding:4px 42px 6px;
-}
-.variant-chip{
-  display:inline-flex;align-items:center;gap:4px;
-  padding:5px 11px;border-radius:100px;
-  background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.14);
-  font-size:12px;font-weight:600;color:rgba(255,255,255,.75);
-  cursor:pointer;transition:all .18s;-webkit-tap-highlight-color:transparent;
-}
-.variant-chip:active{opacity:.8}
-.variant-chip.sel{background:rgba(26,92,42,.35);border-color:var(--green-light);color:#4ade80}
-
-/* barra de selecionados */
-.sel-bar{
-  display:none;
-  margin:4px 42px 0;
-  background:rgba(26,92,42,.15);
-  border:1px solid rgba(34,197,94,.2);
-  border-radius:8px;padding:7px 11px;
-}
-.sel-bar.on{display:block}
-.sel-bar-label{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#4ade80;margin-bottom:5px}
-.sel-chips{display:flex;flex-wrap:wrap;gap:4px}
-.sel-chip{
-  display:inline-flex;align-items:center;gap:4px;
-  padding:2px 9px;border-radius:100px;
-  background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.25);
-  font-size:12px;font-weight:600;color:#fff;
-}
-.sel-chip-x{cursor:pointer;font-size:14px;font-weight:700;opacity:.55;line-height:1}
-.sel-chip-x:hover{opacity:1}
-
 /* ════════════════════════════════
-   MODAL DE DETALHES DO PRODUTO
+   MODAL DE CONFIGURAÇÃO DO PRODUTO
+   (substitui variants-row e sel-bar inline)
 ════════════════════════════════ */
-.product-modal-overlay{
-  position:fixed;inset:0;z-index:500;
-  background:rgba(10,2,2,.72);
-  backdrop-filter:blur(6px);
+.cfg-modal-overlay{
+  position:fixed;inset:0;z-index:600;
+  background:rgba(8,2,2,.78);
+  backdrop-filter:blur(7px);
   display:flex;align-items:flex-end;justify-content:center;
   opacity:0;pointer-events:none;
   transition:opacity .25s ease;
 }
-.product-modal-overlay.open{opacity:1;pointer-events:all}
+.cfg-modal-overlay.open{opacity:1;pointer-events:all}
 
-.product-modal{
+.cfg-modal{
   width:100%;max-width:520px;
   background:#1A0606;
-  border-radius:20px 20px 0 0;
-  border:1.5px solid rgba(230,126,34,.22);
+  border-radius:22px 22px 0 0;
+  border:1.5px solid rgba(230,126,34,.25);
   border-bottom:none;
   overflow:hidden;
   transform:translateY(100%);
-  transition:transform .32s cubic-bezier(.2,.7,.2,1);
-  box-shadow:0 -8px 40px rgba(0,0,0,.6);
-  max-height:88dvh;
+  transition:transform .34s cubic-bezier(.2,.7,.2,1);
+  box-shadow:0 -10px 48px rgba(0,0,0,.65);
+  max-height:92dvh;
   display:flex;flex-direction:column;
 }
-.product-modal-overlay.open .product-modal{transform:translateY(0)}
+.cfg-modal-overlay.open .cfg-modal{transform:translateY(0)}
 
-.modal-handle{
+.cfg-modal-handle{
   width:40px;height:4px;border-radius:2px;
   background:rgba(255,255,255,.18);
-  margin:10px auto 0;flex-shrink:0;
+  margin:12px auto 0;flex-shrink:0;
 }
-.modal-close{
+.cfg-modal-close{
   position:absolute;top:12px;right:14px;
-  width:30px;height:30px;border-radius:50%;
+  width:32px;height:32px;border-radius:50%;
   background:rgba(255,255,255,.1);border:none;
-  color:rgba(255,255,255,.65);font-size:16px;
+  color:rgba(255,255,255,.65);font-size:17px;
   display:flex;align-items:center;justify-content:center;
   cursor:pointer;z-index:5;
   transition:background .15s;
   -webkit-tap-highlight-color:transparent;
 }
-.modal-close:hover{background:rgba(255,255,255,.18)}
+.cfg-modal-close:hover{background:rgba(255,255,255,.2)}
 
-.modal-img-wrap{
-  position:relative;width:100%;height:200px;flex-shrink:0;overflow:hidden;
+.cfg-modal-img-wrap{
+  position:relative;width:100%;height:190px;flex-shrink:0;overflow:hidden;
 }
-.modal-img{width:100%;height:100%;object-fit:cover;display:block}
-.modal-img-placeholder{
+.cfg-modal-img{width:100%;height:100%;object-fit:cover;display:block}
+.cfg-modal-img-placeholder{
   width:100%;height:100%;
   display:flex;align-items:center;justify-content:center;
   background:linear-gradient(135deg,#2A0A0A,#3D1010);
-  font-size:72px;
+  font-size:70px;
 }
-.modal-img-wrap::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:80px;
+.cfg-modal-img-wrap::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:90px;
   background:linear-gradient(to top,#1A0606 0%,transparent 100%);
   pointer-events:none;
 }
 
-.modal-body{
-  padding:16px 20px 24px;
+.cfg-modal-body{
+  padding:14px 20px 0;
   overflow-y:auto;flex:1;
+  padding-bottom:0;
 }
-.modal-name{
+.cfg-modal-name{
   font-family:var(--font-strong);
   font-size:22px;font-weight:800;
   color:#fff;letter-spacing:.04em;
-  margin-bottom:4px;line-height:1.1;
+  margin-bottom:3px;line-height:1.1;
 }
-.modal-price{
+.cfg-modal-price-row{
+  display:flex;align-items:center;gap:10px;margin-bottom:10px;
+}
+.cfg-modal-price{
   font-family:var(--font-strong);
-  font-size:20px;font-weight:700;
+  font-size:19px;font-weight:700;
   color:var(--primary-glow);
-  margin-bottom:12px;
 }
-.modal-desc{
-  font-size:13.5px;color:rgba(255,255,255,.65);
-  line-height:1.65;margin-bottom:14px;
+.cfg-modal-desc{
+  font-size:13px;color:rgba(255,255,255,.58);
+  line-height:1.6;margin-bottom:14px;
 }
-.modal-section-title{
+
+.cfg-section-title{
   font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
-  color:rgba(230,126,34,.7);margin-bottom:7px;margin-top:14px;
+  color:rgba(230,126,34,.75);margin-bottom:8px;margin-top:14px;
 }
-.modal-ingredients{
-  display:flex;flex-wrap:wrap;gap:6px;
+
+/* Chips de tamanho/variante dentro do modal */
+.cfg-variant-list{display:flex;flex-direction:column;gap:8px;margin-bottom:4px;}
+.cfg-variant-item{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 14px;
+  background:rgba(255,255,255,.05);
+  border:1.5px solid rgba(255,255,255,.10);
+  border-radius:10px;
+  cursor:pointer;
+  transition:border-color .18s,background .18s;
+  -webkit-tap-highlight-color:transparent;
 }
-.modal-ingredient{
+.cfg-variant-item:active{opacity:.8}
+.cfg-variant-item.sel{
+  background:rgba(26,92,42,.28);
+  border-color:var(--green-light);
+}
+.cfg-variant-label{font-size:14px;font-weight:600;color:#fff}
+.cfg-variant-price{font-family:var(--font-strong);font-size:15px;font-weight:700;color:var(--primary-glow)}
+.cfg-variant-check{
+  width:20px;height:20px;border-radius:50%;
+  border:1.5px solid rgba(255,255,255,.2);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:background .15s,border-color .15s;
+}
+.cfg-variant-item.sel .cfg-variant-check{
+  background:var(--green-sel);border-color:var(--green-light);
+}
+
+/* Ingredientes no modal */
+.cfg-ingredients{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px}
+.cfg-ingredient{
   padding:4px 11px;border-radius:100px;
   background:rgba(255,255,255,.06);
   border:1px solid rgba(255,255,255,.12);
-  font-size:11.5px;font-weight:500;color:rgba(255,255,255,.65);
+  font-size:11px;font-weight:500;color:rgba(255,255,255,.6);
 }
-.modal-add-btn{
-  width:100%;margin-top:18px;padding:14px;
-  background:linear-gradient(105deg,#C86516,#E67E22,#F29C4A,#E67E22,#C86516);
+
+/* Observações */
+.cfg-obs-input{
+  width:100%;
+  background:rgba(255,255,255,.07);
+  border:1.5px solid rgba(255,255,255,.14);
+  border-radius:10px;
+  color:#fff;
+  font-family:var(--font-body);font-size:15px;
+  padding:11px 14px;
+  outline:none;
+  resize:none;
+  line-height:1.5;
+  transition:border-color .18s,background .18s;
+}
+.cfg-obs-input::placeholder{color:rgba(255,255,255,.25)}
+.cfg-obs-input:focus{border-color:rgba(230,126,34,.55);background:rgba(255,255,255,.09)}
+
+/* Área fixa de ação no modal */
+.cfg-modal-footer{
+  flex-shrink:0;
+  padding:14px 20px calc(16px + env(safe-area-inset-bottom,0px));
+  background:rgba(20,5,5,.98);
+  border-top:1px solid rgba(230,126,34,.12);
+}
+.cfg-add-btn{
+  width:100%;padding:15px;
+  background:linear-gradient(105deg,#C86516 0%,#E67E22 30%,#F29C4A 52%,#E67E22 72%,#C86516 100%);
   background-size:250% 100%;background-position:100% 0;
   border:1px solid rgba(253,243,234,.2);border-radius:10px;
   font-family:var(--font-body);font-size:14px;font-weight:700;color:#fff;
@@ -603,15 +623,151 @@ body::before{
   box-shadow:0 4px 16px rgba(230,126,34,.4);
   transition:background-position .5s,transform .1s;
   -webkit-tap-highlight-color:transparent;
-  flex-shrink:0;
 }
-.modal-add-btn:hover{background-position:0% 0}
-.modal-add-btn:active{transform:scale(.98)}
-.modal-add-btn.added{background:linear-gradient(105deg,#1a5c2a,#22c55e);box-shadow:0 4px 16px rgba(34,197,94,.3)}
+.cfg-add-btn:hover{background-position:0% 0}
+.cfg-add-btn:active{transform:scale(.98)}
+.cfg-add-btn.remove-mode{
+  background:linear-gradient(105deg,#5c1a1a,#8B1A1A);
+  box-shadow:0 4px 16px rgba(139,26,26,.3);
+}
 
 /* ════════════════════════════════
-   ENTREGA & PAGAMENTO (inline, no scroll)
+   SACOLA (CART DRAWER)
 ════════════════════════════════ */
+.cart-overlay{
+  position:fixed;inset:0;z-index:700;
+  background:rgba(8,2,2,.72);
+  backdrop-filter:blur(6px);
+  opacity:0;pointer-events:none;
+  transition:opacity .25s ease;
+}
+.cart-overlay.open{opacity:1;pointer-events:all}
+
+.cart-drawer{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  max-width:520px;margin:0 auto;
+  background:#160505;
+  border-radius:22px 22px 0 0;
+  border:1.5px solid rgba(230,126,34,.22);
+  border-bottom:none;
+  max-height:88dvh;
+  display:flex;flex-direction:column;
+  transform:translateY(100%);
+  transition:transform .34s cubic-bezier(.2,.7,.2,1);
+  box-shadow:0 -10px 48px rgba(0,0,0,.6);
+}
+.cart-overlay.open .cart-drawer{transform:translateY(0)}
+
+.cart-handle{
+  width:40px;height:4px;border-radius:2px;
+  background:rgba(255,255,255,.18);
+  margin:12px auto 0;flex-shrink:0;
+}
+.cart-head{
+  flex-shrink:0;
+  padding:14px 20px 12px;
+  border-bottom:1px solid rgba(230,126,34,.12);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.cart-title{
+  font-family:var(--font-strong);
+  font-size:18px;font-weight:800;letter-spacing:.06em;
+  color:#fff;text-transform:uppercase;
+}
+.cart-count{
+  font-size:11px;font-weight:600;
+  color:rgba(230,126,34,.8);letter-spacing:.06em;
+}
+.cart-close{
+  width:30px;height:30px;border-radius:50%;
+  background:rgba(255,255,255,.08);border:none;
+  color:rgba(255,255,255,.6);font-size:16px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:background .15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.cart-close:hover{background:rgba(255,255,255,.15)}
+
+.cart-scroll{
+  flex:1 1 0;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  padding:8px 0;
+}
+
+.cart-empty{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;padding:40px 20px;
+  color:rgba(255,255,255,.3);
+}
+.cart-empty-icon{font-size:44px;opacity:.4}
+.cart-empty-text{font-size:14px;font-weight:500;letter-spacing:.04em}
+
+.cart-item{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:11px 20px;
+  border-bottom:1px solid rgba(255,255,255,.05);
+  animation:msgIn .28s ease both;
+}
+.cart-item-img{
+  width:52px;height:52px;border-radius:10px;
+  object-fit:cover;flex-shrink:0;
+  border:1px solid rgba(255,255,255,.08);
+  background:#2A0A0A;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;
+  overflow:hidden;
+}
+.cart-item-img img{width:100%;height:100%;object-fit:cover;display:block}
+.cart-item-info{flex:1;min-width:0}
+.cart-item-name{font-size:13px;font-weight:700;color:#fff;margin-bottom:2px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cart-item-variant{font-size:11px;color:rgba(255,255,255,.4);margin-bottom:3px}
+.cart-item-obs{font-size:11px;color:rgba(230,126,34,.6);font-style:italic;margin-bottom:4px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.cart-item-price{font-family:var(--font-strong);font-size:14px;font-weight:700;color:var(--primary-glow)}
+.cart-item-actions{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0}
+.cart-item-edit{
+  font-size:11px;font-weight:600;color:rgba(230,126,34,.7);
+  background:none;border:none;cursor:pointer;
+  padding:4px 8px;border-radius:6px;
+  background:rgba(230,126,34,.1);border:1px solid rgba(230,126,34,.2);
+  transition:background .15s;-webkit-tap-highlight-color:transparent;
+}
+.cart-item-edit:hover{background:rgba(230,126,34,.2)}
+.cart-item-remove{
+  font-size:11px;font-weight:600;color:rgba(255,100,100,.6);
+  background:none;border:none;cursor:pointer;
+  padding:4px 8px;border-radius:6px;
+  background:rgba(220,50,50,.08);border:1px solid rgba(220,50,50,.15);
+  transition:background .15s;-webkit-tap-highlight-color:transparent;
+}
+.cart-item-remove:hover{background:rgba(220,50,50,.18)}
+
+.cart-footer{
+  flex-shrink:0;
+  padding:12px 20px calc(14px + env(safe-area-inset-bottom,0px));
+  background:rgba(20,5,5,.98);
+  border-top:1px solid rgba(230,126,34,.12);
+}
+.cart-total-row{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:10px;
+}
+.cart-total-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.cart-total-value{font-family:var(--font-strong);font-size:20px;font-weight:800;color:var(--primary-glow)}
+.cart-continue-btn{
+  width:100%;padding:13px;
+  background:rgba(230,126,34,.12);
+  border:1.5px solid rgba(230,126,34,.35);
+  border-radius:10px;
+  font-family:var(--font-body);font-size:13px;font-weight:700;
+  color:rgba(255,255,255,.75);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:background .15s;-webkit-tap-highlight-color:transparent;
+}
+.cart-continue-btn:hover{background:rgba(230,126,34,.2)}
+
+/* ENTREGA & PAGAMENTO */
 .form-section{padding:0 16px 0 42px;margin-bottom:14px}
 .form-section-label{
   font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
@@ -682,9 +838,7 @@ body::before{
 }
 .action-btn.ghost:hover{background:rgba(255,255,255,.09);color:#fff}
 
-/* ════════════════════════════════
-   RESUMO
-════════════════════════════════ */
+/* RESUMO */
 .summary-card{
   background:rgba(46,5,5,.5);border:1.5px solid rgba(230,126,34,.28);
   border-radius:10px;padding:14px;margin-bottom:12px;
@@ -740,7 +894,7 @@ body::before{
   </defs>
 </svg>
 
-<!-- ═══════════ HOME ═══════════ -->
+<!-- HOME -->
 <div id="homeScreen">
   <div class="cover-section anim d1">
     <div class="cover-img"></div>
@@ -804,7 +958,7 @@ body::before{
   </div>
 </div>
 
-<!-- ═══════════ CONV SCREEN ═══════════ -->
+<!-- CONV SCREEN -->
 <div id="convScreen" aria-modal="true" role="dialog">
   <header class="conv-head">
     <div class="conv-head-inner">
@@ -815,7 +969,19 @@ body::before{
           <div class="conv-brand-status">● online agora</div>
         </div>
       </div>
-      <div class="conv-progbar"><div class="conv-progfill" id="progFill" style="width:0%"></div></div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="conv-progbar"><div class="conv-progfill" id="progFill" style="width:0%"></div></div>
+        <!-- Botão Sacola -->
+        <button class="cart-btn" id="cartBtn" onclick="openCart()" aria-label="Abrir sacola">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+            <path d="M3 4h14l-1.5 8.5a2 2 0 01-2 1.5H6.5a2 2 0 01-2-1.5L3 4z" stroke="rgba(230,126,34,.85)" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M1 2h2.5l.5 2" stroke="rgba(230,126,34,.85)" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="7.5" cy="17" r="1" fill="rgba(230,126,34,.85)"/>
+            <circle cx="13.5" cy="17" r="1" fill="rgba(230,126,34,.85)"/>
+          </svg>
+          <div class="cart-badge" id="cartBadge">0</div>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -828,12 +994,37 @@ body::before{
   </div>
 </div>
 
-<!-- ═══════════ MODAL DE PRODUTO ═══════════ -->
-<div class="product-modal-overlay" id="productModalOverlay" onclick="closeModal(event)">
-  <div class="product-modal" id="productModal">
-    <div class="modal-handle"></div>
-    <button class="modal-close" onclick="closeModalBtn()">✕</button>
-    <div id="modalContent"></div>
+<!-- MODAL DE CONFIGURAÇÃO DO PRODUTO -->
+<div class="cfg-modal-overlay" id="cfgModalOverlay" onclick="closeCfgModal(event)">
+  <div class="cfg-modal" id="cfgModal">
+    <div class="cfg-modal-handle"></div>
+    <button class="cfg-modal-close" onclick="closeCfgModalBtn()">✕</button>
+    <div id="cfgModalContent" style="display:flex;flex-direction:column;flex:1;overflow:hidden;min-height:0"></div>
+  </div>
+</div>
+
+<!-- SACOLA -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCartOutside(event)">
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-handle"></div>
+    <div class="cart-head">
+      <div>
+        <div class="cart-title">🛒 Sacola</div>
+        <div class="cart-count" id="cartCountLabel">0 itens</div>
+      </div>
+      <button class="cart-close" onclick="closeCart()">✕</button>
+    </div>
+    <div class="cart-scroll" id="cartScroll"></div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total-row">
+        <div class="cart-total-label">Total estimado</div>
+        <div class="cart-total-value" id="cartTotalValue">—</div>
+      </div>
+      <button class="cart-continue-btn" onclick="closeCart()">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Continuar montando pedido
+      </button>
+    </div>
   </div>
 </div>
 
@@ -841,51 +1032,51 @@ body::before{
 
 <script>
 /* ════════════════════════════════
-   CARDÁPIO — com imagens e detalhes
+   CARDÁPIO
 ════════════════════════════════ */
 const MENU = {
   principal: {
     sections: [
       { key:'combos', title:'Combos', badge:'Combo', items:[
-        { id:'combo-classico', name:'Combo Clássico', price:'R$ 25,00', desc:'Burger Clássico + Batata P + Coca 350ml',
+        { id:'combo-classico', name:'Combo Clássico', price:'R$ 25,00', priceNum:25, desc:'Burger Clássico + Batata P + Coca 350ml',
           details:'O combo mais pedido! Lanche clássico com pão macio, hambúrguer artesanal, queijo derretido, alface fresca e tomate, acompanhado de batata frita crocante e Coca-Cola gelada.',
           ingredients:['Pão brioche','Carne 120g','Queijo cheddar','Alface','Tomate','Batata frita P','Coca 350ml'],
           img:'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=75' },
-        { id:'combo-bacon', name:'Combo Bacon', price:'R$ 30,00', desc:'Burger Bacon + Batata P + Coca 350ml',
+        { id:'combo-bacon', name:'Combo Bacon', price:'R$ 30,00', priceNum:30, desc:'Burger Bacon + Batata P + Coca 350ml',
           details:'Para quem ama bacon! Hambúrguer suculento com tiras generosas de bacon crocante, queijo cheddar e molho especial da casa.',
           ingredients:['Pão brioche','Carne 150g','Bacon crocante','Queijo cheddar','Molho especial','Batata frita P','Coca 350ml'],
           img:'https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=400&q=75' },
-        { id:'combo-familia', name:'Combo Família', price:'R$ 60,00', desc:'2 Burgers + Batata G + Coca 2L',
+        { id:'combo-familia', name:'Combo Família', price:'R$ 60,00', priceNum:60, desc:'2 Burgers + Batata G + Coca 2L',
           details:'O combo perfeito para compartilhar! Dois lanches à escolha, batata frita grande crocante e Coca-Cola 2L para a família toda.',
           ingredients:['2 Burgers à escolha','Batata frita G','Coca-Cola 2L'],
           img:'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&q=75' },
       ]},
       { key:'hamburguer', title:'Hambúrgueres', badge:'Lanche', items:[
-        { id:'burger-classico', name:'Burger Clássico', price:'R$ 18,00', desc:'Pão, carne, queijo, alface, tomate',
+        { id:'burger-classico', name:'Burger Clássico', price:'R$ 18,00', priceNum:18, desc:'Pão, carne, queijo, alface, tomate',
           details:'O clássico que não erra! Hambúrguer artesanal de 120g com blend da casa, queijo cheddar derretido, alface americana fresca e tomate maduro.',
           ingredients:['Pão brioche','Hambúrguer 120g','Queijo cheddar','Alface americana','Tomate','Maionese'],
           img:'https://images.unsplash.com/photo-1586816001966-79b736744398?w=400&q=75' },
-        { id:'burger-bacon', name:'Burger Bacon', price:'R$ 22,00', desc:'Pão, carne, queijo, bacon',
+        { id:'burger-bacon', name:'Burger Bacon', price:'R$ 22,00', priceNum:22, desc:'Pão, carne, queijo, bacon',
           details:'Irresistível! Hambúrguer suculento de 150g com bacon defumado crocante, dupla de queijo e molho especial.',
           ingredients:['Pão brioche','Hambúrguer 150g','Bacon defumado','Queijo duplo','Molho especial da casa'],
           img:'https://images.unsplash.com/photo-1596956470007-2bf6095e7e16?w=400&q=75' },
-        { id:'x-tudo', name:'X-Tudo', price:'R$ 28,00', desc:'Completo com tudo que tem direito',
+        { id:'x-tudo', name:'X-Tudo', price:'R$ 28,00', priceNum:28, desc:'Completo com tudo que tem direito',
           details:'O lanche completo! Tudo que há de melhor em um só. Carne, frango, bacon, ovo, queijo, presunto, alface, tomate, milho e molho especial.',
           ingredients:['Pão especial','Carne 120g','Frango grelhado','Bacon','Ovo','Queijo','Presunto','Alface','Tomate','Milho','Molho especial'],
           img:'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=75' },
-        { id:'burger-veg', name:'Burger Vegetariano', price:'R$ 23,00', desc:'Hambúrguer vegetal artesanal',
+        { id:'burger-veg', name:'Burger Vegetariano', price:'R$ 23,00', priceNum:23, desc:'Hambúrguer vegetal artesanal',
           details:'Opção leve e saborosa! Hambúrguer vegetal feito com grão-de-bico e ervas, com queijo e vegetais frescos.',
           ingredients:['Pão integral','Hambúrguer vegetal','Queijo mozzarella','Rúcula','Tomate seco','Maionese de ervas','Cebola caramelizada'],
           img:'https://images.unsplash.com/photo-1520072959219-c595dc870360?w=400&q=75' },
-        { id:'burger-triplo', name:'Burger Triplo', price:'R$ 32,00', desc:'Três carnes, queijo derretido',
+        { id:'burger-triplo', name:'Burger Triplo', price:'R$ 32,00', priceNum:32, desc:'Três carnes, queijo derretido',
           details:'Para os mais famintos! Três hambúrgueres artesanais empilhados com queijo cheddar derretido em cada camada.',
           ingredients:['Pão brioche G','3x Hambúrguer 100g','3x Queijo cheddar','Alface','Tomate','Molho especial','Picles'],
           img:'https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=400&q=75' },
-        { id:'x-salada', name:'X-Salada', price:'R$ 20,00', desc:'Alface, tomate, milho e muito verde',
+        { id:'x-salada', name:'X-Salada', price:'R$ 20,00', priceNum:20, desc:'Alface, tomate, milho e muito verde',
           details:'Fresco e saboroso. O equilíbrio perfeito entre um bom hambúrguer e uma salada caprichada.',
           ingredients:['Pão de aveia','Hambúrguer 120g','Alface','Tomate','Milho','Cenoura ralada','Maionese light'],
           img:'https://images.unsplash.com/photo-1586816001966-79b736744398?w=400&q=75' },
-        { id:'x-bacon-esp', name:'X-Bacon Especial', price:'R$ 26,00', desc:'Bacon extra e cheddar generoso',
+        { id:'x-bacon-esp', name:'X-Bacon Especial', price:'R$ 26,00', priceNum:26, desc:'Bacon extra e cheddar generoso',
           details:'O favorito dos fãs de bacon! Dupla de bacon defumado crocante com cheddar extra derretido e molho barbecue artesanal.',
           ingredients:['Pão brioche','Hambúrguer 150g','2x Bacon defumado','Cheddar extra','Molho barbecue artesanal','Cebola crispy'],
           img:'https://images.unsplash.com/photo-1596956470007-2bf6095e7e16?w=400&q=75' },
@@ -899,13 +1090,13 @@ const MENU = {
           details:'Batata frita artesanal, cortada na hora e frita em óleo fresco. Crocante por fora, macia por dentro. Temperada com sal e ervas.',
           ingredients:['Batata selecionada','Óleo vegetal','Sal grosso','Ervas'],
           img:'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&q=75',
-          variants:[{v:'P — R$ 8,00'},{v:'M — R$ 12,00'},{v:'G — R$ 16,00'}] },
+          variants:[{v:'Pequena',price:'R$ 8,00',priceNum:8},{v:'Média',price:'R$ 12,00',priceNum:12},{v:'Grande',price:'R$ 16,00',priceNum:16}] },
         { id:'batata-rustica', name:'Batata Rústica', price:'P·M·G', desc:'Com casca, temperada com ervas',
           details:'Batata com casca cortada em gomos, assada e finalizada na fritadeira. Temperada com alecrim, alho e páprica defumada.',
           ingredients:['Batata com casca','Alecrim','Alho','Páprica defumada','Azeite','Sal'],
           img:'https://images.unsplash.com/photo-1518013431117-eb1465fa5752?w=400&q=75',
-          variants:[{v:'P — R$ 10,00'},{v:'M — R$ 14,00'},{v:'G — R$ 18,00'}] },
-        { id:'anel-cebola', name:'Anel de Cebola', price:'R$ 15,00', desc:'Onion rings crocantes no empanado',
+          variants:[{v:'Pequena',price:'R$ 10,00',priceNum:10},{v:'Média',price:'R$ 14,00',priceNum:14},{v:'Grande',price:'R$ 18,00',priceNum:18}] },
+        { id:'anel-cebola', name:'Anel de Cebola', price:'R$ 15,00', priceNum:15, desc:'Onion rings crocantes no empanado',
           details:'Anéis de cebola doce empanados em massa especial crocante. Acompanha molho ranch da casa.',
           ingredients:['Cebola doce selecionada','Massa especial crocante','Molho ranch','Temperos'],
           img:'https://images.unsplash.com/photo-1639024471283-03518883512d?w=400&q=75' },
@@ -913,18 +1104,18 @@ const MENU = {
           details:'Pedaços de peito de frango marinados e empanados na hora. Crocante por fora, suculento por dentro. Acompanha molho barbecue.',
           ingredients:['Peito de frango','Farinha temperada','Marinada especial','Molho barbecue'],
           img:'https://images.unsplash.com/photo-1562967914-608f82629710?w=400&q=75',
-          variants:[{v:'6 un — R$ 14,00'},{v:'10 un — R$ 20,00'}] },
+          variants:[{v:'6 unidades',price:'R$ 14,00',priceNum:14},{v:'10 unidades',price:'R$ 20,00',priceNum:20}] },
       ]},
     ]
   },
   sobremesas: {
     sections: [
       { key:'sob', title:'Sobremesas', badge:'Doce', items:[
-        { id:'brownie', name:'Brownie', price:'R$ 10,00', desc:'Brownie de chocolate belga artesanal',
+        { id:'brownie', name:'Brownie', price:'R$ 10,00', priceNum:10, desc:'Brownie de chocolate belga artesanal',
           details:'Brownie caseiro feito com chocolate belga, úmido por dentro e levemente crocante por fora. Receita da nonna da família.',
           ingredients:['Chocolate belga 70%','Manteiga','Ovos caipiras','Açúcar mascavo','Farinha especial','Nozes'],
           img:'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&q=75' },
-        { id:'sorvete', name:'Sorvete', price:'R$ 8,00', desc:'Sorvete cremoso em bola',
+        { id:'sorvete', name:'Sorvete', price:'R$ 8,00', priceNum:8, desc:'Sorvete cremoso em bola',
           details:'Sorvete cremoso nas opções: baunilha, chocolate ou morango. Servido em casquinha ou copo, com cobertura à escolha.',
           ingredients:['Creme de leite','Leite integral','Açúcar','Baunilha natural','Frutas frescas'],
           img:'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&q=75' },
@@ -938,18 +1129,18 @@ const MENU = {
           details:'Coca-Cola sempre bem gelada, diretamente da geladeira. Disponível em lata 350ml, garrafa 600ml ou família 2L.',
           ingredients:['Coca-Cola original'],
           img:'https://images.unsplash.com/photo-1554866585-cd94860890b7?w=400&q=75',
-          variants:[{v:'350ml — R$ 5,00'},{v:'600ml — R$ 7,00'},{v:'2L — R$ 12,00'}] },
+          variants:[{v:'350ml',price:'R$ 5,00',priceNum:5},{v:'600ml',price:'R$ 7,00',priceNum:7},{v:'2L',price:'R$ 12,00',priceNum:12}] },
         { id:'suco-mara', name:'Suco Maracujá', price:'300ml·500ml', desc:'Natural, feito na hora',
           details:'Suco de maracujá natural feito na hora, sem conservantes. Levemente adoçado com açúcar demerara.',
           ingredients:['Maracujá fresco','Água filtrada','Açúcar demerara'],
           img:'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=400&q=75',
-          variants:[{v:'300ml — R$ 6,00'},{v:'500ml — R$ 9,00'}] },
+          variants:[{v:'300ml',price:'R$ 6,00',priceNum:6},{v:'500ml',price:'R$ 9,00',priceNum:9}] },
         { id:'refri-zero', name:'Refrigerante Zero', price:'350ml·600ml', desc:'Sem açúcar, sem culpa',
           details:'Refrigerante zero açúcar para quem quer saborear sem abrir mão do sabor. Variedades disponíveis.',
           ingredients:['Coca-Cola Zero ou similar'],
           img:'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400&q=75',
-          variants:[{v:'350ml — R$ 5,00'},{v:'600ml — R$ 7,00'}] },
-        { id:'agua-sab', name:'Água Saborizada', price:'R$ 5,00', desc:'500ml com sabor natural',
+          variants:[{v:'350ml',price:'R$ 5,00',priceNum:5},{v:'600ml',price:'R$ 7,00',priceNum:7}] },
+        { id:'agua-sab', name:'Água Saborizada', price:'R$ 5,00', priceNum:5, desc:'500ml com sabor natural',
           details:'Água mineral saborizada com frutas naturais. Leve, refrescante e saudável.',
           ingredients:['Água mineral','Frutas naturais','Sem açúcar adicionado'],
           img:'https://images.unsplash.com/photo-1536939459926-301a64d9a993?w=400&q=75' },
@@ -957,7 +1148,7 @@ const MENU = {
           details:'Milkshake cremoso feito com sorvete artesanal de baunilha e leite gelado. Finalizado com chantilly.',
           ingredients:['Sorvete de baunilha','Leite integral gelado','Chantilly','Calda à escolha'],
           img:'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&q=75',
-          variants:[{v:'300ml — R$ 12,00'},{v:'500ml — R$ 15,00'}] },
+          variants:[{v:'300ml',price:'R$ 12,00',priceNum:12},{v:'500ml',price:'R$ 15,00',priceNum:15}] },
       ]},
     ]
   },
@@ -970,19 +1161,43 @@ const WHATSAPP = '5583991816152';
 ════════════════════════════════ */
 let st = {
   nome:'',
-  sel:{ principal:{}, acompanhamentos:{}, sobremesas:{}, bebidas:{} },
+  // sel é agora a SACOLA: array de objetos { uid, cat, itemId, item, variant, obs, label, price }
+  cart: [],
   delivery:'', payment:'', address:'', addrRef:'',
 };
+
+// uid incremental para itens da sacola
+let _uidCounter = 0;
+function newUid(){ return 'item_'+(++_uidCounter); }
+
+// Para compatibilidade com o fluxo existente:
+// st.sel[cat] é usado para marcar cards — vamos mantê-lo como lookup
+function getSelBycat(cat){
+  const m = {};
+  st.cart.filter(i=>i.cat===cat).forEach(i=>{
+    m[i.itemId] = true;
+  });
+  return m;
+}
+function cartCountByCat(cat){ return st.cart.filter(i=>i.cat===cat).length; }
+function cartLabels(cat){ return st.cart.filter(i=>i.cat===cat).map(i=>i.label).join('\n'); }
+function cartTotal(){
+  let sum=0;
+  st.cart.forEach(i=>{ if(i.priceNum) sum+=i.priceNum; });
+  return sum;
+}
 
 /* ════════════════════════════════
    NAVEGAÇÃO
 ════════════════════════════════ */
 function openConv(){
-  st={ nome:'', sel:{principal:{},acompanhamentos:{},sobremesas:{},bebidas:{}}, delivery:'', payment:'', address:'', addrRef:'' };
+  st={ nome:'', cart:[], delivery:'', payment:'', address:'', addrRef:'' };
+  _uidCounter=0;
   document.getElementById('convStage').innerHTML='';
   document.getElementById('answerInner').innerHTML='';
   document.getElementById('answerArea').style.display='none';
   document.getElementById('progFill').style.width='0%';
+  updateCartUI();
 
   const home=document.getElementById('homeScreen');
   const conv=document.getElementById('convScreen');
@@ -1009,90 +1224,266 @@ function closeConv(){
 function prog(pct){ document.getElementById('progFill').style.width=pct+'%'; }
 
 /* ════════════════════════════════
-   MODAL DE DETALHES
+   SACOLA UI
 ════════════════════════════════ */
-let _modalItem=null, _modalCat=null;
+function updateCartUI(){
+  const count = st.cart.length;
+  const badge = document.getElementById('cartBadge');
+  const countLabel = document.getElementById('cartCountLabel');
+  if(badge){
+    badge.textContent = count;
+    badge.classList.toggle('show', count>0);
+  }
+  if(countLabel) countLabel.textContent = count+' '+(count===1?'item':'itens');
+}
 
-function openModal(item, cat){
-  _modalItem=item; _modalCat=cat;
-  const overlay=document.getElementById('productModalOverlay');
-  const content=document.getElementById('modalContent');
+function openCart(){
+  renderCartDrawer();
+  document.getElementById('cartOverlay').classList.add('open');
+}
+function closeCart(){
+  document.getElementById('cartOverlay').classList.remove('open');
+}
+function closeCartOutside(e){
+  if(e.target===document.getElementById('cartOverlay')) closeCart();
+}
 
-  const isAdded = !!st.sel[cat][item.id] || 
-    (item.variants && Object.keys(st.sel[cat]).some(k=>k.startsWith(item.id+'::')));
+function renderCartDrawer(){
+  const scroll = document.getElementById('cartScroll');
+  const footer = document.getElementById('cartFooter');
+  scroll.innerHTML='';
+
+  if(!st.cart.length){
+    scroll.innerHTML=`<div class="cart-empty"><div class="cart-empty-icon">🛒</div><div class="cart-empty-text">Sacola vazia</div></div>`;
+    footer.style.display='none';
+    return;
+  }
+
+  footer.style.display='';
+  st.cart.forEach(ci=>{
+    const div=document.createElement('div'); div.className='cart-item';
+    const fallbackEmoji = {principal:'🍔',acompanhamentos:'🍟',sobremesas:'🍰',bebidas:'🥤'}[ci.cat]||'🍽️';
+    div.innerHTML=`
+      <div class="cart-item-img">
+        ${ci.item.img?`<img src="${esc(ci.item.img)}" alt="${esc(ci.item.name)}" loading="lazy" onerror="this.parentElement.textContent='${fallbackEmoji}'">`:`${fallbackEmoji}`}
+      </div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${esc(ci.item.name)}</div>
+        ${ci.variant?`<div class="cart-item-variant">${esc(ci.variant)}</div>`:''}
+        ${ci.obs?`<div class="cart-item-obs">📝 ${esc(ci.obs)}</div>`:''}
+        <div class="cart-item-price">${esc(ci.priceStr)}</div>
+      </div>
+      <div class="cart-item-actions">
+        <button class="cart-item-edit" onclick="editCartItem('${ci.uid}')">✏️ Editar</button>
+        <button class="cart-item-remove" onclick="removeCartItem('${ci.uid}')">✕ Remover</button>
+      </div>`;
+    scroll.appendChild(div);
+  });
+
+  // Total
+  const total = cartTotal();
+  const totalEl = document.getElementById('cartTotalValue');
+  if(total>0) totalEl.textContent='R$ '+total.toFixed(2).replace('.',',');
+  else totalEl.textContent='—';
+  updateCartUI();
+}
+
+function removeCartItem(uid){
+  st.cart = st.cart.filter(i=>i.uid!==uid);
+  refreshCardStates();
+  updateCartUI();
+  renderCartDrawer();
+  showToast('Item removido da sacola');
+}
+
+function editCartItem(uid){
+  const ci = st.cart.find(i=>i.uid===uid);
+  if(!ci) return;
+  closeCart();
+  setTimeout(()=> openCfgModal(ci.item, ci.cat, ci.uid), 200);
+}
+
+function refreshCardStates(){
+  // Atualiza visual de todos os cards conforme sacola atual
+  document.querySelectorAll('.product-card').forEach(card=>{
+    const id = card.id.replace('card-','');
+    const inCart = st.cart.some(i=>i.itemId===id);
+    card.classList.toggle('sel', inCart);
+  });
+}
+
+/* ════════════════════════════════
+   MODAL DE CONFIGURAÇÃO DO PRODUTO
+════════════════════════════════ */
+let _cfgItem=null, _cfgCat=null, _cfgEditUid=null;
+let _cfgSelectedVariant=null, _cfgObs='';
+
+function openCfgModal(item, cat, editUid=null){
+  _cfgItem=item; _cfgCat=cat; _cfgEditUid=editUid;
+  _cfgSelectedVariant=null; _cfgObs='';
+
+  // Se for edição, pré-preenche
+  if(editUid){
+    const ci = st.cart.find(i=>i.uid===editUid);
+    if(ci){ _cfgSelectedVariant=ci.variant||null; _cfgObs=ci.obs||''; }
+  }
+
+  renderCfgModal();
+  document.getElementById('cfgModalOverlay').classList.add('open');
+}
+
+function renderCfgModal(){
+  const item = _cfgItem;
+  const content = document.getElementById('cfgModalContent');
+  const alreadyInCart = _cfgEditUid
+    ? true
+    : st.cart.some(i=>i.itemId===item.id && i.cat===_cfgCat);
 
   let imgHtml = item.img
-    ? `<img class="modal-img" src="${item.img}" alt="${esc(item.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+    ? `<img class="cfg-modal-img" src="${esc(item.img)}" alt="${esc(item.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
     : '';
+  const fallbackEmoji = {principal:'🍔',acompanhamentos:'🍟',sobremesas:'🍰',bebidas:'🥤'}[_cfgCat]||'🍽️';
+
+  // Monta variantes se houver
+  let variantsHTML = '';
+  if(item.variants && item.variants.length){
+    variantsHTML = `<div class="cfg-section-title">Escolha o tamanho</div>
+    <div class="cfg-variant-list" id="cfgVariantList">
+      ${item.variants.map(({v,price})=>`
+        <div class="cfg-variant-item${_cfgSelectedVariant===v?' sel':''}" data-v="${esc(v)}" data-price="${esc(price)}" onclick="selectVariant('${esc(v)}','${esc(price)}')">
+          <div class="cfg-variant-check">
+            ${_cfgSelectedVariant===v?`<svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`:''}
+          </div>
+          <div class="cfg-variant-label">${esc(v)}</div>
+          <div class="cfg-variant-price">${esc(price)}</div>
+        </div>`).join('')}
+    </div>`;
+  }
+
+  // Ingredientes
+  let ingredHTML = '';
+  if(item.ingredients && item.ingredients.length){
+    ingredHTML = `<div class="cfg-section-title">Ingredientes</div>
+    <div class="cfg-ingredients">
+      ${item.ingredients.map(i=>`<span class="cfg-ingredient">${esc(i)}</span>`).join('')}
+    </div>`;
+  }
+
+  // Preço a exibir no header
+  const displayPrice = (_cfgSelectedVariant && item.variants)
+    ? (item.variants.find(v=>v.v===_cfgSelectedVariant)||{}).price || item.price
+    : item.price;
+
+  // Botão de ação
+  const isEdit = !!_cfgEditUid;
+  const btnLabel = isEdit
+    ? '✓ Salvar alterações'
+    : (alreadyInCart && !item.variants)
+      ? '— Remover da sacola'
+      : '+ Adicionar à sacola';
+  const btnClass = (!isEdit && alreadyInCart && !item.variants) ? 'cfg-add-btn remove-mode' : 'cfg-add-btn';
 
   content.innerHTML=`
-    <div class="modal-img-wrap">
+    <div class="cfg-modal-img-wrap">
       ${imgHtml}
-      <div class="modal-img-placeholder" ${item.img?'style="display:none"':''}>🍽️</div>
+      <div class="cfg-modal-img-placeholder" ${item.img?'style="display:none"':''}>${fallbackEmoji}</div>
     </div>
-    <div class="modal-body">
-      <div class="modal-name">${esc(item.name)}</div>
-      <div class="modal-price">${esc(item.price)}</div>
-      <div class="modal-desc">${esc(item.details||item.desc)}</div>
-      ${item.ingredients&&item.ingredients.length?`
-        <div class="modal-section-title">Ingredientes</div>
-        <div class="modal-ingredients">
-          ${item.ingredients.map(i=>`<span class="modal-ingredient">${esc(i)}</span>`).join('')}
-        </div>
-      `:''}
-      ${item.variants?`
-        <div class="modal-section-title">Tamanhos disponíveis</div>
-        <div class="modal-ingredients">
-          ${item.variants.map(({v})=>`<span class="modal-ingredient">${esc(v)}</span>`).join('')}
-        </div>
-      `:''}
-      <button class="modal-add-btn ${isAdded?'added':''}" id="modalAddBtn" onclick="modalToggleItem()">
-        ${isAdded
-          ? '<svg viewBox="0 0 16 16" fill="none" width="15" height="15"><path d="M3 8l3.5 3.5L13 4.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Adicionado ao pedido'
-          : '<svg viewBox="0 0 16 16" fill="none" width="15" height="15"><path d="M8 3v10M3 8h10" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg> Adicionar ao pedido'
-        }
-      </button>
+    <div class="cfg-modal-body" id="cfgModalBody">
+      <div class="cfg-modal-name">${esc(item.name)}</div>
+      <div class="cfg-modal-price-row">
+        <div class="cfg-modal-price" id="cfgModalPrice">${esc(displayPrice)}</div>
+      </div>
+      <div class="cfg-modal-desc">${esc(item.details||item.desc)}</div>
+      ${variantsHTML}
+      ${ingredHTML}
+      <div class="cfg-section-title">Observações</div>
+      <textarea class="cfg-obs-input" id="cfgObsInput" rows="2" placeholder="Sem cebola, ponto da carne, alergias...">${esc(_cfgObs)}</textarea>
+      <div style="height:16px"></div>
     </div>
-  `;
-
-  overlay.classList.add('open');
-  document.body.style.overflow='hidden';
+    <div class="cfg-modal-footer">
+      <button class="${btnClass}" id="cfgAddBtn" onclick="cfgConfirm()">${btnLabel}</button>
+    </div>`;
 }
 
-function modalToggleItem(){
-  if(!_modalItem||!_modalCat) return;
-  const item=_modalItem, cat=_modalCat;
-  const btn=document.getElementById('modalAddBtn');
+function selectVariant(v, price){
+  _cfgSelectedVariant = v;
+  // Atualiza itens visuais sem re-render completo
+  document.querySelectorAll('.cfg-variant-item').forEach(el=>{
+    const isThis = el.dataset.v===v;
+    el.classList.toggle('sel',isThis);
+    el.querySelector('.cfg-variant-check').innerHTML = isThis
+      ? `<svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+      : '';
+  });
+  // Atualiza preço exibido
+  const priceEl = document.getElementById('cfgModalPrice');
+  if(priceEl) priceEl.textContent = price;
+  // Atualiza botão
+  const btn = document.getElementById('cfgAddBtn');
+  if(btn){ btn.className='cfg-add-btn'; btn.textContent='+ Adicionar à sacola'; }
+}
 
-  if(!item.variants){
-    const key=item.id;
-    if(st.sel[cat][key]){
-      delete st.sel[cat][key];
-      const c=document.getElementById('card-'+item.id);
-      if(c) c.classList.remove('sel');
-      btn.className='modal-add-btn';
-      btn.innerHTML='<svg viewBox="0 0 16 16" fill="none" width="15" height="15"><path d="M8 3v10M3 8h10" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg> Adicionar ao pedido';
-    } else {
-      st.sel[cat][key]={label:item.name};
-      const c=document.getElementById('card-'+item.id);
-      if(c) c.classList.add('sel');
-      btn.className='modal-add-btn added';
-      btn.innerHTML='<svg viewBox="0 0 16 16" fill="none" width="15" height="15"><path d="M3 8l3.5 3.5L13 4.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Adicionado ao pedido';
-    }
-    updateSelBar(cat);
-    showToast(st.sel[cat][item.id]?'Adicionado! ✓':'Removido do pedido');
-  } else {
-    closeModalBtn();
-    showToast('Escolha o tamanho nos chips abaixo ☝️');
+function cfgConfirm(){
+  const item = _cfgItem;
+  const cat = _cfgCat;
+  const obsInput = document.getElementById('cfgObsInput');
+  const obs = obsInput ? obsInput.value.trim() : '';
+
+  // Validação: se tem variante, precisa escolher
+  if(item.variants && item.variants.length && !_cfgSelectedVariant){
+    showToast('Escolha um tamanho ☝️');
+    return;
   }
+
+  // Encontra priceNum
+  let priceNum = item.priceNum||0;
+  let priceStr = item.price;
+  let variantLabel = '';
+  if(_cfgSelectedVariant && item.variants){
+    const vObj = item.variants.find(v=>v.v===_cfgSelectedVariant);
+    if(vObj){ priceNum=vObj.priceNum||0; priceStr=vObj.price; }
+    variantLabel = _cfgSelectedVariant;
+  }
+
+  const label = item.name + (variantLabel?' ('+variantLabel+')':'');
+
+  if(_cfgEditUid){
+    // Edição
+    const idx = st.cart.findIndex(i=>i.uid===_cfgEditUid);
+    if(idx>=0){
+      st.cart[idx] = {...st.cart[idx], variant:variantLabel, obs, label, priceNum, priceStr};
+    }
+    showToast('Item atualizado ✓');
+  } else {
+    // Verifica se é toggle (remover) — só para itens sem variante já na sacola
+    const existing = !item.variants && st.cart.find(i=>i.itemId===item.id&&i.cat===cat);
+    if(existing){
+      st.cart = st.cart.filter(i=>!(i.itemId===item.id&&i.cat===cat));
+      refreshCardStates();
+      updateCartUI();
+      closeCfgModalBtn();
+      showToast('Removido da sacola');
+      return;
+    }
+    // Adicionar
+    st.cart.push({
+      uid: newUid(),
+      cat, itemId:item.id, item,
+      variant: variantLabel, obs, label, priceNum, priceStr
+    });
+    showToast('Adicionado à sacola 🛒');
+  }
+
+  refreshCardStates();
+  updateCartUI();
+  closeCfgModalBtn();
 }
 
-function closeModal(e){
-  if(e.target===document.getElementById('productModalOverlay')) closeModalBtn();
+function closeCfgModal(e){
+  if(e.target===document.getElementById('cfgModalOverlay')) closeCfgModalBtn();
 }
-function closeModalBtn(){
-  document.getElementById('productModalOverlay').classList.remove('open');
-  document.body.style.overflow='hidden'; // mantém conv scroll bloqueado
+function closeCfgModalBtn(){
+  document.getElementById('cfgModalOverlay').classList.remove('open');
 }
 
 /* ════════════════════════════════
@@ -1164,7 +1555,7 @@ function scrollBottom(){
 }
 
 /* ════════════════════════════════
-   FLUXO — idêntico ao original
+   FLUXO — preservado integralmente
 ════════════════════════════════ */
 function startFlow(){
   prog(5);
@@ -1196,7 +1587,7 @@ function submitNome(){
   setTimeout(()=>{
     send([
       {html:`Prazer, <strong>${esc(fn())}</strong>! 😄`, delay:0},
-      {html:'Vamos montar seu pedido. <em>Vamos começar pelo principal?</em> 🍔', delay:900},
+      {html:'Vamos montar seu pedido. <em>Toque em qualquer produto para ver detalhes e configurar!</em> 🍔', delay:900},
     ], ()=>stepPrincipal());
   },350);
 }
@@ -1205,21 +1596,22 @@ function stepPrincipal(){
   prog(25);
   send([
     {html:'Vamos começar pelo <strong>principal</strong> 🍔', delay:0},
-    {html:'Deslize para ver os itens e toque para selecionar:', delay:900},
+    {html:'Toque no produto para abrir, configurar e adicionar à sacola:', delay:900},
   ], ()=>{
     addInline(el=>{ el.id='il-principal'; buildCarousel(el,'principal',MENU.principal.sections); });
     renderAnswer(inner=>{
-      const hint=document.createElement('div'); hint.className='answer-hint'; hint.textContent='Selecione e toque em Continuar'; inner.appendChild(hint);
+      const hint=document.createElement('div'); hint.className='answer-hint'; hint.textContent='Selecione ao menos 1 item e toque em Continuar'; inner.appendChild(hint);
       const btn=document.createElement('button'); btn.className='continue-btn';
       btn.innerHTML='Continuar <svg viewBox="0 0 14 14" fill="none" width="13" height="13"><path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
       btn.onclick=()=>{
-        if(!Object.keys(st.sel.principal).length){showToast('Selecione ao menos um item 🍔');return;}
-        const labels=Object.values(st.sel.principal).map(s=>s.label).join(', ');
+        const catItems=st.cart.filter(i=>i.cat==='principal');
+        if(!catItems.length){showToast('Selecione ao menos um item 🍔');return;}
+        const labels=catItems.map(i=>i.label).join(', ');
         addUser(labels); clearAnswer(); lock('il-principal');
         setTimeout(()=>{
           send([
             {html:'Excelente escolha 😋', delay:0},
-            {html:'Agora me diz... vai sobrar espaço para um <em>acompanhamento</em>? 🍟', delay:900},
+            {html:'Vai sobrar espaço para um <em>acompanhamento</em>? 🍟', delay:900},
           ], ()=>stepAcompanhamentos());
         },350);
       };
@@ -1240,8 +1632,8 @@ function stepAcompanhamentos(){
       const btn=document.createElement('button'); btn.className='continue-btn';
       btn.innerHTML='Continuar <svg viewBox="0 0 14 14" fill="none" width="13" height="13"><path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
       btn.onclick=()=>{
-        const sel=Object.values(st.sel.acompanhamentos);
-        const labels=sel.length?sel.map(s=>s.label).join(', '):'Sem acompanhamentos';
+        const catItems=st.cart.filter(i=>i.cat==='acompanhamentos');
+        const labels=catItems.length?catItems.map(i=>i.label).join(', '):'Sem acompanhamentos';
         addUser(labels); clearAnswer(); lock('il-acomp');
         setTimeout(()=>{
           send([
@@ -1267,8 +1659,8 @@ function stepSobremesas(){
       const btn=document.createElement('button'); btn.className='continue-btn';
       btn.innerHTML='Continuar <svg viewBox="0 0 14 14" fill="none" width="13" height="13"><path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
       btn.onclick=()=>{
-        const sel=Object.values(st.sel.sobremesas);
-        const labels=sel.length?sel.map(s=>s.label).join(', '):'Sem sobremesa';
+        const catItems=st.cart.filter(i=>i.cat==='sobremesas');
+        const labels=catItems.length?catItems.map(i=>i.label).join(', '):'Sem sobremesa';
         addUser(labels); clearAnswer(); lock('il-sob');
         setTimeout(()=>{
           send([
@@ -1292,8 +1684,8 @@ function stepBebidas(){
       const btn=document.createElement('button'); btn.className='continue-btn';
       btn.innerHTML='Continuar <svg viewBox="0 0 14 14" fill="none" width="13" height="13"><path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
       btn.onclick=()=>{
-        const sel=Object.values(st.sel.bebidas);
-        const labels=sel.length?sel.map(s=>s.label).join(', '):'Sem bebida';
+        const catItems=st.cart.filter(i=>i.cat==='bebidas');
+        const labels=catItems.length?catItems.map(i=>i.label).join(', '):'Sem bebida';
         addUser(labels); clearAnswer(); lock('il-beb');
         setTimeout(()=>{
           send([
@@ -1393,17 +1785,25 @@ function stepResumo(){
       const card=document.createElement('div'); card.className='summary-card';
       const rows=[];
       rows.push({k:'Cliente',v:st.nome});
-      const p=Object.values(st.sel.principal);
-      if(p.length) rows.push({k:'Principal',v:p.map(s=>s.label).join('\n')});
-      const a=Object.values(st.sel.acompanhamentos);
-      if(a.length) rows.push({k:'Acompanha',v:a.map(s=>s.label).join('\n')});
-      const s=Object.values(st.sel.sobremesas);
-      if(s.length) rows.push({k:'Sobremesa',v:s.map(s=>s.label).join('\n')});
-      const b=Object.values(st.sel.bebidas);
-      if(b.length) rows.push({k:'Bebida',v:b.map(s=>s.label).join('\n')});
+
+      const cats=[
+        {cat:'principal',label:'Principal'},
+        {cat:'acompanhamentos',label:'Acompanha'},
+        {cat:'sobremesas',label:'Sobremesa'},
+        {cat:'bebidas',label:'Bebida'},
+      ];
+      cats.forEach(({cat,label})=>{
+        const items=st.cart.filter(i=>i.cat===cat);
+        if(items.length) rows.push({k:label,v:items.map(i=>i.label+(i.obs?'\n  📝 '+i.obs:'')).join('\n')});
+      });
+
       rows.push({k:'Recebimento',v:st.delivery==='entrega'?'Entrega':'Retirada no local'});
       if(st.delivery==='entrega'&&st.address) rows.push({k:'Endereço',v:st.address+(st.addrRef?' — '+st.addrRef:'')});
       rows.push({k:'Pagamento',v:{pix:'PIX',cartao:'Cartão',dinheiro:'Dinheiro'}[st.payment]});
+
+      const total=cartTotal();
+      if(total>0) rows.push({k:'Total est.',v:'R$ '+total.toFixed(2).replace('.',',')});
+
       card.innerHTML=rows.map(r=>`<div class="summary-row"><div class="summary-k">${esc(r.k)}</div><div class="summary-v">${esc(r.v)}</div></div>`).join('');
       el.appendChild(card);
 
@@ -1416,8 +1816,8 @@ function stepResumo(){
       ed.textContent='✏️ Editar pedido';
       ed.onclick=()=>{
         el.style.display='none';
-        st.sel={principal:{},acompanhamentos:{},sobremesas:{},bebidas:{}};
-        st.delivery=''; st.payment='';
+        st.cart=[]; st.delivery=''; st.payment='';
+        refreshCardStates(); updateCartUI();
         setTimeout(()=>{ send([{html:'Sem problema! Vamos recomeçar 😊 Escolha o principal:', delay:0}], ()=>stepPrincipal()); },300);
       };
       el.appendChild(ed);
@@ -1427,7 +1827,8 @@ function stepResumo(){
 }
 
 /* ════════════════════════════════
-   CARROSSEL — buildCarousel REDESENHADO
+   CARROSSEL — buildCarousel
+   (sem variants-row nem sel-bar inline)
 ════════════════════════════════ */
 function buildCarousel(container, cat, sections){
   sections.forEach(section=>{
@@ -1443,13 +1844,14 @@ function buildCarousel(container, cat, sections){
       const card=document.createElement('div');
       card.className='product-card'; card.id='card-'+item.id;
 
-      /* Imagem ou placeholder */
+      const fallbackEmoji = {principal:'🍔',acompanhamentos:'🍟',sobremesas:'🍰',bebidas:'🥤'}[cat]||'🍽️';
+      const inCart = st.cart.some(i=>i.itemId===item.id&&i.cat===cat);
+      if(inCart) card.classList.add('sel');
+
       const imgHtml = item.img
-        ? `<img class="card-img" src="${item.img}" alt="${esc(item.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+        ? `<img class="card-img" src="${esc(item.img)}" alt="${esc(item.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
         : '';
       const placeholderStyle = item.img ? 'style="display:none"' : '';
-      /* emoji fallback genérico por categoria */
-      const fallbackEmoji = {principal:'🍔',acompanhamentos:'🍟',sobremesas:'🍰',bebidas:'🥤'}[cat]||'🍽️';
 
       card.innerHTML=`
         <div class="card-check">
@@ -1459,12 +1861,6 @@ function buildCarousel(container, cat, sections){
           ${imgHtml}
           <div class="card-img-placeholder" ${placeholderStyle}>${fallbackEmoji}</div>
           ${section.badge?`<div class="card-badge">${esc(section.badge)}</div>`:''}
-          <button class="card-detail-btn" title="Ver detalhes" aria-label="Ver detalhes de ${esc(item.name)}">
-            <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
-              <circle cx="6" cy="6" r="5" stroke="rgba(255,255,255,.8)" stroke-width="1.2"/>
-              <path d="M6 5.5v3M6 4h.01" stroke="rgba(255,255,255,.8)" stroke-width="1.3" stroke-linecap="round"/>
-            </svg>
-          </button>
         </div>
         <div class="card-body">
           <div class="card-name">${esc(item.name)}</div>
@@ -1477,94 +1873,15 @@ function buildCarousel(container, cat, sections){
           </div>
         </div>`;
 
-      /* Botão de detalhes — stopPropagation para não ativar seleção */
-      const detailBtn=card.querySelector('.card-detail-btn');
-      detailBtn.addEventListener('click', e=>{ e.stopPropagation(); openModal(item, cat); });
-
-      /* Toque no card = selecionar (se sem variante) ou abrir modal */
-      if(!item.variants){
-        card.addEventListener('click', ()=>toggleItem(cat,item));
-      } else {
-        /* card com variante: toque abre modal (que mostra tamanhos) */
-        card.addEventListener('click', ()=>openModal(item,cat));
-      }
+      // Toque no card = abrir modal de configuração
+      card.addEventListener('click', ()=> openCfgModal(item, cat));
 
       car.appendChild(card);
     });
 
     sec.appendChild(car);
-
-    /* variantes e sel-bar */
-    section.items.forEach(item=>{
-      if(!item.variants) return;
-      const vrow=document.createElement('div'); vrow.className='variants-row'; vrow.id='vrow-'+item.id;
-      item.variants.forEach(({v})=>{
-        const chip=document.createElement('div'); chip.className='variant-chip';
-        const key=item.id+'::'+v;
-        chip.textContent=v;
-        chip.setAttribute('data-key',key);
-        chip.onclick=()=>{
-          if(st.sel[cat][key]){
-            delete st.sel[cat][key]; chip.classList.remove('sel');
-          } else {
-            st.sel[cat][key]={ label:item.name+' ('+v+')' };
-            chip.classList.add('sel');
-          }
-          const hasAny=Object.keys(st.sel[cat]).some(k=>k.startsWith(item.id+'::'));
-          const c=document.getElementById('card-'+item.id);
-          if(c) c.classList.toggle('sel',hasAny);
-          updateSelBar(cat);
-        };
-        vrow.appendChild(chip);
-      });
-      sec.appendChild(vrow);
-    });
-
-    const bar=document.createElement('div'); bar.className='sel-bar'; bar.id='selbar-'+cat+'-'+section.key;
-    bar.innerHTML=`<div class="sel-bar-label">Selecionados</div><div class="sel-chips" id="selchips-${cat}-${section.key}"></div>`;
-    sec.appendChild(bar);
-
     container.appendChild(sec);
   });
-  updateSelBar(cat);
-}
-
-function toggleItem(cat,item){
-  const key=item.id;
-  const c=document.getElementById('card-'+item.id);
-  if(st.sel[cat][key]){ delete st.sel[cat][key]; if(c)c.classList.remove('sel'); }
-  else { st.sel[cat][key]={label:item.name}; if(c)c.classList.add('sel'); }
-  updateSelBar(cat);
-}
-
-function updateSelBar(cat){
-  const entries=Object.entries(st.sel[cat]);
-  document.querySelectorAll('[id^="selbar-'+cat+'-"]').forEach(bar=>{
-    const key=bar.id.replace('selbar-'+cat+'-','');
-    const chipsEl=document.getElementById('selchips-'+cat+'-'+key);
-    if(!chipsEl) return;
-    bar.classList.toggle('on', entries.length>0);
-    chipsEl.innerHTML=entries.map(([k,v])=>
-      `<div class="sel-chip">${esc(v.label)}<span class="sel-chip-x" onclick="removeItem('${esc(cat)}','${escAttr(k)}')">×</span></div>`
-    ).join('');
-  });
-}
-
-function removeItem(cat,key){
-  delete st.sel[cat][key];
-  const isVar=key.includes('::');
-  const itemId=isVar?key.split('::')[0]:key;
-  if(isVar){
-    const chip=document.querySelector(`[data-key="${key}"]`);
-    if(chip) chip.classList.remove('sel');
-    const hasAny=Object.keys(st.sel[cat]).some(k=>k.startsWith(itemId+'::'));
-    const c=document.getElementById('card-'+itemId);
-    if(c) c.classList.toggle('sel',hasAny);
-  } else {
-    const c=document.getElementById('card-'+itemId);
-    if(c) c.classList.remove('sel');
-  }
-  updateSelBar(cat);
 }
 
 function lock(id){
@@ -1578,21 +1895,36 @@ function lock(id){
 function sendWA(){
   const payL={pix:'PIX',cartao:'Cartão',dinheiro:'Dinheiro'};
   let msg=`Olá, Famiglia Zanole! 🍔\n\nMeu nome é *${st.nome}* e gostaria de fazer um pedido.\n`;
-  const p=Object.values(st.sel.principal);
-  if(p.length) msg+=`\n*🍔 Principal:*\n${p.map(s=>'• '+s.label).join('\n')}`;
-  const a=Object.values(st.sel.acompanhamentos);
-  if(a.length) msg+=`\n\n*🍟 Acompanhamentos:*\n${a.map(s=>'• '+s.label).join('\n')}`;
-  const s=Object.values(st.sel.sobremesas);
-  if(s.length) msg+=`\n\n*🍰 Sobremesas:*\n${s.map(s=>'• '+s.label).join('\n')}`;
-  const b=Object.values(st.sel.bebidas);
-  if(b.length) msg+=`\n\n*🥤 Bebidas:*\n${b.map(s=>'• '+s.label).join('\n')}`;
+
+  const cats=[
+    {cat:'principal',icon:'🍔',label:'Principal'},
+    {cat:'acompanhamentos',icon:'🍟',label:'Acompanhamentos'},
+    {cat:'sobremesas',icon:'🍰',label:'Sobremesas'},
+    {cat:'bebidas',icon:'🥤',label:'Bebidas'},
+  ];
+  cats.forEach(({cat,icon,label})=>{
+    const items=st.cart.filter(i=>i.cat===cat);
+    if(items.length){
+      msg+=`\n*${icon} ${label}:*\n`;
+      items.forEach(i=>{
+        msg+='• '+i.label;
+        if(i.obs) msg+=' (obs: '+i.obs+')';
+        msg+='\n';
+      });
+    }
+  });
+
   if(st.delivery==='entrega'){
-    msg+=`\n\n*📦 Recebimento:* Entrega\n*Endereço:* ${st.address}`;
+    msg+=`\n*📦 Recebimento:* Entrega\n*Endereço:* ${st.address}`;
     if(st.addrRef) msg+=`\n*Referência:* ${st.addrRef}`;
   } else {
-    msg+=`\n\n*📦 Recebimento:* Retirada no local`;
+    msg+=`\n*📦 Recebimento:* Retirada no local`;
   }
   msg+=`\n\n*💳 Pagamento:* ${payL[st.payment]}`;
+
+  const total=cartTotal();
+  if(total>0) msg+=`\n*💰 Total estimado:* R$ ${total.toFixed(2).replace('.',',')}`;
+
   window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,'_blank');
   closeConv();
 }
@@ -1601,8 +1933,7 @@ function sendWA(){
    UTILS
 ════════════════════════════════ */
 function fn(){ return st.nome.split(' ')[0]; }
-function esc(s){ if(!s)return''; return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-function escAttr(s){ return esc(s).replace(/'/g,'&#39;'); }
+function esc(s){ if(!s&&s!==0)return''; return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
 const toastEl=document.getElementById('toast');
 let toastT;
@@ -1613,7 +1944,8 @@ function showToast(msg){
 
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){
-    if(document.getElementById('productModalOverlay').classList.contains('open')) closeModalBtn();
+    if(document.getElementById('cfgModalOverlay').classList.contains('open')) closeCfgModalBtn();
+    else if(document.getElementById('cartOverlay').classList.contains('open')) closeCart();
     else if(document.getElementById('convScreen').classList.contains('visible')) closeConv();
   }
 });
